@@ -1,0 +1,5 @@
+#CODE;NAME;INITIAL;MINIMUM;MAXIMUM;PREFIX;SUFFIX;MULTIPLY;ADD
+money;Money;1000;0;;; $;;
+moral;Moral;10;0;100;;;;
+day;Jour;1;1;31;;;;
+time;Heure;24;6;24;;:00;-1;30

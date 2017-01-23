@@ -30,17 +30,17 @@ class Characteristic
     /**
      * @ORM\Column(type="integer", nullable=false, name="cha_initial", options={"default":0})
      */
-    private $initial;
+    private $initial = 0;
 
     /**
      * @ORM\Column(type="integer", nullable=true, name="cha_minimum", options={"default":0})
      */
-    private $minimum;
+    private $minimum = 0;
 
     /**
      * @ORM\Column(type="integer", nullable=true, name="cha_maximum", options={"default":100})
      */
-    private $maximum;
+    private $maximum = 100;
 
     /**
      * @ORM\Column(type="integer", nullable=true, name="cha_sort")
@@ -60,12 +60,12 @@ class Characteristic
     /**
      * @ORM\Column(type="integer", nullable=false, name="cha_multiply", options={"default":1})
      */
-    private $multiply;
+    private $multiply = 1;
 
     /**
      * @ORM\Column(type="integer", nullable=false, name="cha_add", options={"default":0})
      */
-    private $add;
+    private $add = 0;
 
     /**
      * Get id
