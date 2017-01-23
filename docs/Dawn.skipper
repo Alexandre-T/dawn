@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <skipper version="3.2.8.1347" mvc="Symfony3" orm="Doctrine2" name="Dawn" uuid="93c5287a-4172-4ac2-a91a-42e2a231362f">
-  <module name="\AppBundle" local-name="AppBundle" namespace="\AppBundle" local-namespace="AppBundle" description="" uuid="80337ae5-8e09-48af-999a-3d1793828413">
+  <module name="\AppBundle" local-name="AppBundle" namespace="\AppBundle" local-namespace="AppBundle" export-format="Doctrine2Php" export-path="../src/AppBundle/Entity" uuid="80337ae5-8e09-48af-999a-3d1793828413">
     <entity name="\AppBundle\Entity\Game" local-name="Game" namespace="\AppBundle\Entity" local-namespace="Entity" description="Game saved" uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b">
       <field name="id" description="Guid de la game" type="guid" size="32" required="true" unique="true" primary="true" auto-increment="true" uuid="5b665655-3c9d-445e-afe2-6e7d3bc49d55">
         <orm-attributes>
@@ -115,6 +115,9 @@
         <attribute name="side-owning">
           <attribute name="fetch">EAGER</attribute>
         </attribute>
+        <attribute name="side-inverse">
+          <attribute name="fetch">EAGER</attribute>
+        </attribute>
       </orm-attributes>
     </association>
     <entity name="\AppBundle\Entity\Scene" local-name="Scene" namespace="\AppBundle\Entity" local-namespace="Entity" description="Sc&#xE8;ne de jeu" uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17">
@@ -167,20 +170,30 @@
     <entity name="\AppBundle\Entity\Influence" local-name="Influence" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="53d3d638-9799-401b-8a4f-8435db80f28a">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="291561c8-16b5-4e31-98d9-50c17d521f2a"/>
       <field name="bonus" description="Bonus sur la caract&#xE9;ristique" type="integer" default="0" required="true" uuid="45562625-54bc-4d5c-b939-eee4df7a4ca3"/>
-      <field name="answer_id" type="integer" required="true" uuid="8ee121e0-c963-4dd6-9aa5-cf7db585a4d0"/>
+      <field name="answer_id" type="integer" uuid="8ee121e0-c963-4dd6-9aa5-cf7db585a4d0"/>
       <field name="characteristic_id" type="integer" unsigned="true" uuid="0c89c181-a29e-4291-af32-f8bf2d0ce21e"/>
     </entity>
-    <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Answer" caption="Answer Influence" owner-alias="influence" many-owner="true" many-inverse="false" parent-required="true" uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f">
+    <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Answer" caption="Answer Influence" owner-alias="influence" inverse-alias="answer" many-owner="true" many-inverse="false" uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f">
       <association-field from="answer_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-inverse">
+          <attribute name="fetch">EAGER</attribute>
+        </attribute>
+      </orm-attributes>
     </association>
     <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Characteristic" caption="Characteristic Influence" inverse-alias="characteristic" many-owner="true" many-inverse="false" uuid="4f76eeb5-a3b6-4a98-b766-c2a5e8945d60">
       <association-field from="characteristic_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-inverse">
+          <attribute name="fetch">EAGER</attribute>
+        </attribute>
+      </orm-attributes>
     </association>
     <entity name="\AppBundle\Entity\Achievement" local-name="Achievement" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="5e7440b9-a1d8-437a-b83d-5d3e0c405bc2">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="bfbc0e30-0116-4311-80b9-6813e22bec3d"/>
-      <field name="title" description="Title" type="string" size="32" uuid="8cc5dd2b-1a44-4fd3-a9d3-8330f68fe0a1"/>
-      <field name="image" description="Image src" type="string" size="16" uuid="b322735a-58ed-4f75-81a8-ecfe4fa87920"/>
-      <field name="alternat" description="Alternat" type="string" size="128" uuid="b0c04782-06e5-44c9-a0a5-e4c4fb8a96dc"/>
+      <field name="title" description="Title" type="string" size="32" required="true" uuid="8cc5dd2b-1a44-4fd3-a9d3-8330f68fe0a1"/>
+      <field name="image" description="Image src" type="string" size="16" required="true" uuid="b322735a-58ed-4f75-81a8-ecfe4fa87920"/>
+      <field name="alternat" description="Alternat" type="string" size="128" required="true" uuid="b0c04782-06e5-44c9-a0a5-e4c4fb8a96dc"/>
     </entity>
     <entity name="\AppBundle\Entity\Achievements" local-name="Achievements" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="97419482-848e-405f-882c-62a102f89636">
       <field name="achievement_id" type="integer" required="true" primary="true" uuid="fbf03552-55ac-4359-b0d1-b003d61a3391"/>
@@ -196,7 +209,7 @@
     </many-to-many>
     <orm-attributes>
       <attribute name="file-suffix">without-suffix</attribute>
-      <attribute name="filename-format">with-namespace</attribute>
+      <attribute name="filename-format">entity-name-only</attribute>
     </orm-attributes>
   </module>
   <visual-data>
