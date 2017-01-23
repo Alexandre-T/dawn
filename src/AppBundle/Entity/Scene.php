@@ -38,7 +38,7 @@ class Scene
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Answer")
      * @ORM\JoinTable(
-     *     name="Answers",
+     *     name="tj_answers",
      *     joinColumns={@ORM\JoinColumn(name="scene_id", referencedColumnName="id", nullable=false)},
      *     inverseJoinColumns={@ORM\JoinColumn(name="answer_id", referencedColumnName="id", nullable=false)}
      * )

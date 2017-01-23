@@ -43,7 +43,7 @@ class Game
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Achievement")
      * @ORM\JoinTable(
-     *     name="Achievements",
+     *     name="tj_achievements",
      *     joinColumns={@ORM\JoinColumn(name="game_id", referencedColumnName="gam_uid", nullable=false)},
      *     inverseJoinColumns={@ORM\JoinColumn(name="achievement_id", referencedColumnName="id", nullable=false)}
      * )
