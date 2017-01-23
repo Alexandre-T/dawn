@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<skipper version="3.2.8.1347" mvc="Symfony3" orm="Doctrine2" name="Dawn" uuid="93c5287a-4172-4ac2-a91a-42e2a231362f">
+  <module name="\AppBundle" local-name="AppBundle" namespace="\AppBundle" local-namespace="AppBundle" description="" uuid="80337ae5-8e09-48af-999a-3d1793828413">
+    <entity name="\AppBundle\Entity\Game" local-name="Game" namespace="\AppBundle\Entity" local-namespace="Entity" description="Game saved" uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b">
+      <field name="id" description="Guid de la game" type="guid" size="32" required="true" unique="true" primary="true" auto-increment="true" uuid="5b665655-3c9d-445e-afe2-6e7d3bc49d55">
+        <orm-attributes>
+          <attribute name="column">gam_uid</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">UUID</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="version" description="Version de la game" type="string" size="8" uuid="c565618c-ffb1-4b10-a974-82da3ce3c216">
+        <orm-attributes>
+          <attribute name="column">gam_ver</attribute>
+        </orm-attributes>
+      </field>
+      <field name="debug" description="Mode debuggage" type="boolean" default="false" required="true" unsigned="true" uuid="f496ab70-153a-47f0-9495-401781c18bd6">
+        <orm-attributes>
+          <attribute name="column">loc_id</attribute>
+        </orm-attributes>
+      </field>
+      <field name="scene_id" type="integer" required="true" uuid="71f4f9af-1fe7-47f3-8d29-4626edb06b30"/>
+      <orm-attributes>
+        <attribute name="table">te_game</attribute>
+        <attribute name="repository-class">AppBundle\Entity\Repository\GameRepository</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\AppBundle\Entity\Game" to="\AppBundle\Entity\Scene" caption="Scene Game" inverse-alias="currentScene" many-owner="true" many-inverse="false" parent-required="true" uuid="a9a14e7a-85d5-4c2d-a63d-c0730f9c5d85">
+      <association-field from="scene_id" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">RESTRICT</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="\AppBundle\Entity\Characteristic" local-name="Characteristic" namespace="\AppBundle\Entity" local-namespace="Entity" description="Characteristics of Character" uuid="c3aee586-3577-4e34-bb4e-dc8a5426dbfb">
+      <field name="id" description="identifiant" type="integer" required="true" unique="true" primary="true" unsigned="true" auto-increment="true" uuid="fc5a59ed-9ac5-4c94-9d8f-3a036c839c37">
+        <orm-attributes>
+          <attribute name="column">cha_id</attribute>
+        </orm-attributes>
+      </field>
+      <field name="code" description="Code" type="string" size="16" required="true" uuid="e313ea47-2f8f-4cbe-9269-a0f630c93f02">
+        <orm-attributes>
+          <attribute name="column">cha_code</attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" description="Name" type="string" size="16" required="true" uuid="df7cfe46-2dba-4af7-aea4-01afd7248058">
+        <orm-attributes>
+          <attribute name="column">cha_name</attribute>
+        </orm-attributes>
+      </field>
+      <field name="initial" description="initial value" type="integer" default="0" required="true" uuid="229b9249-da66-4a5f-ba80-34d3ac103598">
+        <orm-attributes>
+          <attribute name="column">cha_initial</attribute>
+        </orm-attributes>
+      </field>
+      <field name="minimum" description="minimal value" type="integer" default="0" uuid="d333a095-060b-4c7d-b7e8-60cbe943447c">
+        <orm-attributes>
+          <attribute name="column">cha_minimum</attribute>
+        </orm-attributes>
+      </field>
+      <field name="maximum" description="maximal value" type="integer" default="100" uuid="99c73d4e-7748-4764-ad72-656c2b3939ae">
+        <orm-attributes>
+          <attribute name="column">cha_maximum</attribute>
+        </orm-attributes>
+      </field>
+      <field name="sort" description="sort for display" type="integer" uuid="b54ef8e5-6166-4dc7-a8b4-584168c4a282">
+        <orm-attributes>
+          <attribute name="column">cha_sort</attribute>
+        </orm-attributes>
+      </field>
+      <field name="prefix" description="prefix before rendering" type="string" size="8" required="true" uuid="87bcf64b-a587-433d-814c-63b45212eeca">
+        <orm-attributes>
+          <attribute name="column">cha_prefix</attribute>
+        </orm-attributes>
+      </field>
+      <field name="suffix" description="sufix before rendering" type="string" required="true" uuid="800e8c6e-6c94-45ea-8ca1-bf3b88995050">
+        <orm-attributes>
+          <attribute name="column">cha_suffix</attribute>
+        </orm-attributes>
+      </field>
+      <field name="multiply" description="multiplicator to result before rendering" type="integer" default="1" required="true" uuid="042bbc3e-d36f-4088-8c47-d4699e620a14">
+        <orm-attributes>
+          <attribute name="column">cha_multiply</attribute>
+        </orm-attributes>
+      </field>
+      <field name="add" description="to add to result before rendering" type="integer" default="0" required="true" uuid="9248be4b-2a30-42c0-8245-adfcd52631e9">
+        <orm-attributes>
+          <attribute name="column">cha_add</attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">te_characteristics_cha</attribute>
+        <attribute name="repository-class">AppBundle\Entity\Repository\CharacteristicRepository</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\AppBundle\Entity\Score" local-name="Score" namespace="\AppBundle\Entity" local-namespace="Entity" description="Score for a characteristic and a game" uuid="1b886237-9feb-4cd2-81fd-d439ac64cc80">
+      <field name="game_id" description="Game" type="guid" size="32" required="true" primary="true" uuid="7f5da9e5-0bb7-4d15-88c9-f428983ca4f6"/>
+      <field name="characteristic_id" description="Characteristic" type="integer" required="true" primary="true" unsigned="true" uuid="fff908dc-5720-4262-9e45-153caa83b38b"/>
+      <field name="value" description="Score" type="integer" required="true" uuid="8ddd8bd1-10b7-4e68-8a88-62b9d29aca4d">
+        <orm-attributes>
+          <attribute name="column">sco_value</attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="repository-class">AppBundle\Entity\Repository\ScoreRepository</attribute>
+        <attribute name="table">tj_score_sco</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\AppBundle\Entity\Score" to="\AppBundle\Entity\Game" caption="Game Score" owner-alias="scores" inverse-alias="game" many-owner="true" many-inverse="false" parent-required="true" uuid="65da9ad6-68d1-42c0-bfbb-788400f42d17">
+      <association-field from="game_id" to="id"/>
+    </association>
+    <association from="\AppBundle\Entity\Score" to="\AppBundle\Entity\Characteristic" caption="Characteristic Score" inverse-alias="characteristic" many-owner="true" many-inverse="false" parent-required="true" uuid="c8bdb3f9-e46b-4634-b92d-9a1d7ac79eb6">
+      <association-field from="characteristic_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning">
+          <attribute name="fetch">EAGER</attribute>
+        </attribute>
+      </orm-attributes>
+    </association>
+    <entity name="\AppBundle\Entity\Scene" local-name="Scene" namespace="\AppBundle\Entity" local-namespace="Entity" description="Sc&#xE8;ne de jeu" uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17">
+      <field name="id" description="Identifiant de la sc&#xE8;ne" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="dd61781a-ee0f-429a-abae-a2e29baa7e74"/>
+      <field name="dialogue" description="Texte de la sc&#xE8;ne" type="text" uuid="72fb0636-4eda-4c6d-a7b4-a1fc5fe0bd47"/>
+      <field name="image" description="Image de la sc&#xE8;ne" type="string" size="16" required="true" uuid="371211c4-5a75-4788-aba8-18cad359f748"/>
+      <field name="achievement_id" type="integer" uuid="db261b23-7f92-4e11-9109-ec9b72d0738e"/>
+      <orm-attributes>
+        <attribute name="table">te_scene</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\AppBundle\Entity\Scene" to="\AppBundle\Entity\Achievement" caption="Achievement Scene" inverse-alias="achievement" many-owner="true" many-inverse="false" uuid="fca54e58-654c-4e7e-ae9f-ceae80c9d012">
+      <association-field from="achievement_id" to="id"/>
+    </association>
+    <entity name="\AppBundle\Entity\Answer" local-name="Answer" namespace="\AppBundle\Entity" local-namespace="Entity" description="Answer to the scene" uuid="b1dd16c3-168f-4f5a-8d91-11500972e232">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="b4f7f4e6-4636-4b38-bbed-325458623d4a"/>
+      <field name="scene_id" type="integer" required="true" uuid="34f5894f-e20e-48b1-862c-8b963522c6bb"/>
+      <inheritance-parent type="SINGLE_TABLE" uuid="dd17b65e-5f9f-4d4d-9af0-f8bb14148a33"/>
+    </entity>
+    <association from="\AppBundle\Entity\Answer" to="\AppBundle\Entity\Scene" caption="Destination" inverse-alias="destination" many-owner="true" many-inverse="false" parent-required="true" uuid="5e3e44ce-2ebd-433e-85ee-d84a28bb740f">
+      <association-field from="scene_id" to="id"/>
+    </association>
+    <entity name="\AppBundle\Entity\Sentence" local-name="Sentence" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="ce2041ac-5b5b-4f39-81c6-7ee7a47b1e1d">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="3354e214-2162-4222-ae50-13cbe21c9a67"/>
+      <field name="sentence" description="Phrase de la r&#xE9;ponse" type="text" required="true" uuid="60fe10cb-37e0-471e-a156-5a3bd0622ca3"/>
+      <inheritance-child derived-from="\AppBundle\Entity\Answer" caption="New inheritance" uuid="f916d2bd-4c14-4f94-accb-fad7c6050ace"/>
+    </entity>
+    <entity name="\AppBundle\Entity\Action" local-name="Action" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="ca3be5e6-12a6-4400-9ff0-ae32efafbd1b">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="7e64bf39-5d1d-4d29-861f-98fdc197640c"/>
+      <field name="tooltip" description="Texte de l'alternat de l'image ou du lien" type="text" uuid="12a8d35b-a067-4950-89d6-f19b39d66fb3"/>
+      <field name="shape" description="Shape of the map (rect or circle)" type="string" enum-values="rect,circle" required="true" uuid="eaaefa6c-6167-421d-9c22-f67abc9f0dfb"/>
+      <field name="coords" description="Coords of the map" type="string" required="true" uuid="d8bbbbea-f376-4586-9c60-38b697e8fa51"/>
+      <inheritance-child derived-from="\AppBundle\Entity\Answer" caption="New inheritance" uuid="2141b289-0531-42b8-989e-2ed9b6ac99d0"/>
+    </entity>
+    <entity name="\AppBundle\Entity\Answers" local-name="Answers" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="a0f5ea29-566d-4fc5-9660-e981f4defc93">
+      <field name="answer_id" type="integer" required="true" primary="true" uuid="e98a452c-39c5-4240-8d65-cf6102b3caae"/>
+      <field name="scene_id" type="integer" required="true" primary="true" uuid="7b74b83b-d5f9-47e0-b0f4-275d9818278a"/>
+    </entity>
+    <many-to-many mn-entity="\AppBundle\Entity\Answers" caption="Answer to Scene" uuid="d0dfcd9d-cfc1-48f8-954b-6da92b9b3873">
+      <many-to-many-entity name="\AppBundle\Entity\Scene" owning-side="true" uuid="350359c5-ddd6-44a0-aa3e-b63136f31b44">
+        <many-to-many-field from="scene_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="\AppBundle\Entity\Answer" owning-side="false" alias="answers" uuid="02ce15bf-dc5c-41d9-963f-3b0a88d22569">
+        <many-to-many-field from="answer_id" to="id"/>
+      </many-to-many-entity>
+      <orm-attributes>
+        <attribute name="join-table-schema">tj_answers</attribute>
+      </orm-attributes>
+    </many-to-many>
+    <entity name="\AppBundle\Entity\Influence" local-name="Influence" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="53d3d638-9799-401b-8a4f-8435db80f28a">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="291561c8-16b5-4e31-98d9-50c17d521f2a"/>
+      <field name="bonus" description="Bonus sur la caract&#xE9;ristique" type="integer" default="0" required="true" uuid="45562625-54bc-4d5c-b939-eee4df7a4ca3"/>
+      <field name="answer_id" type="integer" required="true" uuid="8ee121e0-c963-4dd6-9aa5-cf7db585a4d0"/>
+      <field name="characteristic_id" type="integer" unsigned="true" uuid="0c89c181-a29e-4291-af32-f8bf2d0ce21e"/>
+    </entity>
+    <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Answer" caption="Answer Influence" owner-alias="influence" many-owner="true" many-inverse="false" parent-required="true" uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f">
+      <association-field from="answer_id" to="id"/>
+    </association>
+    <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Characteristic" caption="Characteristic Influence" inverse-alias="characteristic" many-owner="true" many-inverse="false" uuid="4f76eeb5-a3b6-4a98-b766-c2a5e8945d60">
+      <association-field from="characteristic_id" to="id"/>
+    </association>
+    <entity name="\AppBundle\Entity\Achievement" local-name="Achievement" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="5e7440b9-a1d8-437a-b83d-5d3e0c405bc2">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="bfbc0e30-0116-4311-80b9-6813e22bec3d"/>
+      <field name="title" description="Title" type="string" size="32" uuid="8cc5dd2b-1a44-4fd3-a9d3-8330f68fe0a1"/>
+      <field name="image" description="Image src" type="string" size="16" uuid="b322735a-58ed-4f75-81a8-ecfe4fa87920"/>
+      <field name="alternat" description="Alternat" type="string" size="128" uuid="b0c04782-06e5-44c9-a0a5-e4c4fb8a96dc"/>
+    </entity>
+    <entity name="\AppBundle\Entity\Achievements" local-name="Achievements" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="97419482-848e-405f-882c-62a102f89636">
+      <field name="achievement_id" type="integer" required="true" primary="true" uuid="fbf03552-55ac-4359-b0d1-b003d61a3391"/>
+      <field name="game_id" type="guid" size="32" required="true" primary="true" uuid="fdef5bbd-9c25-43df-bcbb-1c2df6ff9f49"/>
+    </entity>
+    <many-to-many mn-entity="\AppBundle\Entity\Achievements" caption="Achievement to Game" uuid="40ffe283-683c-463e-8589-6f72e3df6f15">
+      <many-to-many-entity name="\AppBundle\Entity\Game" owning-side="true" uuid="538a5a94-f183-4652-9ede-2c66c3bb1921">
+        <many-to-many-field from="game_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="\AppBundle\Entity\Achievement" owning-side="false" alias="achievement" uuid="e7fb562d-ab9a-45a6-bfb8-ecf01194212b">
+        <many-to-many-field from="achievement_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <orm-attributes>
+      <attribute name="file-suffix">without-suffix</attribute>
+      <attribute name="filename-format">with-namespace</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <association uuid="4f76eeb5-a3b6-4a98-b766-c2a5e8945d60" color="#969696"/>
+    <association uuid="5e3e44ce-2ebd-433e-85ee-d84a28bb740f" caption1-position-x="-20" caption1-position-y="17" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="65da9ad6-68d1-42c0-bfbb-788400f42d17" color="#969696"/>
+    <association uuid="a9a14e7a-85d5-4c2d-a63d-c0730f9c5d85" color="#969696"/>
+    <association uuid="c8bdb3f9-e46b-4634-b92d-9a1d7ac79eb6" color="#969696"/>
+    <association uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f" caption1-position-x="1" caption1-position-y="23" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="fca54e58-654c-4e7e-ae9f-ceae80c9d012" color="#969696"/>
+    <entity uuid="1b886237-9feb-4cd2-81fd-d439ac64cc80" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="268" position-y="23" size-x="0" size-x2="130" size-y="0" size-y2="59"/>
+    <entity uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b" bg-color="#FFFFFF" hdr-color="#8787FF" position-x="23" position-y="21" size-x="0" size-x2="99" size-y="0" size-y2="59"/>
+    <entity uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="95" position-y="207" size-x="0" size-x2="98" size-y="0" size-y2="59"/>
+    <entity uuid="53d3d638-9799-401b-8a4f-8435db80f28a" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="388" position-y="123" size-x="0" size-x2="130" size-y="0" size-y2="73"/>
+    <entity uuid="5e7440b9-a1d8-437a-b83d-5d3e0c405bc2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-176" position-y="204" size-x="0" size-x2="109" size-y="0" size-y2="73"/>
+    <entity uuid="97419482-848e-405f-882c-62a102f89636" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-188" position-y="28" size-x="0" size-x2="128" size-y="0" size-y2="60"/>
+    <entity uuid="a0f5ea29-566d-4fc5-9660-e981f4defc93" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="173" position-y="373" size-x="0" size-x2="103" size-y="0" size-y2="60"/>
+    <entity uuid="b1dd16c3-168f-4f5a-8d91-11500972e232" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="325" position-y="301" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
+    <entity uuid="c3aee586-3577-4e34-bb4e-dc8a5426dbfb" bg-color="#FFFFFF" hdr-color="#8FC7F1" position-x="680" position-y="18" size-x="0" size-x2="103" size-y="0" size-y2="171"/>
+    <entity uuid="ca3be5e6-12a6-4400-9ff0-ae32efafbd1b" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="590" position-y="230" size-x="0" size-x2="85" size-y="0" size-y2="73"/>
+    <entity uuid="ce2041ac-5b5b-4f39-81c6-7ee7a47b1e1d" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="590" position-y="381" size-x="0" size-x2="88" size-y="0" size-y2="45"/>
+    <inheritance-child uuid="2141b289-0531-42b8-989e-2ed9b6ac99d0" color="#969696"/>
+    <inheritance-child uuid="f916d2bd-4c14-4f94-accb-fad7c6050ace" caption1-position-x="0" caption1-position-y="27" center-position-x="0" center-position-y="0" color="#969696"/>
+    <many-to-many-association uuid="40ffe283-683c-463e-8589-6f72e3df6f15" color="#969696"/>
+    <many-to-many-association uuid="d0dfcd9d-cfc1-48f8-954b-6da92b9b3873" color="#969696"/>
+    <many-to-many-association-entity uuid="02ce15bf-dc5c-41d9-963f-3b0a88d22569" caption1-position-x="31" caption1-position-y="27" center-position-x="0" center-position-y="0"/>
+    <many-to-many-association-entity uuid="350359c5-ddd6-44a0-aa3e-b63136f31b44" caption1-position-x="-19" caption1-position-y="14" center-position-x="0" center-position-y="0"/>
+    <module uuid="80337ae5-8e09-48af-999a-3d1793828413" bg-color="#E7F5FD" position-x="61" position-y="72" size-x="208" size-x2="971" size-y="22" size-y2="450"/>
+    <project uuid="93c5287a-4172-4ac2-a91a-42e2a231362f" size-x="197" size-x2="1082" size-y="0" size-y2="572"/>
+  </visual-data>
+</skipper>
