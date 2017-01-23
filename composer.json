@@ -3,6 +3,19 @@
     "description": "Dawn project",
     "license": "GPL-3.0+",
     "type": "project",
+    "authors": [
+        {
+            "name": "Alexandre Tranchant",
+            "email": "Alexandre.Tranchant@gmail.com",
+            "homepage": "https://github.com/Alexandre-T",
+            "role": "Full-Stack Developer"
+        }
+    ],
+    "support": {
+        "email": "Alexandre.Tranchant@gmail.com",
+        "issues": "https://github.com/Alexandre-T/simdate/issues",
+        "source": "https://github.com/Alexandre-T/simdate"
+    },
     "autoload": {
         "psr-4": { "": "src/" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
@@ -16,8 +29,8 @@
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
-        "symfony/swiftmailer-bundle": "^2.3.10",
-        "symfony/monolog-bundle": "^3.0.2",
+        "symfony/swiftmailer-bundle": "^2.3",
+        "symfony/monolog-bundle": "^3.0",
         "symfony/polyfill-apcu": "^1.0",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
@@ -46,11 +59,6 @@
             "@symfony-scripts"
         ]
     },
-    "config": {
-        "platform": {
-            "php": "5.5.9"
-        }
-    },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
@@ -61,8 +69,6 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
-        "branch-alias": {
-            "dev-master": "3.2-dev"
-        }
+        "branch-alias": null
     }
 }
