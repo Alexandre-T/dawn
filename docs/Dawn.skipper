@@ -182,7 +182,7 @@
         <attribute name="table">te_influence</attribute>
       </orm-attributes>
     </entity>
-    <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Answer" caption="Answer Influence" owner-alias="influence" inverse-alias="answer" many-owner="true" many-inverse="false" uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f">
+    <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Answer" caption="Answer Influence" owner-alias="influences" inverse-alias="answer" many-owner="true" many-inverse="false" uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f">
       <association-field from="answer_id" to="id"/>
       <orm-attributes>
         <attribute name="side-inverse">
@@ -236,7 +236,7 @@
     <association uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f" caption1-position-x="1" caption1-position-y="23" center-position-x="0" center-position-y="0" color="#969696"/>
     <association uuid="fca54e58-654c-4e7e-ae9f-ceae80c9d012" color="#969696"/>
     <entity uuid="1b886237-9feb-4cd2-81fd-d439ac64cc80" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="268" position-y="23" size-x="0" size-x2="130" size-y="0" size-y2="59"/>
-    <entity uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b" bg-color="#FFFFFF" hdr-color="#8787FF" position-x="23" position-y="21" size-x="0" size-x2="99" size-y="0" size-y2="59"/>
+    <entity uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b" bg-color="#FFFFFF" hdr-color="#8787FF" position-x="23" position-y="20" size-x="0" size-x2="99" size-y="0" size-y2="73"/>
     <entity uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="95" position-y="207" size-x="0" size-x2="98" size-y="0" size-y2="59"/>
     <entity uuid="53d3d638-9799-401b-8a4f-8435db80f28a" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="388" position-y="123" size-x="0" size-x2="130" size-y="0" size-y2="73"/>
     <entity uuid="5e7440b9-a1d8-437a-b83d-5d3e0c405bc2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-176" position-y="204" size-x="0" size-x2="109" size-y="0" size-y2="73"/>

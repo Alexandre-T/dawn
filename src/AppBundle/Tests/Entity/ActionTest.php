@@ -17,10 +17,12 @@
 
 namespace AppBundle\Tests\Entity;
 
-use AppBundle\Entity\Action;
+use AppBundle\Entity\Answer;
+use AppBundle\Entity\Influence;
+use AppBundle\Entity\Scene;
 
 /**
- * Action Entity test case.
+ * Answer Entity test case.
  *
  * @category Testing
  *
@@ -29,12 +31,12 @@ use AppBundle\Entity\Action;
  *
  * @link     http://opensource.org/licenses/GPL-3.0
  */
-class ActionTest extends \PHPUnit_Framework_TestCase
+class AnswerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var Action
+     * @var Answer
      */
-    private $action;
+    private $answer;
 
     /**
      * Prepares the environment before running a test.
@@ -42,7 +44,7 @@ class ActionTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->action = new Action();
+        $this->answer = new Answer();
     }
 
     /**
@@ -50,51 +52,52 @@ class ActionTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-        $this->action = null;
+        $this->answer = null;
         parent::tearDown();
     }
 
     /**
-     * Tests Action->__construct().
+     * Tests Answer->__construct().
      */
     public function testConstruct()
     {
-        self::assertNull($this->action->getId());
-        self::assertNull($this->action->getCoords());
-        self::assertNull($this->action->getShape());
-        self::assertNull($this->action->getTooltip());
+        self::assertNull($this->answer->getId());
+        self::assertNull($this->answer->getDestination());
     }
 
     /**
-     * Tests Action->setCoords() Action->getCoords().
+     * Tests Answer->setDestination() Answer->getDestination().
      */
-    public function testSetCoords()
+    public function testSetDestination()
     {
-        $coords = 'foo';
-        $result = $this->action->setCoords($coords);
-        self::assertEquals($result, $this->action);
-        self::assertEquals($coords, $this->action->getCoords());
+        $destination = new Scene();
+        $result = $this->answer->setDestination($destination);
+        self::assertEquals($result, $this->answer);
+        self::assertEquals($destination, $this->answer->getDestination());
     }
-    
+
     /**
-     * Tests Action->setShape() Action->getShape().
+     * Tests Answer get add removeInfluence ().
      */
-    public function testSetShape()
+    public function testInfluences()
     {
-        $shape = 'foo';
-        $result = $this->action->setShape($shape);
-        self::assertEquals($result, $this->action);
-        self::assertEquals($shape, $this->action->getShape());
-    }
-    
-    /**
-     * Tests Action->setTooltip() Action->getTooltip().
-     */
-    public function testSetTooltip()
-    {
-        $tooltip = 'foo';
-        $result = $this->action->setTooltip($tooltip);
-        self::assertEquals($result, $this->action);
-        self::assertEquals($tooltip, $this->action->getTooltip());
+        $influence1 = new Influence();
+        $influence2 = new Influence();
+        $this->answer->addInfluence($influence1);
+        self::assertCount(1, $this->answer->getInfluences());
+        self::assertTrue($this->answer->getInfluences()->contains($influence1));
+        self::assertFalse($this->answer->getInfluences()->contains($influence2));
+        $this->answer->addInfluence($influence2);
+        self::assertCount(2, $this->answer->getInfluences());
+        self::assertTrue($this->answer->getInfluences()->contains($influence1));
+        self::assertTrue($this->answer->getInfluences()->contains($influence2));
+        $this->answer->removeInfluence($influence1);
+        self::assertCount(1, $this->answer->getInfluences());
+        self::assertFalse($this->answer->getInfluences()->contains($influence1));
+        self::assertTrue($this->answer->getInfluences()->contains($influence2));
+        $this->answer->removeInfluence($influence2);
+        self::assertCount(0, $this->answer->getInfluences());
+        self::assertFalse($this->answer->getInfluences()->contains($influence1));
+        self::assertFalse($this->answer->getInfluences()->contains($influence2));
     }
 }

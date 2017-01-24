@@ -23,7 +23,7 @@ class Answer
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Influence", mappedBy="answer", fetch="EAGER")
      */
-    private $influence;
+    private $influences;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Scene")
@@ -36,7 +36,7 @@ class Answer
      */
     public function __construct()
     {
-        $this->influence = new ArrayCollection();
+        $this->influences = new ArrayCollection();
     }
 
     /**
@@ -58,7 +58,7 @@ class Answer
      */
     public function addInfluence(Influence $influence)
     {
-        $this->influence[] = $influence;
+        $this->influences[] = $influence;
 
         return $this;
     }
@@ -70,7 +70,7 @@ class Answer
      */
     public function removeInfluence(Influence $influence)
     {
-        $this->influence->removeElement($influence);
+        $this->influences->removeElement($influence);
     }
 
     /**
@@ -78,9 +78,9 @@ class Answer
      *
      * @return Collection
      */
-    public function getInfluence()
+    public function getInfluences()
     {
-        return $this->influence;
+        return $this->influences;
     }
 
     /**

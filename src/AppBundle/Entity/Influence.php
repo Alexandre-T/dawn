@@ -23,7 +23,7 @@ class Influence
     private $bonus;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="influence")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="influences")
      * @ORM\JoinColumn(name="answer_id", referencedColumnName="id")
      */
     private $answer;
