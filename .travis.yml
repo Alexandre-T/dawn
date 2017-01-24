@@ -51,7 +51,6 @@ script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then php vendor/phpunit/phpunit/phpunit ; fi
 
 after_success:
-  - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then composer require satooshi/php-coveralls --no-interaction --prefer-source; fi
   - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then php vendor/bin/coveralls -v; fi
 
 notifications:
