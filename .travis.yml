@@ -14,8 +14,6 @@ cache:
     - $HOME/.composer/cache/files
 
 php:
-  # aliased to a recent 5.6.x version
-  - '5.6'
   # aliased to a recent 7.x version
   - '7.0'
   # aliased to a recent 7.x version
@@ -28,7 +26,6 @@ matrix:
   # Fast finish allows to set the build as "finished" even if the "allow_failures" matrix elements are not finished yet.
   fast_finish: true
   allow_failures:
-    - php: 5.6
     - php: hhvm
 
 # Define an environment variable
@@ -48,8 +45,6 @@ before_script:
   - php bin/console doctrine:fixtures:load -n --env=test
   - mkdir -p build/logs
 #  - chmod -R 0777 web/uploads
-  - ls -lisah vendor/phpunit/phpunit/phpunit
-  - chmod -R a+rw vendor
 
 script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then php vendor/phpunit/phpunit/phpunit ; fi
