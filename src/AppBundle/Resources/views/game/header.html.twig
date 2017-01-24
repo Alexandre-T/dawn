@@ -1,0 +1,31 @@
+{% block header %}
+    <div class="navbar navbar-toggleable-sm navbar-light bg-faded fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarScoreContent" aria-controls="navbarScoreContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('homepage') }}">
+            <img src="{{ asset('favicon-32x32.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+            {{ 'app.title' | trans }}
+        </a>
+        <div class="collapse navbar-collapse" id="navbarScoreContent">
+            <ul class="navbar-nav mx-auto">
+                {% for score in game.scores %}
+                <li class="nav-item">
+                    <span class="navbar-text">
+                        {{ score.characteristic.name }}
+                        <span id="{{ score.characteristic.code }}" class="badge badge-pill badge-default score">{{ score.score }}</span>
+                    </span>&nbsp;&nbsp;
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="btn-group mr-0" role="group" aria-label="Toolbar with button groups">
+                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target=".bs-save-modal-lg">
+                    <i class="fa fa-save"></i><span class="sr-only">{{ 'sr.save' | trans }}</span>
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target=".bs-introduction-modal-lg">
+                    <i class="fa fa-question-circle"></i><span class="sr-only">{{ 'sr.help' | trans }} </span>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -10,16 +10,8 @@
           </attribute>
         </orm-attributes>
       </field>
-      <field name="version" description="Version de la game" type="string" size="8" uuid="c565618c-ffb1-4b10-a974-82da3ce3c216">
-        <orm-attributes>
-          <attribute name="column">gam_ver</attribute>
-        </orm-attributes>
-      </field>
-      <field name="debug" description="Mode debuggage" type="boolean" default="false" required="true" unsigned="true" uuid="f496ab70-153a-47f0-9495-401781c18bd6">
-        <orm-attributes>
-          <attribute name="column">loc_id</attribute>
-        </orm-attributes>
-      </field>
+      <field name="version" description="Version de la game" type="string" size="8" uuid="c565618c-ffb1-4b10-a974-82da3ce3c216"/>
+      <field name="debug" description="Mode debuggage" type="boolean" default="false" required="true" unsigned="true" uuid="f496ab70-153a-47f0-9495-401781c18bd6"/>
       <field name="scene_id" type="integer" required="true" uuid="71f4f9af-1fe7-47f3-8d29-4626edb06b30"/>
       <orm-attributes>
         <attribute name="table">te_game</attribute>
@@ -122,11 +114,13 @@
     </association>
     <entity name="\AppBundle\Entity\Scene" local-name="Scene" namespace="\AppBundle\Entity" local-namespace="Entity" description="Sc&#xE8;ne de jeu" uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17">
       <field name="id" description="Identifiant de la sc&#xE8;ne" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="dd61781a-ee0f-429a-abae-a2e29baa7e74"/>
+      <field name="achievement_id" type="integer" uuid="db261b23-7f92-4e11-9109-ec9b72d0738e"/>
       <field name="dialogue" description="Texte de la sc&#xE8;ne" type="text" uuid="72fb0636-4eda-4c6d-a7b4-a1fc5fe0bd47"/>
       <field name="image" description="Image de la sc&#xE8;ne" type="string" size="16" required="true" uuid="371211c4-5a75-4788-aba8-18cad359f748"/>
-      <field name="achievement_id" type="integer" uuid="db261b23-7f92-4e11-9109-ec9b72d0738e"/>
+      <field name="initial" description="Sc&#xE8;ne initial du jeu" type="boolean" unsigned="true" uuid="b3441b44-3869-495e-b9c5-7b9d41c8425e"/>
       <orm-attributes>
         <attribute name="table">te_scene</attribute>
+        <attribute name="repository-class">AppBundle\Entity\Repository\SceneRepository</attribute>
       </orm-attributes>
     </entity>
     <association from="\AppBundle\Entity\Scene" to="\AppBundle\Entity\Achievement" caption="Achievement Scene" inverse-alias="achievement" many-owner="true" many-inverse="false" uuid="fca54e58-654c-4e7e-ae9f-ceae80c9d012">
@@ -224,7 +218,7 @@
       <many-to-many-entity name="\AppBundle\Entity\Game" owning-side="true" uuid="538a5a94-f183-4652-9ede-2c66c3bb1921">
         <many-to-many-field from="game_id" to="id"/>
       </many-to-many-entity>
-      <many-to-many-entity name="\AppBundle\Entity\Achievement" owning-side="false" alias="achievement" uuid="e7fb562d-ab9a-45a6-bfb8-ecf01194212b">
+      <many-to-many-entity name="\AppBundle\Entity\Achievement" owning-side="false" alias="achievements" uuid="e7fb562d-ab9a-45a6-bfb8-ecf01194212b">
         <many-to-many-field from="achievement_id" to="id"/>
       </many-to-many-entity>
     </many-to-many>

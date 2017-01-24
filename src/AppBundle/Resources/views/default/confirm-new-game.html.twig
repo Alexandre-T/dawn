@@ -1,0 +1,18 @@
+{% extends 'AppBundle::default.html.twig' %}
+{% block content %}
+    <h1>
+        {{ 'app.nav.game' | trans }}
+        <small>
+            <span class="fa fa-chevron-right"></span>
+            {{ 'new.title' | trans }}
+        </small>
+    </h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            {{ form_start(form) }}
+            <p>{{ 'ask.new-game' | trans }}</p>
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

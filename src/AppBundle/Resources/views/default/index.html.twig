@@ -1,0 +1,18 @@
+{% extends 'AppBundle::default.html.twig' %}
+{% block content %}
+    <h1>
+        {{ 'app.title' | trans }} <small>{{ 'app.subtitle' | trans }}</small>
+    </h1>
+    <p>{{ 'app.description' | trans }}</p>
+    <nav>
+        <div class="btn-group">
+            <a class="btn btn-primary" href="{{ path('new-game') }}" title="{{ 'nav.start.explanation' | trans }}">{{ 'nav.start.title' | trans }}</a><
+            <a class="btn btn-secondary" href="{{ path('load-game') }}" title="{{ 'nav.load.explanation' | trans }}">{{ 'nav.load.title' | trans }}</a>
+            {% if existingGame %}
+                <a id="continue" class="btn btn-secondary" href="{{ path('game') }}" title="{{ 'nav.continue.explanation' | trans }}">{{ 'nav.continue.title' | trans }}</a>
+            {% else %}
+                <span id="continue" class="btn btn-secondary disabled">{{ 'nav.continue.title' | trans }}</span>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}

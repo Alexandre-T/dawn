@@ -33,9 +33,9 @@ class Achievement
     private $alternat;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -43,7 +43,7 @@ class Achievement
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -57,7 +57,7 @@ class Achievement
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -67,7 +67,7 @@ class Achievement
     }
 
     /**
-     * Set image
+     * Set image.
      *
      * @param string $image
      *
@@ -81,7 +81,7 @@ class Achievement
     }
 
     /**
-     * Get image
+     * Get image.
      *
      * @return string
      */
@@ -91,7 +91,7 @@ class Achievement
     }
 
     /**
-     * Set alternat
+     * Set alternat.
      *
      * @param string $alternat
      *
@@ -105,7 +105,7 @@ class Achievement
     }
 
     /**
-     * Get alternat
+     * Get alternat.
      *
      * @return string
      */

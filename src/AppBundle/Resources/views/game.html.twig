@@ -1,0 +1,23 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% block loader %}{% include 'AppBundle::loader.html.twig' %}{% endblock %}
+{% block header %}{% include 'AppBundle:game:header.html.twig' %}{% endblock %}
+{% block body %}
+    {% block content %}{% endblock %}
+    {% include 'AppBundle:game:save.html.twig' %}
+{% endblock %}
+{% block footer %}{% include 'AppBundle:game:footer.html.twig' %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- Simdate tools -->
+    <script id="dawn-js" src="{{ asset('js/dawn.js') }}"></script>
+{% endblock %}
+{% block script %}<script id="activation">
+    var translate = [
+        'txt.zoom', '{{ 'txt.zoom' | trans }}'
+    ];
+
+    var rootPath  = '{{ relative_path('/') }}';
+
+    new Clipboard('.clipboard');
+</script>{% endblock %}

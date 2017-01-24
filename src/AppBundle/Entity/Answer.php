@@ -30,8 +30,9 @@ class Answer
      * @ORM\JoinColumn(name="scene_id", referencedColumnName="id", nullable=false)
      */
     private $destination;
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -39,9 +40,9 @@ class Answer
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -49,7 +50,7 @@ class Answer
     }
 
     /**
-     * Add influence
+     * Add influence.
      *
      * @param Influence $influence
      *
@@ -63,7 +64,7 @@ class Answer
     }
 
     /**
-     * Remove influence
+     * Remove influence.
      *
      * @param Influence $influence
      */
@@ -73,7 +74,7 @@ class Answer
     }
 
     /**
-     * Get influence
+     * Get influence.
      *
      * @return Collection
      */
@@ -83,7 +84,7 @@ class Answer
     }
 
     /**
-     * Set destination
+     * Set destination.
      *
      * @param Scene $destination
      *
@@ -97,7 +98,7 @@ class Answer
     }
 
     /**
-     * Get destination
+     * Get destination.
      *
      * @return Scene
      */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="e81389af526fc6a0ec6361ccb782decf" resname="message.key.not_valid">
+        <source>message.key.not_valid</source>
+        <target>en__message.key.not_valid</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

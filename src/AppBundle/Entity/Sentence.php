@@ -16,7 +16,7 @@ class Sentence extends Answer
     private $sentence;
 
     /**
-     * Set sentence
+     * Set sentence.
      *
      * @param string $sentence
      *
@@ -30,7 +30,7 @@ class Sentence extends Answer
     }
 
     /**
-     * Get sentence
+     * Get sentence.
      *
      * @return string
      */

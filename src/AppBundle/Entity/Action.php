@@ -26,7 +26,7 @@ class Action extends Answer
     private $coords;
 
     /**
-     * Set tooltip
+     * Set tooltip.
      *
      * @param string $tooltip
      *
@@ -40,7 +40,7 @@ class Action extends Answer
     }
 
     /**
-     * Get tooltip
+     * Get tooltip.
      *
      * @return string
      */
@@ -50,7 +50,7 @@ class Action extends Answer
     }
 
     /**
-     * Set shape
+     * Set shape.
      *
      * @param string $shape
      *
@@ -64,7 +64,7 @@ class Action extends Answer
     }
 
     /**
-     * Get shape
+     * Get shape.
      *
      * @return string
      */
@@ -74,7 +74,7 @@ class Action extends Answer
     }
 
     /**
-     * Set coords
+     * Set coords.
      *
      * @param string $coords
      *
@@ -88,7 +88,7 @@ class Action extends Answer
     }
 
     /**
-     * Get coords
+     * Get coords.
      *
      * @return string
      */

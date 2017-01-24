@@ -30,9 +30,54 @@ class Score
     private $characteristic;
 
     /**
-     * Set value
+     * Increase by integer Quantity owned.
      *
-     * @param integer $value
+     * @param int $integer
+     *
+     * @return $this
+     */
+    public function increase($integer)
+    {
+        if (!$this->getCharacteristic() instanceof Characteristic) {
+            //add a warning ?
+            return $this;
+        }
+        $integer = (int) $integer;
+        $result = $this->getValue() + $integer;
+        if (!is_null($this->getCharacteristic()->getMaximum())) {
+            $result = min($result, $this->getCharacteristic()->getMaximum());
+        }
+        if (!is_null($this->getCharacteristic()->getMinimum())) {
+            $result = max($result, $this->getCharacteristic()->getMinimum());
+        }
+
+        return $this->setValue($result);
+    }
+
+    /**
+     * Calculate and return score.
+     *
+     * @return string The value of the score with prefix, suffix and arithmetic transformation
+     */
+    public function getScore()
+    {
+        if ($this->getCharacteristic() instanceof Characteristic) {
+            $multiply = $this->getCharacteristic()->getMultiply();
+            $added = $this->getCharacteristic()->getAdd();
+            $prefix = $this->getCharacteristic()->getPrefix();
+            $suffix = $this->getCharacteristic()->getSuffix();
+            $value = $this->getValue();
+
+            return $prefix.($value * $multiply + $added).$suffix;
+        } else {
+            return (string) $this->getValue();
+        }
+    }
+
+    /**
+     * Set value.
+     *
+     * @param int $value
      *
      * @return Score
      */
@@ -44,9 +89,9 @@ class Score
     }
 
     /**
-     * Get value
+     * Get value.
      *
-     * @return integer
+     * @return int
      */
     public function getValue()
     {
@@ -54,7 +99,7 @@ class Score
     }
 
     /**
-     * Set game
+     * Set game.
      *
      * @param Game $game
      *
@@ -68,7 +113,7 @@ class Score
     }
 
     /**
-     * Get game
+     * Get game.
      *
      * @return Game
      */
@@ -78,7 +123,7 @@ class Score
     }
 
     /**
-     * Set characteristic
+     * Set characteristic.
      *
      * @param Characteristic $characteristic
      *
@@ -92,7 +137,7 @@ class Score
     }
 
     /**
-     * Get characteristic
+     * Get characteristic.
      *
      * @return Characteristic
      */

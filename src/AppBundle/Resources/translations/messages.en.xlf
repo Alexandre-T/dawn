@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+        <header>
+            <tool tool-id="symfony" tool-name="Symfony"/>
+        </header>
+        <body>
+            <trans-unit id="f0e89dc0f6f3257948adce7a5f0d1d46" resname="app.title">
+                <source>app.title</source>
+                <target>en__app.title</target>
+            </trans-unit>
+            <trans-unit id="f798cf7cad943c4e353c8efbcc185e5a" resname="app.subtitle">
+                <source>app.subtitle</source>
+                <target>en__app.subtitle</target>
+            </trans-unit>
+            <trans-unit id="5cb1012498542df295cfd9cba351495e" resname="app.msg.welcome">
+                <source>app.msg.welcome</source>
+                <target>en__app.msg.welcome</target>
+            </trans-unit>
+            <trans-unit id="87a7a98dff74f39906e7294ce1db9ba6" resname="good_luck.title">
+                <source>good_luck.title</source>
+                <target>en__good_luck.title</target>
+            </trans-unit>
+            <trans-unit id="caea21ad3864155490727c950eff6b1a" resname="nav.start.explanation">
+                <source>nav.start.explanation</source>
+                <target>en__nav.start.explanation</target>
+            </trans-unit>
+            <trans-unit id="09e6a3c65708082e1e97e92e8e4ecb39" resname="nav.start.title">
+                <source>nav.start.title</source>
+                <target>en__nav.start.title</target>
+            </trans-unit>
+            <trans-unit id="22e06a68d1340a7950c52e5eb2a8beb3" resname="nav.load.explanation">
+                <source>nav.load.explanation</source>
+                <target>en__nav.load.explanation</target>
+            </trans-unit>
+            <trans-unit id="16430cb44ccce82059d3325d8453dd36" resname="nav.load.title">
+                <source>nav.load.title</source>
+                <target>en__nav.load.title</target>
+            </trans-unit>
+            <trans-unit id="ba99fededcfe0d15b0a27d32c9e51b77" resname="nav.continue.explanation">
+                <source>nav.continue.explanation</source>
+                <target>en__nav.continue.explanation</target>
+            </trans-unit>
+            <trans-unit id="ca45642d080e191b7bc3b0fd31c2d360" resname="nav.continue.title">
+                <source>nav.continue.title</source>
+                <target>en__nav.continue.title</target>
+            </trans-unit>
+            <trans-unit id="5b015462815a8bcbdec9aa863b51c821" resname="app.nav.game">
+                <source>app.nav.game</source>
+                <target>en__app.nav.game</target>
+            </trans-unit>
+            <trans-unit id="c1ba77111a83d47f99d641b596c0207e" resname="load.title">
+                <source>load.title</source>
+                <target>en__load.title</target>
+            </trans-unit>
+            <trans-unit id="16c97ad1cf67747c8a2ed5fb6fca4d81" resname="nav.about.explanation">
+                <source>nav.about.explanation</source>
+                <target>en__nav.about.explanation</target>
+            </trans-unit>
+            <trans-unit id="467aa17c30b2f22fcbd8a75a40693e6d" resname="nav.about.title">
+                <source>nav.about.title</source>
+                <target>en__nav.about.title</target>
+            </trans-unit>
+            <trans-unit id="cecfa7f2f8b2d5e0077d34fb0a2660cb" resname="nav.contact.explanation">
+                <source>nav.contact.explanation</source>
+                <target>en__nav.contact.explanation</target>
+            </trans-unit>
+            <trans-unit id="10351c45f68776587296c7eb7b88bbca" resname="nav.contact.title">
+                <source>nav.contact.title</source>
+                <target>en__nav.contact.title</target>
+            </trans-unit>
+            <trans-unit id="9953a03ad3b419a2d722239db0e65e29" resname="sr.help">
+                <source>sr.help</source>
+                <target>en__sr.help</target>
+            </trans-unit>
+            <trans-unit id="75528bc0449dd1d0261b8ba2b8ba8d9f" resname="txt.relationsships">
+                <source>txt.relationsships</source>
+                <target>en__txt.relationsships</target>
+            </trans-unit>
+            <trans-unit id="5aead9293c97205ee039bd3d16b31d7d" resname="txt.friendship">
+                <source>txt.friendship</source>
+                <target>en__txt.friendship</target>
+            </trans-unit>
+            <trans-unit id="ee5ca080d3006e304d29847498e1004f" resname="txt.love">
+                <source>txt.love</source>
+                <target>en__txt.love</target>
+            </trans-unit>
+            <trans-unit id="5e270e0b655b0173c0066585d280d1e8" resname="txt.sex_appeal">
+                <source>txt.sex_appeal</source>
+                <target>en__txt.sex_appeal</target>
+            </trans-unit>
+            <trans-unit id="93ac4dab46e5227d437d7a4f952f2fd0" resname="txt.inventory">
+                <source>txt.inventory</source>
+                <target>en__Inventory</target>
+            </trans-unit>
+            <trans-unit id="bc7edbc1ee4b701757f7641050190a0a" resname="txt.stuff">
+                <source>txt.stuff</source>
+                <target>en__Stuff</target>
+            </trans-unit>
+            <trans-unit id="32cdd5f0be784e18d4ad0a907b4aa12a" resname="Location introduction">
+                <source>Location introduction</source>
+                <target>en__Location introduction</target>
+            </trans-unit>
+            <trans-unit id="6b592525b233809918679b3ee2e271da" resname="btn.close">
+                <source>btn.close</source>
+                <target>en__btn.close</target>
+            </trans-unit>
+            <trans-unit id="04009327f963830533e3857f7f36b8d4" resname="txt.relationship">
+                <source>txt.relationship</source>
+                <target>en__txt.relationship</target>
+            </trans-unit>
+            <trans-unit id="72ca048d131abdb8d773fc2a61cbfa59" resname="txt.talk_about">
+                <source>txt.talk_about</source>
+                <target>en__txt.talk_about</target>
+            </trans-unit>
+            <trans-unit id="9b513ded5a5afd29be44c23cd3042935" resname="btn.back">
+                <source>btn.back</source>
+                <target>en__btn.back</target>
+            </trans-unit>
+            <trans-unit id="96065621226c0ab7b193cc416299ceaa" resname="loadtype.label">
+                <source>loadtype.label</source>
+                <target>en__loadtype.label</target>
+            </trans-unit>
+            <trans-unit id="e81389af526fc6a0ec6361ccb782decf" resname="message.key.not_valid">
+                <source>message.key.not_valid</source>
+                <target>en__message.key.not_valid</target>
+            </trans-unit>
+            <trans-unit id="9f89c84a559f573636a47ff8daed0d33" resname="00000000-0000-0000-0000-000000000000">
+                <source>00000000-0000-0000-0000-000000000000</source>
+                <target>00000000-0000-0000-0000-000000000000</target>
+            </trans-unit>
+            <trans-unit id="db048df2cdee79f9275551a8e3b3297f" resname="btn.load">
+                <source>btn.load</source>
+                <target>en__btn.load</target>
+            </trans-unit>
+            <trans-unit id="136e6768caf4a243ea5129ac3f32dd98" resname="new.title">
+                <source>new.title</source>
+                <target>en__new.title</target>
+            </trans-unit>
+            <trans-unit id="8d00c2f7602a98f358d34ab74bbb9269" resname="ask.new-game">
+                <source>ask.new-game</source>
+                <target>en__ask.new-game</target>
+            </trans-unit>
+            <trans-unit id="06fefb3845d33df495865e0c7e50686d" resname="btn.no">
+                <source>btn.no</source>
+                <target>en__btn.no</target>
+            </trans-unit>
+            <trans-unit id="02983c533bbedbaf457d46381866067a" resname="btn.yes">
+                <source>btn.yes</source>
+                <target>en__btn.yes</target>
+            </trans-unit>
+            <trans-unit id="a6c0a990c9b29e8bb8fbf3dff9d43fed" resname="load.explanation">
+                <source>load.explanation</source>
+                <target>en__load.explanation</target>
+            </trans-unit>
+            <trans-unit id="f328df9e0f9ee0f313f7fc85725e0e22" resname="message.key.help">
+                <source>message.key.help</source>
+                <target>en__message.key.help</target>
+            </trans-unit>
+            <trans-unit id="8bbbeab9b39adf25982cbd1107ada31e" resname="sr.save">
+                <source>sr.save</source>
+                <target>en__sr.save</target>
+            </trans-unit>
+            <trans-unit id="c9ebf108c16410faff001e0a4b9e83c9" resname="save.title">
+                <source>save.title</source>
+                <target>en__save.title</target>
+            </trans-unit>
+            <trans-unit id="092e53fc4891ea9fdecd8b5b9a9ab7a6" resname="save.core">
+                <source>save.core</source>
+                <target>en__save.core</target>
+            </trans-unit>
+            <trans-unit id="9b8bf85d4bc29cb8448535689b364b69" resname="save.code">
+                <source>save.code</source>
+                <target>en__save.code</target>
+            </trans-unit>
+            <trans-unit id="bd5583b9b623f87c1deedfc769f2528d" resname="save.key">
+                <source>save.key</source>
+                <target>en__save.key</target>
+            </trans-unit>
+            <trans-unit id="515882e8b38561a927b8a4a1f6cd11c5" resname="btn.copy">
+                <source>btn.copy</source>
+                <target>en__btn.copy</target>
+            </trans-unit>
+            <trans-unit id="d5475389e27bca2a4faa08de2f7198f4" resname="txt.ask">
+                <source>txt.ask</source>
+                <target>en__txt.ask</target>
+            </trans-unit>
+            <trans-unit id="f90e250b5818cefe0b2423edcfef8dbd" resname="txt.phone">
+                <source>txt.phone</source>
+                <target>en__txt.phone</target>
+            </trans-unit>
+            <trans-unit id="ad5dc964a2000b7a9dea917f9f95009f" resname="txt.day">
+                <source>txt.day</source>
+                <target>en__txt.day</target>
+            </trans-unit>
+            <trans-unit id="1344391562034ccc50b2356a6a6e63ba" resname="txt.time">
+                <source>txt.time</source>
+                <target>en__txt.time</target>
+            </trans-unit>
+            <trans-unit id="12aa8863a29a2c04128e2a715bf36fb4" resname="txt.characters.statistics">
+                <source>txt.characters.statistics</source>
+                <target>en__txt.characters.statistics</target>
+            </trans-unit>
+            <trans-unit id="d4768ceca817b22c412cbe259e3f1eb5" resname="txt.characters">
+                <source>txt.characters</source>
+                <target>en__txt.characters</target>
+            </trans-unit>
+            <trans-unit id="97cdb09d3facf5623db24fe60f3d6279" resname="txt.quantity">
+                <source>txt.quantity</source>
+                <target>en__txt.quantity</target>
+            </trans-unit>
+            <trans-unit id="8c95a720f249d9c9bd40308153ef925f" resname="title.presentation">
+                <source>title.presentation</source>
+                <target>en__title.presentation</target>
+            </trans-unit>
+            <trans-unit id="2363369d4ba44afdb176f38c213ad370" resname="txt.presentation">
+                <source>txt.presentation</source>
+                <target>en__txt.presentation</target>
+            </trans-unit>
+            <trans-unit id="b7a2672e00700155f309179c17727d1c" resname="nav.characters.explanation">
+                <source>nav.characters.explanation</source>
+                <target>en__nav.characters.explanation</target>
+            </trans-unit>
+            <trans-unit id="6c36ed72a87808f961d436d7a4177f5e" resname="img.spinner">
+                <source>img.spinner</source>
+                <target>en__img.spinner</target>
+            </trans-unit>
+            <trans-unit id="bf06aab5af292c3465f3377b27bedf78" resname="txt.loading">
+                <source>txt.loading</source>
+                <target>en__txt.loading</target>
+            </trans-unit>
+            <trans-unit id="7dde16cd4e5ac1a02e6c97ee2bb3c625" resname="txt.javascript-needed">
+                <source>txt.javascript-needed</source>
+                <target>en__txt.javascript-needed</target>
+            </trans-unit>
+            <trans-unit id="d0b35a251cfcc6454891d24071c16d34" resname="txt.sexual">
+                <source>txt.sexual</source>
+                <target>en__txt.sexual</target>
+            </trans-unit>
+            <trans-unit id="d837057b34934b589b188a1a5eac574d" resname="title.error">
+                <source>title.error</source>
+                <target>en__title.error</target>
+            </trans-unit>
+            <trans-unit id="d429bcbc424c250f528f700415b4ca52" resname="txt.reload">
+                <source>txt.reload</source>
+                <target>en__txt.reload</target>
+            </trans-unit>
+            <trans-unit id="0db72fa76b0073cf1938f8de78c5ceb3" resname="title.info">
+                <source>title.info</source>
+                <target>__title.info</target>
+            </trans-unit>
+            <trans-unit id="c96361f9ca48e7440c9ef8e61c051e4f" resname="txt.date">
+                <source>txt.date</source>
+                <target>en__txt.date</target>
+            </trans-unit>
+            <trans-unit id="4b2c55d55009a93914cdcca02bff2342" resname="txt.dialogue">
+                <source>txt.dialogue</source>
+                <target>en__txt.dialogue</target>
+            </trans-unit>
+            <trans-unit id="644ee6d8a16889826606c256e5c56833" resname="txt.albumLabel">
+                <source>txt.albumLabel</source>
+                <target>Image %1 of %2</target>
+            </trans-unit>
+            <trans-unit id="992cb6746614fc2f16106d5650b9dff0" resname="txt.zoom">
+                <source>txt.zoom</source>
+                <target>en__txt.zoom</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,53 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% block background %}<div id="backgroundHome"></div>{% endblock %}
+
+{% block header %}
+    <nav class="navbar navbar-toggleable-sm navbar-light bg-faded fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('homepage') }}">
+            <img src="{{ asset('favicon-32x32.png') }}" width="30" height="30" class="d-inline-block align-top" alt="D">
+            {{ 'app.title' | trans }}
+        </a>
+        <div class="collapse navbar-collapse" id="navbarHeader">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarGameDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-play"></i>&nbsp;{{ 'app.nav.game' | trans }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarGameDropdownMenuLink">
+                        <li class="dropdown-item"><a class="nav-link" href="{{ path('new-game') }}" title="{{ 'nav.start.explanation' | trans }}"><i class="fa fa-gamepad"></i>&nbsp;{{ 'nav.start.title' | trans }}</a></li>
+                        <li class="dropdown-item"><a class="nav-link" href="{{ path('load-game') }}" title="{{ 'nav.load.explanation' | trans }}"><i class="fa fa-clone"></i>&nbsp;{{ 'nav.load.title' | trans }}</a></li>
+                        <li class="dropdown-item">
+                            {% if existingGame %}
+                                <a class="nav-link" href="{{ path('game') }}" title="{{ 'nav.continue.explanation' | trans }}"><i class="fa fa-refresh"></i>&nbsp;{{ 'nav.continue.title' | trans }}</a>
+                            {% else %}
+                                <span class="nav-link disabled"><i class="fa fa-refresh"></i>&nbsp;{{ 'nav.continue.title' | trans }}</span>
+                            {% endif %}
+
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('about') }}" title="{{ 'nav.about.explanation' | trans }}"><i class="fa fa-question"></i>&nbsp;{{ 'nav.about.title' | trans}}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('contact') }}" title="{{ 'nav.contact.explanation' | trans }}"><i class="fa fa-wpforms"></i>&nbsp;{{ 'nav.contact.title' | trans}}</a></li>
+            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-btn">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-game-modal-lg">
+                            <i class="fa fa-question-circle"></i><span class="sr-only">{{ 'sr.help' | trans }}</span>
+                        </button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block body %}{% block content %}{% endblock %}{% endblock %}
+
+{% block footer %}
+    <div class="navbar navbar-light fixed-bottom bg-faded">
+          <em class="navbar-text ml-auto">&copy;&nbsp;Copyright www.jeuforum.fr 2016 - {{ "now"|date("Y") }}</em>
+    </div>
+{% endblock %}
+

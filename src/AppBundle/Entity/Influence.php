@@ -35,9 +35,9 @@ class Influence
     private $characteristic;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -45,9 +45,9 @@ class Influence
     }
 
     /**
-     * Set bonus
+     * Set bonus.
      *
-     * @param integer $bonus
+     * @param int $bonus
      *
      * @return Influence
      */
@@ -59,9 +59,9 @@ class Influence
     }
 
     /**
-     * Get bonus
+     * Get bonus.
      *
-     * @return integer
+     * @return int
      */
     public function getBonus()
     {
@@ -69,7 +69,7 @@ class Influence
     }
 
     /**
-     * Set answer
+     * Set answer.
      *
      * @param Answer $answer
      *
@@ -83,7 +83,7 @@ class Influence
     }
 
     /**
-     * Get answer
+     * Get answer.
      *
      * @return Answer
      */
@@ -93,7 +93,7 @@ class Influence
     }
 
     /**
-     * Set characteristic
+     * Set characteristic.
      *
      * @param Characteristic $characteristic
      *
@@ -107,7 +107,7 @@ class Influence
     }
 
     /**
-     * Get characteristic
+     * Get characteristic.
      *
      * @return Characteristic
      */

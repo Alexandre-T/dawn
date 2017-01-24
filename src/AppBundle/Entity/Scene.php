@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\SceneRepository")
  * @ORM\Table(name="te_scene")
  */
 class Scene
@@ -30,6 +30,11 @@ class Scene
     private $image;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true, options={"unsigned":true})
+     */
+    private $initial;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Achievement")
      * @ORM\JoinColumn(name="achievement_id", referencedColumnName="id")
      */
@@ -44,8 +49,9 @@ class Scene
      * )
      */
     private $answers;
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -53,9 +59,9 @@ class Scene
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -63,7 +69,7 @@ class Scene
     }
 
     /**
-     * Set dialogue
+     * Set dialogue.
      *
      * @param string $dialogue
      *
@@ -77,7 +83,7 @@ class Scene
     }
 
     /**
-     * Get dialogue
+     * Get dialogue.
      *
      * @return string
      */
@@ -87,7 +93,7 @@ class Scene
     }
 
     /**
-     * Set image
+     * Set image.
      *
      * @param string $image
      *
@@ -101,7 +107,7 @@ class Scene
     }
 
     /**
-     * Get image
+     * Get image.
      *
      * @return string
      */
@@ -111,7 +117,7 @@ class Scene
     }
 
     /**
-     * Set achievement
+     * Set achievement.
      *
      * @param Achievement $achievement
      *
@@ -125,7 +131,7 @@ class Scene
     }
 
     /**
-     * Get achievement
+     * Get achievement.
      *
      * @return Achievement
      */
@@ -135,7 +141,7 @@ class Scene
     }
 
     /**
-     * Add answer
+     * Add answer.
      *
      * @param Answer $answer
      *
@@ -149,7 +155,7 @@ class Scene
     }
 
     /**
-     * Remove answer
+     * Remove answer.
      *
      * @param Answer $answer
      */
@@ -159,12 +165,36 @@ class Scene
     }
 
     /**
-     * Get answers
+     * Get answers.
      *
      * @return Collection
      */
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Set initial.
+     *
+     * @param bool $initial
+     *
+     * @return Scene
+     */
+    public function setInitial($initial)
+    {
+        $this->initial = $initial;
+
+        return $this;
+    }
+
+    /**
+     * Get initial.
+     *
+     * @return bool
+     */
+    public function getInitial()
+    {
+        return $this->initial;
     }
 }

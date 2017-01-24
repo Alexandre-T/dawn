@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Game
 {
     /**
+     * game version.
+     */
+    const VERSION = '0.0.1';
+
+    /**
      * @ORM\Id
      * @ORM\Column(type="guid", length=32, name="gam_uid")
      * @ORM\GeneratedValue(strategy="UUID")
@@ -20,14 +25,14 @@ class Game
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=8, nullable=true, name="gam_ver")
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     private $version;
 
     /**
-     * @ORM\Column(type="boolean", nullable=false, name="loc_id", options={"default":false,"unsigned":true})
+     * @ORM\Column(type="boolean", nullable=false, options={"default":false,"unsigned":true})
      */
-    private $debug;
+    private $debug = false;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="game")
@@ -48,18 +53,20 @@ class Game
      *     inverseJoinColumns={@ORM\JoinColumn(name="achievement_id", referencedColumnName="id", nullable=false)}
      * )
      */
-    private $achievement;
+    private $achievements;
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
+        $this->setVersion(self::VERSION);
         $this->scores = new ArrayCollection();
-        $this->achievement = new ArrayCollection();
+        $this->achievements = new ArrayCollection();
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return string guid
      */
@@ -69,7 +76,7 @@ class Game
     }
 
     /**
-     * Set version
+     * Set version.
      *
      * @param string $version
      *
@@ -83,7 +90,7 @@ class Game
     }
 
     /**
-     * Get version
+     * Get version.
      *
      * @return string
      */
@@ -93,9 +100,9 @@ class Game
     }
 
     /**
-     * Set debug
+     * Set debug.
      *
-     * @param boolean $debug
+     * @param bool $debug
      *
      * @return Game
      */
@@ -107,9 +114,9 @@ class Game
     }
 
     /**
-     * Get debug
+     * Get debug.
      *
-     * @return boolean
+     * @return bool
      */
     public function getDebug()
     {
@@ -117,7 +124,7 @@ class Game
     }
 
     /**
-     * Add score
+     * Add score.
      *
      * @param Score $score
      *
@@ -131,7 +138,7 @@ class Game
     }
 
     /**
-     * Remove score
+     * Remove score.
      *
      * @param Score $score
      */
@@ -141,7 +148,7 @@ class Game
     }
 
     /**
-     * Get scores
+     * Get scores.
      *
      * @return Collection
      */
@@ -151,7 +158,7 @@ class Game
     }
 
     /**
-     * Set currentScene
+     * Set currentScene.
      *
      * @param Scene $currentScene
      *
@@ -165,7 +172,7 @@ class Game
     }
 
     /**
-     * Get currentScene
+     * Get currentScene.
      *
      * @return Scene
      */
@@ -175,7 +182,7 @@ class Game
     }
 
     /**
-     * Add achievement
+     * Add achievement.
      *
      * @param Achievement $achievement
      *
@@ -183,28 +190,28 @@ class Game
      */
     public function addAchievement(Achievement $achievement)
     {
-        $this->achievement[] = $achievement;
+        $this->achievements[] = $achievement;
 
         return $this;
     }
 
     /**
-     * Remove achievement
+     * Remove achievement.
      *
      * @param Achievement $achievement
      */
     public function removeAchievement(Achievement $achievement)
     {
-        $this->achievement->removeElement($achievement);
+        $this->achievements->removeElement($achievement);
     }
 
     /**
-     * Get achievement
+     * Get achievement.
      *
      * @return Collection
      */
-    public function getAchievement()
+    public function getAchievements()
     {
-        return $this->achievement;
+        return $this->achievements;
     }
 }

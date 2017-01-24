@@ -68,9 +68,9 @@ class Characteristic
     private $add = 0;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -78,7 +78,7 @@ class Characteristic
     }
 
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code
      *
@@ -92,7 +92,7 @@ class Characteristic
     }
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class Characteristic
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -116,7 +116,7 @@ class Characteristic
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -126,9 +126,9 @@ class Characteristic
     }
 
     /**
-     * Set initial
+     * Set initial.
      *
-     * @param integer $initial
+     * @param int $initial
      *
      * @return Characteristic
      */
@@ -140,9 +140,9 @@ class Characteristic
     }
 
     /**
-     * Get initial
+     * Get initial.
      *
-     * @return integer
+     * @return int
      */
     public function getInitial()
     {
@@ -150,9 +150,9 @@ class Characteristic
     }
 
     /**
-     * Set minimum
+     * Set minimum.
      *
-     * @param integer $minimum
+     * @param int $minimum
      *
      * @return Characteristic
      */
@@ -164,9 +164,9 @@ class Characteristic
     }
 
     /**
-     * Get minimum
+     * Get minimum.
      *
-     * @return integer
+     * @return int
      */
     public function getMinimum()
     {
@@ -174,9 +174,9 @@ class Characteristic
     }
 
     /**
-     * Set maximum
+     * Set maximum.
      *
-     * @param integer $maximum
+     * @param int $maximum
      *
      * @return Characteristic
      */
@@ -188,9 +188,9 @@ class Characteristic
     }
 
     /**
-     * Get maximum
+     * Get maximum.
      *
-     * @return integer
+     * @return int
      */
     public function getMaximum()
     {
@@ -198,9 +198,9 @@ class Characteristic
     }
 
     /**
-     * Set sort
+     * Set sort.
      *
-     * @param integer $sort
+     * @param int $sort
      *
      * @return Characteristic
      */
@@ -212,9 +212,9 @@ class Characteristic
     }
 
     /**
-     * Get sort
+     * Get sort.
      *
-     * @return integer
+     * @return int
      */
     public function getSort()
     {
@@ -222,7 +222,7 @@ class Characteristic
     }
 
     /**
-     * Set prefix
+     * Set prefix.
      *
      * @param string $prefix
      *
@@ -236,7 +236,7 @@ class Characteristic
     }
 
     /**
-     * Get prefix
+     * Get prefix.
      *
      * @return string
      */
@@ -246,7 +246,7 @@ class Characteristic
     }
 
     /**
-     * Set suffix
+     * Set suffix.
      *
      * @param string $suffix
      *
@@ -260,7 +260,7 @@ class Characteristic
     }
 
     /**
-     * Get suffix
+     * Get suffix.
      *
      * @return string
      */
@@ -270,9 +270,9 @@ class Characteristic
     }
 
     /**
-     * Set multiply
+     * Set multiply.
      *
-     * @param integer $multiply
+     * @param int $multiply
      *
      * @return Characteristic
      */
@@ -284,9 +284,9 @@ class Characteristic
     }
 
     /**
-     * Get multiply
+     * Get multiply.
      *
-     * @return integer
+     * @return int
      */
     public function getMultiply()
     {
@@ -294,9 +294,9 @@ class Characteristic
     }
 
     /**
-     * Set add
+     * Set add.
      *
-     * @param integer $add
+     * @param int $add
      *
      * @return Characteristic
      */
@@ -308,9 +308,9 @@ class Characteristic
     }
 
     /**
-     * Get add
+     * Get add.
      *
-     * @return integer
+     * @return int
      */
     public function getAdd()
     {
