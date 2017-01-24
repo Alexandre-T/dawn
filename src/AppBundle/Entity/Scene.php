@@ -58,6 +58,83 @@ class Scene
         $this->answers = new ArrayCollection();
     }
 
+
+    /**
+ * Add action.
+ *
+ * @param Action $action
+ *
+ * @return Scene
+ */
+    public function addAction(Action $action)
+    {
+        return $this->addAnswer($action);
+    }
+
+    /**
+     * Remove action.
+     *
+     * @param Action $action
+     */
+    public function removeAction(Action $action)
+    {
+        $this->removeAnswer($action);
+    }
+
+    /**
+     * Get actions.
+     *
+     * @return Collection
+     */
+    public function getActions()
+    {
+        $actions = new ArrayCollection();
+        foreach ($this->answers as $answer){
+            if ($answer instanceof Action){
+                $actions[] = $answer;
+            }
+        }
+        return $actions;
+    }
+
+    /**
+     * Add sentence.
+     *
+     * @param Sentence $sentence
+     *
+     * @return Scene
+     */
+    public function addSentence(Sentence $sentence)
+    {
+        return $this->addAnswer($sentence);
+    }
+
+    /**
+     * Remove sentence.
+     *
+     * @param Sentence $sentence
+     */
+    public function removeSentence(Sentence $sentence)
+    {
+        $this->removeAnswer($sentence);
+    }
+
+    /**
+     * Get sentences.
+     *
+     * @return Collection
+     */
+    public function getSentences()
+    {
+        $sentences = new ArrayCollection();
+        foreach ($this->answers as $answer){
+            if ($answer instanceof Sentence){
+                $sentences[] = $answer;
+            }
+        }
+        return $sentences;
+    }
+
     /**
      * Get id.
      *
