@@ -20,7 +20,7 @@ class Influence
     /**
      * @ORM\Column(type="integer", nullable=false, options={"default":0})
      */
-    private $bonus;
+    private $bonus = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="influences")
