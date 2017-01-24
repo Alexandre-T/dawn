@@ -49,7 +49,7 @@ class LoadSceneData extends AbstractLoadFixture implements FixtureInterface, Ord
      */
     public function load(ObjectManager $manager)
     {
-        $csvFile = fopen($this->getCsvRepository().'Scenes.csv', 'r');
+        $csvFile = fopen($this->getCsvRepository().'scenes.csv', 'r');
         $index = 0;
 
         while (!feof($csvFile)) {
