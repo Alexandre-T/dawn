@@ -136,6 +136,9 @@
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="b4f7f4e6-4636-4b38-bbed-325458623d4a"/>
       <field name="scene_id" type="integer" required="true" uuid="34f5894f-e20e-48b1-862c-8b963522c6bb"/>
       <inheritance-parent type="SINGLE_TABLE" uuid="dd17b65e-5f9f-4d4d-9af0-f8bb14148a33"/>
+      <orm-attributes>
+        <attribute name="table">te_answer</attribute>
+      </orm-attributes>
     </entity>
     <association from="\AppBundle\Entity\Answer" to="\AppBundle\Entity\Scene" caption="Destination" inverse-alias="destination" many-owner="true" many-inverse="false" parent-required="true" uuid="5e3e44ce-2ebd-433e-85ee-d84a28bb740f">
       <association-field from="scene_id" to="id"/>
@@ -144,6 +147,9 @@
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="3354e214-2162-4222-ae50-13cbe21c9a67"/>
       <field name="sentence" description="Phrase de la r&#xE9;ponse" type="text" required="true" uuid="60fe10cb-37e0-471e-a156-5a3bd0622ca3"/>
       <inheritance-child derived-from="\AppBundle\Entity\Answer" caption="New inheritance" uuid="f916d2bd-4c14-4f94-accb-fad7c6050ace"/>
+      <orm-attributes>
+        <attribute name="table">te_sentence</attribute>
+      </orm-attributes>
     </entity>
     <entity name="\AppBundle\Entity\Action" local-name="Action" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="ca3be5e6-12a6-4400-9ff0-ae32efafbd1b">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="7e64bf39-5d1d-4d29-861f-98fdc197640c"/>
@@ -151,10 +157,16 @@
       <field name="shape" description="Shape of the map (rect or circle)" type="string" enum-values="rect,circle" required="true" uuid="eaaefa6c-6167-421d-9c22-f67abc9f0dfb"/>
       <field name="coords" description="Coords of the map" type="string" required="true" uuid="d8bbbbea-f376-4586-9c60-38b697e8fa51"/>
       <inheritance-child derived-from="\AppBundle\Entity\Answer" caption="New inheritance" uuid="2141b289-0531-42b8-989e-2ed9b6ac99d0"/>
+      <orm-attributes>
+        <attribute name="table">te_action</attribute>
+      </orm-attributes>
     </entity>
     <entity name="\AppBundle\Entity\Answers" local-name="Answers" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="a0f5ea29-566d-4fc5-9660-e981f4defc93">
       <field name="answer_id" type="integer" required="true" primary="true" uuid="e98a452c-39c5-4240-8d65-cf6102b3caae"/>
       <field name="scene_id" type="integer" required="true" primary="true" uuid="7b74b83b-d5f9-47e0-b0f4-275d9818278a"/>
+      <orm-attributes>
+        <attribute name="table">tj_answers</attribute>
+      </orm-attributes>
     </entity>
     <many-to-many mn-entity="\AppBundle\Entity\Answers" caption="Answer to Scene" uuid="d0dfcd9d-cfc1-48f8-954b-6da92b9b3873">
       <many-to-many-entity name="\AppBundle\Entity\Scene" owning-side="true" uuid="350359c5-ddd6-44a0-aa3e-b63136f31b44">
@@ -172,6 +184,9 @@
       <field name="bonus" description="Bonus sur la caract&#xE9;ristique" type="integer" default="0" required="true" uuid="45562625-54bc-4d5c-b939-eee4df7a4ca3"/>
       <field name="answer_id" type="integer" uuid="8ee121e0-c963-4dd6-9aa5-cf7db585a4d0"/>
       <field name="characteristic_id" type="integer" unsigned="true" uuid="0c89c181-a29e-4291-af32-f8bf2d0ce21e"/>
+      <orm-attributes>
+        <attribute name="table">te_influence</attribute>
+      </orm-attributes>
     </entity>
     <association from="\AppBundle\Entity\Influence" to="\AppBundle\Entity\Answer" caption="Answer Influence" owner-alias="influence" inverse-alias="answer" many-owner="true" many-inverse="false" uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f">
       <association-field from="answer_id" to="id"/>
@@ -194,10 +209,16 @@
       <field name="title" description="Title" type="string" size="32" required="true" uuid="8cc5dd2b-1a44-4fd3-a9d3-8330f68fe0a1"/>
       <field name="image" description="Image src" type="string" size="16" required="true" uuid="b322735a-58ed-4f75-81a8-ecfe4fa87920"/>
       <field name="alternat" description="Alternat" type="string" size="128" required="true" uuid="b0c04782-06e5-44c9-a0a5-e4c4fb8a96dc"/>
+      <orm-attributes>
+        <attribute name="table">te_achievement</attribute>
+      </orm-attributes>
     </entity>
     <entity name="\AppBundle\Entity\Achievements" local-name="Achievements" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="97419482-848e-405f-882c-62a102f89636">
       <field name="achievement_id" type="integer" required="true" primary="true" uuid="fbf03552-55ac-4359-b0d1-b003d61a3391"/>
       <field name="game_id" type="guid" size="32" required="true" primary="true" uuid="fdef5bbd-9c25-43df-bcbb-1c2df6ff9f49"/>
+      <orm-attributes>
+        <attribute name="table">tj_achievements</attribute>
+      </orm-attributes>
     </entity>
     <many-to-many mn-entity="\AppBundle\Entity\Achievements" caption="Achievement to Game" uuid="40ffe283-683c-463e-8589-6f72e3df6f15">
       <many-to-many-entity name="\AppBundle\Entity\Game" owning-side="true" uuid="538a5a94-f183-4652-9ede-2c66c3bb1921">
