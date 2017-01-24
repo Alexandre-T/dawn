@@ -1,4 +1,24 @@
 {% extends 'AppBundle::game.html.twig' %}
 {% block title %} {{ 'app.title' |trans }} &bull; {{ 'good_luck.title' |trans }} {% endblock %}
 {% block content -%}
+    <div id="scene">
+        <img src="{{ relative_path('images/scenes/') }}{{ game.currentScene.image }}" alt="" usemap="#map">
+        <map name="map">
+            {% for action in game.currentScene.actions %}
+            <area coords="{{ action.coords }}" shape="{{ action.shape }}" alt="{{ action.tooltip }}" href="{{ action.destination.id }}">
+            {% endfor %}
+        </map>
+    </div>
+    <div id="dialogue">
+        <p class="text-center">{{ game.currentScene.dialogue | trans }}</p>
+    </div>
+    <div id="answers">
+        {% for sentence in game.currentScene.sentences %}
+            <div class="reponse">
+                <p class="text-center">
+                    {{ sentence.sentence }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
