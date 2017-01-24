@@ -50,12 +50,12 @@ class Characteristic
     /**
      * @ORM\Column(type="string", length=8, nullable=false, name="cha_prefix")
      */
-    private $prefix;
+    private $prefix = '';
 
     /**
      * @ORM\Column(type="string", nullable=false, name="cha_suffix")
      */
-    private $suffix;
+    private $suffix = '';
 
     /**
      * @ORM\Column(type="integer", nullable=false, name="cha_multiply", options={"default":1})
