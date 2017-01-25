@@ -17,12 +17,11 @@
 
 namespace AppBundle\Tests\Entity;
 
-use AppBundle\Entity\Answer;
-use AppBundle\Entity\Influence;
+use AppBundle\Entity\Action;
 use AppBundle\Entity\Scene;
 
 /**
- * Answer Entity test case.
+ * Action Entity test case.
  *
  * @category Testing
  *
@@ -31,12 +30,12 @@ use AppBundle\Entity\Scene;
  *
  * @link     http://opensource.org/licenses/GPL-3.0
  */
-class AnswerTest extends \PHPUnit_Framework_TestCase
+class ActionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var Answer
+     * @var Action
      */
-    private $answer;
+    private $action;
 
     /**
      * Prepares the environment before running a test.
@@ -44,7 +43,7 @@ class AnswerTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->answer = new Answer();
+        $this->action = new Action();
     }
 
     /**
@@ -52,52 +51,76 @@ class AnswerTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-        $this->answer = null;
+        $this->action = null;
         parent::tearDown();
     }
 
     /**
-     * Tests Answer->__construct().
+     * Tests Action->__construct().
      */
     public function testConstruct()
     {
-        self::assertNull($this->answer->getId());
-        self::assertNull($this->answer->getDestination());
+        self::assertNull($this->action->getId());
+        self::assertNull($this->action->getCoords());
+        self::assertNull($this->action->getShape());
+        self::assertNull($this->action->getTooltip());
     }
 
     /**
-     * Tests Answer->setDestination() Answer->getDestination().
+     * Tests Action->setCoords() Action->getCoords().
      */
-    public function testSetDestination()
+    public function testSetCoords()
     {
-        $destination = new Scene();
-        $result = $this->answer->setDestination($destination);
-        self::assertEquals($result, $this->answer);
-        self::assertEquals($destination, $this->answer->getDestination());
+        $coords = 'foo';
+        $result = $this->action->setCoords($coords);
+        self::assertEquals($result, $this->action);
+        self::assertEquals($coords, $this->action->getCoords());
     }
 
     /**
-     * Tests Answer get add removeInfluence ().
+     * Tests Action get add removeScene ().
      */
-    public function testInfluences()
+    public function testScenes()
     {
-        $influence1 = new Influence();
-        $influence2 = new Influence();
-        $this->answer->addInfluence($influence1);
-        self::assertCount(1, $this->answer->getInfluences());
-        self::assertTrue($this->answer->getInfluences()->contains($influence1));
-        self::assertFalse($this->answer->getInfluences()->contains($influence2));
-        $this->answer->addInfluence($influence2);
-        self::assertCount(2, $this->answer->getInfluences());
-        self::assertTrue($this->answer->getInfluences()->contains($influence1));
-        self::assertTrue($this->answer->getInfluences()->contains($influence2));
-        $this->answer->removeInfluence($influence1);
-        self::assertCount(1, $this->answer->getInfluences());
-        self::assertFalse($this->answer->getInfluences()->contains($influence1));
-        self::assertTrue($this->answer->getInfluences()->contains($influence2));
-        $this->answer->removeInfluence($influence2);
-        self::assertCount(0, $this->answer->getInfluences());
-        self::assertFalse($this->answer->getInfluences()->contains($influence1));
-        self::assertFalse($this->answer->getInfluences()->contains($influence2));
+        $scene1 = new Scene();
+        $scene2 = new Scene();
+        $this->action->addScene($scene1);
+        self::assertCount(1, $this->action->getScenes());
+        self::assertTrue($this->action->getScenes()->contains($scene1));
+        self::assertFalse($this->action->getScenes()->contains($scene2));
+        $this->action->addScene($scene2);
+        self::assertCount(2, $this->action->getScenes());
+        self::assertTrue($this->action->getScenes()->contains($scene1));
+        self::assertTrue($this->action->getScenes()->contains($scene2));
+        $this->action->removeScene($scene1);
+        self::assertCount(1, $this->action->getScenes());
+        self::assertFalse($this->action->getScenes()->contains($scene1));
+        self::assertTrue($this->action->getScenes()->contains($scene2));
+        $this->action->removeScene($scene2);
+        self::assertCount(0, $this->action->getScenes());
+        self::assertFalse($this->action->getScenes()->contains($scene1));
+        self::assertFalse($this->action->getScenes()->contains($scene2));
+    }
+    
+    /**
+     * Tests Action->setShape() Action->getShape().
+     */
+    public function testSetShape()
+    {
+        $shape = 'foo';
+        $result = $this->action->setShape($shape);
+        self::assertEquals($result, $this->action);
+        self::assertEquals($shape, $this->action->getShape());
+    }
+    
+    /**
+     * Tests Action->setTooltip() Action->getTooltip().
+     */
+    public function testSetTooltip()
+    {
+        $tooltip = 'foo';
+        $result = $this->action->setTooltip($tooltip);
+        self::assertEquals($result, $this->action);
+        self::assertEquals($tooltip, $this->action->getTooltip());
     }
 }

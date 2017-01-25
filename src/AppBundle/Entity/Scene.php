@@ -41,7 +41,7 @@ class Scene
     private $achievement;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Answer")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Answer", inversedBy="scenes")
      * @ORM\JoinTable(
      *     name="tj_answers",
      *     joinColumns={@ORM\JoinColumn(name="scene_id", referencedColumnName="id", nullable=false)},

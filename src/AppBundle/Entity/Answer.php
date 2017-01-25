@@ -32,11 +32,17 @@ class Answer
     private $destination;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Scene", mappedBy="answers")
+     */
+    private $scenes;
+
+    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->influences = new ArrayCollection();
+        $this->scenes     = new ArrayCollection();
     }
 
     /**
@@ -105,5 +111,39 @@ class Answer
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * Add scene
+     *
+     * @param scene $scene
+     *
+     * @return Answer
+     */
+    public function addScene(scene $scene)
+    {
+        $this->scenes[] = $scene;
+
+        return $this;
+    }
+
+    /**
+     * Remove scene
+     *
+     * @param scene $scene
+     */
+    public function removeScene(scene $scene)
+    {
+        $this->scenes->removeElement($scene);
+    }
+
+    /**
+     * Get scenes
+     *
+     * @return Collection
+     */
+    public function getScenes()
+    {
+        return $this->scenes;
     }
 }
