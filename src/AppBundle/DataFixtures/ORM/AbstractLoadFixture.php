@@ -17,7 +17,9 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\Achievement;
 use AppBundle\Entity\Characteristic;
+use AppBundle\Entity\Scene;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -118,6 +120,21 @@ abstract class AbstractLoadFixture extends AbstractFixture implements ContainerA
     }
 
     /**
+     * Get referenced achievement.
+     *
+     * @param $code
+     *
+     * @return Achievement
+     */
+    protected function getReferencedAchievement($code)
+    {
+        /** @var Achievement $achievement */
+        $achievement = $this->getMyReference($code, Achievement::class, 'achievement');
+
+        return $achievement;
+    }
+    
+    /**
      * Get referenced characteristic.
      *
      * @param $code
@@ -130,6 +147,21 @@ abstract class AbstractLoadFixture extends AbstractFixture implements ContainerA
         $characteristic = $this->getMyReference($code, Characteristic::class, 'characteristic');
 
         return $characteristic;
+    }
+
+    /**
+     * Get referenced scene.
+     *
+     * @param $code
+     *
+     * @return Scene
+     */
+    protected function getReferencedScene($code)
+    {
+        /** @var Scene $scene */
+        $scene = $this->getMyReference($code, Scene::class, 'scene');
+
+        return $scene;
     }
 
     /**

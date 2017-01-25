@@ -20,7 +20,7 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Scene;
+use AppBundle\Entity\Sentence;
 
 /**
  * Load News test data in the database.
@@ -34,23 +34,21 @@ use AppBundle\Entity\Scene;
  *
  * @codeCoverageIgnore
  */
-class LoadSceneData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
+class LoadSentenceData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
 {
-    const ID = 0;
-    const ACHIEVEMENT = 1;
-    const IMAGE = 2;
-    const INITIAL = 3;
-    const DIALOGUE = 4;
-    const COLUMNS = 5;
+    const SCENE = 0;
+    const DESTINATION = 1;
+    const SENTENCE = 2;
+    const COLUMNS = 3;
 
     /**
-     * Load Scenes.
+     * Load Sentences.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
-        $csvFile = fopen($this->getCsvRepository().'scenes.csv', 'r');
+        $csvFile = fopen($this->getCsvRepository().'sentences.csv', 'r');
         $index = 0;
 
         while (!feof($csvFile)) {
@@ -65,18 +63,17 @@ class LoadSceneData extends AbstractLoadFixture implements FixtureInterface, Ord
                 continue;
             }
 
-            $scene = new Scene();
-            if (!empty($line[self::ACHIEVEMENT])) {
-                $scene->setAchievement($this->getReferencedAchievement($line[self::ACHIEVEMENT]));
-            }
-            $scene->setDialogue($line[self::DIALOGUE]);
-            $scene->setImage($line[self::IMAGE]);
+            $sentence = new Sentence();
+            $scene = $this->getReferencedScene($line[self::SCENE]);
+            $sentence->addScene($scene);
+            $scene->addSentence($sentence);
 
-            if (!empty($line[self::INITIAL])) {
-                $scene->setInitial(true);
+            if (!empty($line[self::DESTINATION])) {
+                $sentence->setDestination($this->getReferencedScene($line[self::DESTINATION]));
             }
+            $sentence->setSentence($line[self::SENTENCE]);
 
-            $this->addReference("scene-{$line[self::ID]}", $scene);
+            $manager->persist($sentence);
             $manager->persist($scene);
         }
         $manager->flush();
@@ -89,6 +86,6 @@ class LoadSceneData extends AbstractLoadFixture implements FixtureInterface, Ord
      */
     public function getOrder()
     {
-        return 30; // the order in which fixtures will be loaded
+        return 50; // the order in which fixtures will be loaded
     }
 }
