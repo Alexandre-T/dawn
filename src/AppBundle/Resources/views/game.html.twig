@@ -1,9 +1,14 @@
 {% extends 'AppBundle::base.html.twig' %}
+{% block background %}{% endblock %}
 {% block loader %}{% include 'AppBundle::loader.html.twig' %}{% endblock %}
 {% block header %}{% include 'AppBundle:game:header.html.twig' %}{% endblock %}
-{% block body %}
-    {% block content %}{% endblock %}
-    {% include 'AppBundle:game:save.html.twig' %}
+{% block container %}
+    <div class="container d-flex align-items-center" id="container">
+        {% block body %}
+            {% block content %}{% endblock %}
+            {% include 'AppBundle:game:save.html.twig' %}
+        {% endblock %}
+    </div>
 {% endblock %}
 {% block footer %}{% include 'AppBundle:game:footer.html.twig' %}{% endblock %}
 

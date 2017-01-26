@@ -1,24 +1,28 @@
 {% extends 'AppBundle::game.html.twig' %}
 {% block title %} {{ 'app.title' |trans }} &bull; {{ 'good_luck.title' |trans }} {% endblock %}
 {% block content -%}
-    <div id="scene">
-        <img src="{{ relative_path('images/scenes/') }}{{ game.currentScene.image }}" alt="" usemap="#map">
-        <map name="map">
-            {% for action in game.currentScene.actions %}
-            <area coords="{{ action.coords }}" shape="{{ action.shape }}" alt="{{ action.tooltip }}" href="{{ action.destination.id }}">
-            {% endfor %}
-        </map>
-    </div>
-    <div id="dialogue">
-        <p class="text-center">{{ game.currentScene.dialogue | trans }}</p>
-    </div>
-    <div id="answers">
-        {% for sentence in game.currentScene.sentences %}
-            <div class="reponse">
-                <p class="text-center">
-                    {{ sentence.sentence }}
-                </p>
+    <div id="scene" class="align-middle">
+        <div id="dialogue" class="row mt-auto mb-0">
+            <div class="col">
+                <p class="text-center">{{ game.currentScene.dialogue | trans }}</p>
             </div>
-        {% endfor %}
+        </div>
+        <div class="row">
+            <img width="1920" height="1080" class="img-fluid" src="{{ asset('images/scenes/' ~ game.currentScene.image) }}" alt="" usemap="#map" id="sceneImg">
+            <map name="map">
+                {% for action in game.currentScene.actions %}
+                    <area class="bordered" coords="{{ action.coords }}" shape="{{ action.shape }}" alt="{{ action.tooltip }}" href="#" data-destination="{{ action.destination.id }}">
+                {% endfor %}
+            </map>
+        </div>
+        <div id="answers" class="row">
+            {% for sentence in game.currentScene.sentences %}
+                <div class="answer col-sm-12 col-md-6">
+                    <p class="text-center">
+                        <a href="#" title="" data-destination="{{ sentence.destination.id }}">{{ sentence.sentence }}</a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

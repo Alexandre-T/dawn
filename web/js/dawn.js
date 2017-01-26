@@ -33,24 +33,11 @@ var showDelay = 1000;
 var character = '';
 
 /**
- * Btn class dynmically created created.
- *
- * @type {string}
- */
-var btnCss = 'btn btn-secondary btn-sm';
-
-/**
- * Background Layer.
- *
- * @type {*}
- */
-var backgroundLayer = $('div#background');
-
-/**
  *
  */
 $(document).ready(function() {
-
+    //action responsive
+    $('img[usemap]').rwdImageMaps();
     //Hide Loader layer and show content layer
     $("#loader").fadeOut(hideDelay);
 });

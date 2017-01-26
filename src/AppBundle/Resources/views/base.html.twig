@@ -31,13 +31,13 @@
     <body>
         {% block background %}<div id="background"></div>{% endblock %}
         {% block loader %}{% endblock %}
-        <div id="wrap">
-            {% block header %}{% endblock %}
-            <div class="container">
-                {% block body %}{% endblock %}
-            </div>
-            {% block footer %}{% endblock %}
+        {% block header %}{% endblock %}
+        {% block container %}
+        <div class="container">
+            {% block body %}{% endblock %}
         </div>
+        {% endblock %}
+        {% block footer %}{% endblock %}
         {{ include('AppBundle::flashMessages.html.twig') }}
         {% block javascripts %}
             <!-- jQuery -->
@@ -49,6 +49,8 @@
             <script id="clipboard-js" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
             <!-- Lightbox -->
             <script id="lightbox-js" src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js"></script>
+            <!-- MAP Responsive -->
+            <script id="rwd-js" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
             <!-- Notification -->
             <script id="notification-js" src="{{ asset('js/notification.js') }}"></script>
             <!-- Flash to improve -->
@@ -57,7 +59,7 @@
                 lightbox.option({
                     'albumLabel': '{{ 'txt.albumLabel' | trans }}',
                     'wrapAround': true
-                })
+                });
             </script>
         {% endblock %}
         {% block script %}{% endblock %}

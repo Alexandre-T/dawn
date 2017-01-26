@@ -100,6 +100,12 @@ class DefaultControllerTest extends AbstractControllerTest
         $tests[$index]['attr'] = 'src';
         $tests[$index]['value'] = 'notification.js';
 
+        //Test Map ressponsive jquery
+        ++$index;
+        $tests[$index]['id'] = 'script#rwd-js';
+        $tests[$index]['attr'] = 'src';
+        $tests[$index]['value'] = 'jquery.rwdImageMaps.min.js';
+
         //Test js simdate IS NOT implemented
         self::assertEmpty($crawler->filter('script#dawn-js'));
 
