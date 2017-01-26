@@ -38,4 +38,17 @@ class Sentence extends Answer
     {
         return $this->sentence;
     }
+
+    /**
+     * Return array of non-object properties.
+     *
+     * @return array
+     */
+    public function toArray(){
+        return [
+            'id' => $this->getId(),
+            'sentence' => $this->getSentence(),
+        ];
+    }
+
 }

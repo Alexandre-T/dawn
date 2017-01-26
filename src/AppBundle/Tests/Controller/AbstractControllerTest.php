@@ -19,6 +19,7 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Abstract Controller Web test case.
@@ -54,4 +55,20 @@ abstract class AbstractControllerTest extends WebTestCase
             }
         }
     }
+
+    /**
+     * @param Response $response
+     * @param $message
+     */
+    public static function assertIsJsonResponse(Response $response, $message = '')
+    {
+        $condition = $response->headers->contains(
+            'Content-Type',
+            'application/json'
+        );
+        static::assertThat($condition, static::isTrue(), $message);
+        self::assertEquals('UTF-8', $response->getCharset());
+        static::assertThat($response->getContent(), static::isJson(), $message);
+    }
+
 }

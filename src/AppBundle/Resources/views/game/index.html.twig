@@ -4,22 +4,24 @@
     <div id="scene" class="align-middle">
         <div id="dialogue" class="row mt-auto mb-0">
             <div class="col">
-                <p class="text-center">{{ game.currentScene.dialogue | trans }}</p>
+                <p class="text-center" id="sceneDialogue">{{ game.currentScene.dialogue }}</p>
             </div>
         </div>
         <div class="row">
-            <img width="1920" height="1080" class="img-fluid" src="{{ asset('images/scenes/' ~ game.currentScene.image) }}" alt="" usemap="#map" id="sceneImg">
+            <img width="1920" height="1080" class="img-fluid" src="{{ asset('images/scenes/' ~ game.currentScene.image) }}" alt="" usemap="#map" id="sceneImage">
             <map name="map">
                 {% for action in game.currentScene.actions %}
-                    <area class="bordered" coords="{{ action.coords }}" shape="{{ action.shape }}" alt="{{ action.tooltip }}" href="#" data-destination="{{ action.destination.id }}">
+                    <area class="action answer" coords="{{ action.coords }}" shape="{{ action.shape }}" alt="{{ action.tooltip }}" href="#" data-answer="{{ action.id }}">
                 {% endfor %}
             </map>
         </div>
         <div id="answers" class="row">
             {% for sentence in game.currentScene.sentences %}
-                <div class="answer col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-6">
                     <p class="text-center">
-                        <a href="#" title="" data-destination="{{ sentence.destination.id }}">{{ sentence.sentence }}</a>
+                        <a href="#" title="" class="sentence answer" data-answer="{{ sentence.id }}">
+                            {{ sentence.sentence }}
+                        </a>
                     </p>
                 </div>
             {% endfor %}

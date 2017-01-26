@@ -7,10 +7,20 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.answer-service:
+        class:  AppBundle\Service\AnswerService
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+            repositoryName: "AppBundle:Answer"
     app.game-service:
         class:  AppBundle\Service\GameService
         arguments:
             entityManager: "@doctrine.orm.entity_manager"
+    app.scene-service:
+        class:  AppBundle\Service\SceneService
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+            repositoryName: "AppBundle:Scene"
 #    manager_name:
 #        class: AppBundle\Manager\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
@@ -21,4 +31,11 @@ services:
     app.game-manager:
         class:  AppBundle\Manager\GameManager
         arguments:
+            answerService: "@app.answer-service"
             gameService: "@app.game-service"
+            sceneService: "@app.scene-service"
+    app.flash_messenger:
+        class: AppBundle\Messenger\Flash
+        arguments: ["@session"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.response}

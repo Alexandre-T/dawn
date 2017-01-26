@@ -25,6 +25,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -154,6 +155,42 @@ class GameController extends Controller
         ]);
     }
 
+    /** Give an Answer.
+     * 
+     * @Route("/answer", name="answer_without_id", methods="get")
+     * @Route("/answer/{code}", name="answer", methods="get")
+     *
+     * @param Request $request
+     * @param string  $code
+     *
+     * @return JsonResponse
+     */
+    public function answerAction(Request $request, $code)
+    {
+        //Initialization
+        $result = [];
+        $id = (int)$code;
+
+        //Service call
+        $launchManager = $this->get('app.launch-manager');
+        $gameManager = $this->get('app.game-manager');
+
+        try {
+            //Handle current game
+            $game = $launchManager->load($this->getUuid($request));
+            //Get Location
+            $answer = $gameManager->getAnswer($id);
+            $gameManager->verifyAnswer($game, $answer);
+            $result = $gameManager->gotoScene($game, $answer->getDestination());
+            $result['base_dir'] = $request->getBasePath() . '/images/scenes/';
+        } catch (GameException $exception) {
+            return $this->report($exception, $result);
+        }
+
+        //Return the JSON response
+        return $this->prepareResponse($result);
+    }
+
     /**
      * Create a game.
      *
@@ -207,4 +244,100 @@ class GameController extends Controller
 
         return $session->has('uuid') || $request->cookies->has('uuid');
     }
+
+    /**
+     * Prepare the JSON response to send.
+     *
+     * @param array $result
+     *
+     * @return JsonResponse
+     */
+    private function prepareResponse(array $result)
+    {
+        $response = new JsonResponse();
+        //Encode result
+        $response->setContent(json_encode($result));
+        //Return JsonResponse
+        return $response;
+    }
+
+    /**
+     * Report Exception to browser with a JsonResponse.
+     *
+     * @param GameException $exception
+     * @param array         $result
+     *
+     * @return JsonResponse
+     */
+    private function report(GameException $exception, $result = [])
+    {
+        switch ($exception->getCode()) {
+            case GameException::SUCCESS:
+                return $this->success($exception->getMessage(), $result);
+            case GameException::INFO:
+                return $this->info($exception->getMessage(), $result);
+            default:
+                return $this->error($exception->getMessage(), $result);
+        }
+    }
+
+    /**
+     * Return Error Json message.
+     *
+     * @param string $message
+     * @param array  $result
+     *
+     * @return JsonResponse
+     */
+    private function error($message, $result = [])
+    {
+        return $this->message('error', $message, $result);
+    }
+
+    /**
+     * Return Info Json message.
+     *
+     * @param $message
+     * @param array $result
+     *
+     * @return JsonResponse
+     */
+    private function success($message, $result = [])
+    {
+        return $this->message('info', $message, $result);
+    }
+
+    /**
+     * Return Alert Json message.
+     *
+     * @param $message
+     * @param array $result
+     *
+     * @return JsonResponse
+     */
+    private function info($message, $result = [])
+    {
+        return $this->message('info', $message, $result);
+    }
+
+    /**
+     * Return Json message.
+     *
+     * @param string $type
+     * @param string $message
+     * @param array  $result
+     *
+     * @return JsonResponse
+     */
+    private function message($type, $message, $result = [])
+    {
+        //Message de l'application
+        $this->get('session')->getFlashBag()->add(
+            $type,
+            $message
+        );
+
+        return $this->prepareResponse($result);
+    }
+
 }

@@ -96,4 +96,19 @@ class Action extends Answer
     {
         return $this->coords;
     }
+
+    /**
+     * Return array of non-object properties.
+     *
+     * @return array
+     */
+    public function toArray(){
+        return [
+            'id' => $this->getId(),
+            'coords' => $this->getCoords(),
+            'shape' => $this->getShape(),
+            'tooltip' => $this->getTooltip(),
+        ];
+    }
+
 }

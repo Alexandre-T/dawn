@@ -159,7 +159,7 @@ class GameControllerTest extends AbstractControllerTest
 
         self::assertEquals($uuid1, $uuid2);
 
-        $client->request('GET', '/goto/casino');
+        $client->request('GET', '/answer/1');
 
         $client->request('GET', '/game');
         $content = $client->getResponse()->getContent();
@@ -255,6 +255,62 @@ class GameControllerTest extends AbstractControllerTest
         $response = $client->getResponse();
         self::assertEquals(302, $response->getStatusCode());
         self::assertTrue($response->isRedirect('/game'));
+    }
+
+
+    /**
+     * Functional test : I'm trying to provide a non-existant answer.
+     * Application must throw a GameException handled and returned as a json message.
+     */
+    public function testAnswer()
+    {
+        $expected = '{"scene":{"id":2,"dialogue":"DIALOGUE2","image":"image2.png"},"actions":[{"id":4,"coords":"90,58,3","shape":"circle","tooltip":"TOOLTIP4"}],"sentences":[{"id":7,"sentence":"Sentence 3 (Goto 1)"}],"base_dir":"\/images\/scenes\/"}';
+
+        $client = static::createClient();
+        $client->request('GET', '/newGame');
+        $client->request('GET', '/game');
+        $client->request('GET', '/answer/1');
+        $response = $client->getResponse();
+
+        self::assertIsJsonResponse($response);
+        self::assertEquals($expected, $response->getContent());
+    }
+
+    /**
+     * Functional test : I'm trying to provide a non-existant answer.
+     * Application must throw a GameException handled and returned as a json message.
+     */
+    public function testAnswerNonExistantAnswer()
+    {
+        $expected = '{"messages":{"error":["Answer unknown"]}}';
+
+        $client = static::createClient();
+        $client->request('GET', '/newGame');
+        $client->request('GET', '/game');
+        $client->request('GET', '/answer/42');
+        $response = $client->getResponse();
+
+        self::assertIsJsonResponse($response);
+        self::assertEquals($expected, $response->getContent());
+    }
+
+
+    /**
+     * Functional test : I'm trying to provide an unavailable answer.
+     * Application must throw a GameException handled and returned as a json message.
+     */
+    public function testAnswerUnavailableAnswer()
+    {
+        $expected = '{"messages":{"error":["Answer unavailable from this scene"]}}';
+
+        $client = static::createClient();
+        $client->request('GET', '/newGame');
+        $client->request('GET', '/game');
+        $client->request('GET', '/answer/4');
+        $response = $client->getResponse();
+
+        self::assertIsJsonResponse($response);
+        self::assertEquals($expected, $response->getContent());
     }
 
     /**

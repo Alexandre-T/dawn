@@ -274,4 +274,17 @@ class Scene
     {
         return $this->initial;
     }
+
+    /**
+     * Return array of non-object properties.
+     *
+     * @return array
+     */
+    public function toArray(){
+        return [
+            'id' => $this->getId(),
+            'dialogue' => $this->getDialogue(),
+            'image' => $this->getImage()
+        ];
+    }
 }
