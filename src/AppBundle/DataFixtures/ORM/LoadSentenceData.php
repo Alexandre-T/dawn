@@ -36,10 +36,11 @@ use AppBundle\Entity\Sentence;
  */
 class LoadSentenceData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
 {
-    const SCENE = 0;
-    const DESTINATION = 1;
-    const SENTENCE = 2;
-    const COLUMNS = 3;
+    const ID = 0;
+    const SCENE = 1;
+    const DESTINATION = 2;
+    const SENTENCE = 3;
+    const COLUMNS = 4;
 
     /**
      * Load Sentences.
@@ -72,7 +73,7 @@ class LoadSentenceData extends AbstractLoadFixture implements FixtureInterface, 
                 $sentence->setDestination($this->getReferencedScene($line[self::DESTINATION]));
             }
             $sentence->setSentence($line[self::SENTENCE]);
-            $this->addReference("answer-{$line[self::SENTENCE]}", $sentence);
+            $this->addReference("answer-{$line[self::ID]}", $sentence);
 
             $manager->persist($sentence);
             $manager->persist($scene);

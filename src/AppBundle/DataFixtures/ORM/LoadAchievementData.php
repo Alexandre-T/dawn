@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Simdate Application.
+ * This file is part of the Dawn project.
  *
  * PHP version 5.6
  *
@@ -20,10 +20,10 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Action;
+use AppBundle\Entity\Achievement;
 
 /**
- * Load Actions test data in the database.
+ * Load Achievements test data in the database.
  *
  * @category LoadDataFixture
  *
@@ -34,24 +34,22 @@ use AppBundle\Entity\Action;
  *
  * @codeCoverageIgnore
  */
-class LoadActionData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
+class LoadAchievementData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
 {
     const ID = 0;
-    const SCENE = 1;
-    const DESTINATION = 2;
-    const SHAPE = 3;
-    const COORDS = 4;
-    const TOOLTIP = 5;
-    const COLUMNS = 6;
+    const TITLE = 1;
+    const IMAGE = 2;
+    const ALTERNAT = 3;
+    const COLUMNS = 4;
 
     /**
-     * Load Actions.
+     * Load Achievements.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
-        $csvFile = fopen($this->getCsvRepository().'actions.csv', 'r');
+        $csvFile = fopen($this->getCsvRepository().'achievements.csv', 'r');
         $index = 0;
 
         while (!feof($csvFile)) {
@@ -66,21 +64,14 @@ class LoadActionData extends AbstractLoadFixture implements FixtureInterface, Or
                 continue;
             }
 
-            $action = new Action();
-            $scene = $this->getReferencedScene($line[self::SCENE]);
-            $action->addScene($scene);
-            $scene->addAction($action);
+            $achievement = new Achievement();
+            $achievement->setTitle($line[self::TITLE]);
+            $achievement->setImage($line[self::IMAGE]);
+            $achievement->setAlternat($line[self::ALTERNAT]);
 
-            if (!empty($line[self::DESTINATION])) {
-                $action->setDestination($this->getReferencedScene($line[self::DESTINATION]));
-            }
-            $action->setShape($line[self::SHAPE]);
-            $action->setCoords($line[self::COORDS]);
-            $action->setTooltip($line[self::TOOLTIP]);
-            $this->addReference("answer-{$line[self::ID]}", $action);
+            $this->addReference("achievement-{$line[self::ID]}", $achievement);
 
-            $manager->persist($action);
-            $manager->persist($scene);
+            $manager->persist($achievement);
         }
         $manager->flush();
     }
@@ -92,6 +83,6 @@ class LoadActionData extends AbstractLoadFixture implements FixtureInterface, Or
      */
     public function getOrder()
     {
-        return 50; // the order in which fixtures will be loaded
+        return 10; // the order in which fixtures will be loaded
     }
 }
