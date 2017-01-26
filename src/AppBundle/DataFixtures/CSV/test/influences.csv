@@ -1,0 +1,9 @@
+#CHARACTERISTIC
+moral;TOOLTIP1;1
+day;TOOLTIP1;1
+time;TOOLTIP1;24
+money;TOOLTIP1;5
+moral;Sentence 1 (Goto 2);1
+day;Sentence 1 (Goto 2);0
+time;Sentence 1 (Goto 2);-1
+money;Sentence 1 (Goto 2);5

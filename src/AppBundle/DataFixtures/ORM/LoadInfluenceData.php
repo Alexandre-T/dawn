@@ -20,10 +20,10 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Action;
+use AppBundle\Entity\Influence;
 
 /**
- * Load Actions test data in the database.
+ * Load News test data in the database.
  *
  * @category LoadDataFixture
  *
@@ -34,23 +34,21 @@ use AppBundle\Entity\Action;
  *
  * @codeCoverageIgnore
  */
-class LoadActionData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
+class LoadInfluenceData extends AbstractLoadFixture implements FixtureInterface, OrderedFixtureInterface
 {
-    const SCENE = 0;
-    const DESTINATION = 1;
-    const SHAPE = 2;
-    const COORDS = 3;
-    const TOOLTIP = 4;
-    const COLUMNS = 5;
+    const CHARACTERISTIC = 0;
+    const ANSWER = 1;
+    const BONUS = 2;
+    const COLUMNS = 3;
 
     /**
-     * Load Actions.
+     * Load Influences.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
-        $csvFile = fopen($this->getCsvRepository().'actions.csv', 'r');
+        $csvFile = fopen($this->getCsvRepository().'influences.csv', 'r');
         $index = 0;
 
         while (!feof($csvFile)) {
@@ -65,21 +63,11 @@ class LoadActionData extends AbstractLoadFixture implements FixtureInterface, Or
                 continue;
             }
 
-            $action = new Action();
-            $scene = $this->getReferencedScene($line[self::SCENE]);
-            $action->addScene($scene);
-            $scene->addAction($action);
-
-            if (!empty($line[self::DESTINATION])) {
-                $action->setDestination($this->getReferencedScene($line[self::DESTINATION]));
-            }
-            $action->setShape($line[self::SHAPE]);
-            $action->setCoords($line[self::COORDS]);
-            $action->setTooltip($line[self::TOOLTIP]);
-            $this->addReference("answer-{$line[self::TOOLTIP]}", $action);
-
-            $manager->persist($action);
-            $manager->persist($scene);
+            $influence = new Influence();
+            $influence->setCharacteristic($this->getReferencedCharacteristic($line[self::CHARACTERISTIC]));
+            $influence->setAnswer($this->getReferencedAnswer($line[self::ANSWER]));
+            $influence->setBonus($line[self::BONUS]);
+            $manager->persist($influence);
         }
         $manager->flush();
     }
@@ -91,6 +79,6 @@ class LoadActionData extends AbstractLoadFixture implements FixtureInterface, Or
      */
     public function getOrder()
     {
-        return 50; // the order in which fixtures will be loaded
+        return 70; // the order in which fixtures will be loaded
     }
 }

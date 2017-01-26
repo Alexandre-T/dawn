@@ -58,7 +58,7 @@ $(document).ready(function() {
 /* Dynamic action */
 /******************/
 function provideAnswer(answerId) {
-    //loader.fadeIn(showDelay);
+    loader.fadeIn(showDelay);
     $.getJSON(
         this.rootPath + 'answer/'+ answerId,
         function (data) {
@@ -140,3 +140,15 @@ function createSentence(data){
 
     sentencesDocker.append(div);
 }
+
+/**
+ * Do an animation only one time
+ */
+jQuery.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});

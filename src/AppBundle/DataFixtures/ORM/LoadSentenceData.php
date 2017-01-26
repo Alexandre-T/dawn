@@ -72,6 +72,7 @@ class LoadSentenceData extends AbstractLoadFixture implements FixtureInterface, 
                 $sentence->setDestination($this->getReferencedScene($line[self::DESTINATION]));
             }
             $sentence->setSentence($line[self::SENTENCE]);
+            $this->addReference("answer-{$line[self::SENTENCE]}", $sentence);
 
             $manager->persist($sentence);
             $manager->persist($scene);

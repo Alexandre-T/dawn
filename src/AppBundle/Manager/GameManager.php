@@ -163,7 +163,7 @@ class GameManager
                     continue;
                 }
                 $score->increase($influence->getBonus());
-                $result[$score->getCharacteristic()->getCode()] = $score->getValue();
+                $result[$score->getCharacteristic()->getCode()] = $score->getScore();
                 $this->gameService->save($score);
                 break;
             }

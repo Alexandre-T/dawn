@@ -18,6 +18,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Achievement;
+use AppBundle\Entity\Answer;
 use AppBundle\Entity\Characteristic;
 use AppBundle\Entity\Scene;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -132,6 +133,21 @@ abstract class AbstractLoadFixture extends AbstractFixture implements ContainerA
         $achievement = $this->getMyReference($code, Achievement::class, 'achievement');
 
         return $achievement;
+    }
+
+    /**
+     * Get referenced answer.
+     *
+     * @param $code
+     *
+     * @return Answer
+     */
+    protected function getReferencedAnswer($code)
+    {
+        /** @var Answer $answer */
+        $answer = $this->getMyReference($code, Answer::class, 'answer');
+
+        return $answer;
     }
     
     /**
