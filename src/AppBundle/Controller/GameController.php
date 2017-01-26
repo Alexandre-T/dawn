@@ -180,8 +180,8 @@ class GameController extends Controller
             $game = $launchManager->load($this->getUuid($request));
             //Get Location
             $answer = $gameManager->getAnswer($id);
-            $gameManager->verifyAnswer($game, $answer);
-            $result = $gameManager->gotoScene($game, $answer->getDestination());
+            $result['influences'] = $gameManager->verifyAnswer($game, $answer);
+            $result = array_merge($result, $gameManager->gotoScene($game, $answer->getDestination()));
             $result['base_dir'] = $request->getBasePath() . '/images/scenes/';
         } catch (GameException $exception) {
             return $this->report($exception, $result);

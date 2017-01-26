@@ -20,11 +20,14 @@ namespace AppBundle\Manager;
 use AppBundle\Controller\Exception\GameException;
 use AppBundle\Entity\Answer;
 use AppBundle\Entity\Game;
+use AppBundle\Entity\Influence;
 use AppBundle\Entity\Scene;
+use AppBundle\Entity\Score;
 use AppBundle\Entity\Sentence;
 use AppBundle\Service\AnswerService;
 use AppBundle\Service\GameService;
 use AppBundle\Service\SceneService;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Game Manager.
@@ -92,7 +95,7 @@ class GameManager
      * @param Game $game
      * @param Answer $answer
      * @throws GameException
-     * @return boolean
+     * @return array
      */
     public function verifyAnswer(Game $game, Answer $answer)
     {
@@ -100,7 +103,7 @@ class GameManager
         if (! $game->getCurrentScene()->getAnswers()->contains($answer)){
             throw new GameException('Answer unavailable from this scene');
         }
-        return true;
+        return $this->alterScore($answer->getInfluences(), $game->getScores());
     }
 
     /**
@@ -135,6 +138,37 @@ class GameManager
         foreach ($object as $value){
             $result[] = $this->serialize($value);
         }
+        return $result;
+    }
+
+    /**
+     * Actions alter scores, let's calculate the change.
+     *
+     * @param Collection $influences
+     * @param Collection $scores
+     *
+     * @return array key is Stuff code, and value is new quantity in inventory
+     */
+    private function alterScore(Collection $influences, Collection $scores)
+    {
+        $result = [];
+        foreach ($influences as $influence) {
+            /** @var $influence Influence */
+            if (0 == $influence->getBonus()) {
+                continue;
+            }
+            foreach ($scores as $score) {
+                /** @var $score Score */
+                if ($score->getCharacteristic() != $influence->getCharacteristic()) {
+                    continue;
+                }
+                $score->increase($influence->getBonus());
+                $result[$score->getCharacteristic()->getCode()] = $score->getValue();
+                $this->gameService->save($score);
+                break;
+            }
+        }
+
         return $result;
     }
 }

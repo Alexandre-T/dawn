@@ -264,7 +264,7 @@ class GameControllerTest extends AbstractControllerTest
      */
     public function testAnswer()
     {
-        $expected = '{"scene":{"id":2,"dialogue":"DIALOGUE2","image":"image2.png"},"actions":[{"id":4,"coords":"90,58,3","shape":"circle","tooltip":"TOOLTIP4"}],"sentences":[{"id":7,"sentence":"Sentence 3 (Goto 1)"}],"base_dir":"\/images\/scenes\/"}';
+        $expected = '{"influences":[],"scene":{"id":2,"dialogue":"DIALOGUE2","image":"image2.png"},"actions":[{"id":4,"coords":"90,58,3","shape":"circle","tooltip":"TOOLTIP4"}],"sentences":[{"id":7,"sentence":"Sentence 3 (Goto 1)"}],"base_dir":"\/images\/scenes\/"}';
 
         $client = static::createClient();
         $client->request('GET', '/newGame');

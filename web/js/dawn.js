@@ -80,6 +80,14 @@ function provideAnswer(answerId) {
             $.each(data['sentences'], function (key, val) {
                 createSentence(val);
             });
+            //influence scores
+            $.each( data['influences'], function( key, val ) {
+                console.log('characteristics '+key+':'+val);
+                $("#"+key)
+                    .text(val)
+                    .animateCss('flash');
+
+            });
             loader.fadeOut(showDelay);
             console.log('end function getJSON(provideAnswer)')
         }
@@ -88,6 +96,9 @@ function provideAnswer(answerId) {
     }).fail(function() {
         console.log( "error provideAnswer received" );
     }).always(function() {
+        //action responsive
+        $('img[usemap]').rwdImageMaps();
+        //loader hide
         loader.fadeOut(showDelay);
         console.log( "complete provideAnswer received" );
     });
