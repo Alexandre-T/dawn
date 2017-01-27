@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the JDR Application.
+ * This file is part of the Dawn Project.
  *
- * PHP version 5
+ * PHP version 5.6
  *
  * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
  *
@@ -12,7 +12,7 @@
  * @copyright 2015 Alexandre Tranchant
  * @license   GNU General Public License, version 3
  *
- * @see      http://opensource.org/licenses/GPL-3.0
+ * @link      http://opensource.org/licenses/GPL-3.0
  */
 
 namespace AppBundle\Tests\Controller;
