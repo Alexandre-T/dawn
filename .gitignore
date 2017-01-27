@@ -1,5 +1,6 @@
 /app/config/parameters.yml
 /build/
+/composer.lock
 /phpunit.xml
 /src/AppBundle/DataFixtures/CSV/dev/*
 !/src/AppBundle/DataFixtures/CSV/dev/.gitkeep
