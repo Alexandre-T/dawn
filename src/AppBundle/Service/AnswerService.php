@@ -62,7 +62,7 @@ class AnswerService
      *
      * @return null|Answer
      */
-    public function getAnswer(int $id)
+    public function getAnswer($id)
     {
         /** @var Answer $answer */
         $answer = $this->repository->find($id);
