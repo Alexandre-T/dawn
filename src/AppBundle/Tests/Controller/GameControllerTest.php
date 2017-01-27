@@ -12,7 +12,7 @@
  * @copyright 2015 Alexandre Tranchant
  * @license   GNU General Public License, version 3
  *
- * @link      http://opensource.org/licenses/GPL-3.0
+ * @see      http://opensource.org/licenses/GPL-3.0
  */
 
 namespace AppBundle\Tests\Controller;
@@ -257,7 +257,6 @@ class GameControllerTest extends AbstractControllerTest
         self::assertTrue($response->isRedirect('/game'));
     }
 
-
     /**
      * Functional test : I'm trying to provide a non-existant answer.
      * Application must throw a GameException handled and returned as a json message.
@@ -293,7 +292,6 @@ class GameControllerTest extends AbstractControllerTest
         self::assertIsJsonResponse($response);
         self::assertEquals($expected, $response->getContent());
     }
-
 
     /**
      * Functional test : I'm trying to provide an unavailable answer.

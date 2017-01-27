@@ -158,7 +158,6 @@ class GameController extends Controller
     }
 
     /** Give an Answer.
-     * 
      * @Route("/answer", name="answer_without_id", methods="get")
      * @Route("/answer/{code}", name="answer", methods="get")
      *
@@ -171,7 +170,7 @@ class GameController extends Controller
     {
         //Initialization
         $result = [];
-        $id = (int)$code;
+        $id = (int) $code;
 
         //Service call
         $launchManager = $this->get('app.launch-manager');
@@ -184,7 +183,7 @@ class GameController extends Controller
             $answer = $gameManager->getAnswer($id);
             $result['influences'] = $gameManager->verifyAnswer($game, $answer);
             $result = array_merge($result, $gameManager->gotoScene($game, $answer->getDestination()));
-            $result['base_dir'] = $request->getBasePath() . '/images/';
+            $result['base_dir'] = $request->getBasePath().'/images/';
         } catch (GameException $exception) {
             return $this->report($exception, $result);
         }
@@ -341,5 +340,4 @@ class GameController extends Controller
 
         return $this->prepareResponse($result);
     }
-
 }

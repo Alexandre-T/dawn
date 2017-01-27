@@ -12,8 +12,9 @@
  * @copyright 2015 Alexandre Tranchant
  * @license   GNU General Public License, version 3
  *
- * @link      http://opensource.org/licenses/GPL-3.0
+ * @see      http://opensource.org/licenses/GPL-3.0
  */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -72,14 +73,13 @@ class Scene
         $this->answers = new ArrayCollection();
     }
 
-
     /**
- * Add action.
- *
- * @param Action $action
- *
- * @return Scene
- */
+     * Add action.
+     *
+     * @param Action $action
+     *
+     * @return Scene
+     */
     public function addAction(Action $action)
     {
         return $this->addAnswer($action);
@@ -103,11 +103,12 @@ class Scene
     public function getActions()
     {
         $actions = new ArrayCollection();
-        foreach ($this->answers as $answer){
-            if ($answer instanceof Action){
+        foreach ($this->answers as $answer) {
+            if ($answer instanceof Action) {
                 $actions[] = $answer;
             }
         }
+
         return $actions;
     }
 
@@ -141,11 +142,12 @@ class Scene
     public function getSentences()
     {
         $sentences = new ArrayCollection();
-        foreach ($this->answers as $answer){
-            if ($answer instanceof Sentence){
+        foreach ($this->answers as $answer) {
+            if ($answer instanceof Sentence) {
                 $sentences[] = $answer;
             }
         }
+
         return $sentences;
     }
 
@@ -294,11 +296,12 @@ class Scene
      *
      * @return array
      */
-    public function toArray(){
+    public function toArray()
+    {
         return [
             'id' => $this->getId(),
             'dialogue' => $this->getDialogue(),
-            'image' => $this->getImage()
+            'image' => $this->getImage(),
         ];
     }
 }

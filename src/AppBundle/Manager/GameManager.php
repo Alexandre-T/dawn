@@ -66,8 +66,8 @@ class GameManager
      * GameManager constructor.
      *
      * @param AchievementService $achievementService
-     * @param AnswerService $answerService
-     * @param GameService $gameService
+     * @param AnswerService      $answerService
+     * @param GameService        $gameService
      */
     public function __construct(AchievementService $achievementService, AnswerService $answerService, GameService $gameService)
     {
@@ -77,46 +77,52 @@ class GameManager
     }
 
     /**
-     * @param  int    $id
+     * @param int $id
+     *
      * @return Answer
+     *
      * @throws GameException
      */
     public function getAnswer($id)
     {
         $answer = $this->answerService->getAnswer($id);
-        if (!$answer instanceof Answer){
+        if (!$answer instanceof Answer) {
             throw new GameException('Answer unknown', GameException::ERROR);
         }
+
         return $answer;
     }
 
     /**
      * Verify that player can do this answer in the game.
      *
-     * @param Game $game
+     * @param Game   $game
      * @param Answer $answer
+     *
      * @throws GameException
+     *
      * @return array
      */
     public function verifyAnswer(Game $game, Answer $answer)
     {
-
-        if (! $game->getCurrentScene()->getAnswers()->contains($answer)){
+        if (!$game->getCurrentScene()->getAnswers()->contains($answer)) {
             throw new GameException('Answer unavailable from this scene');
         }
+
         return $this->alterScore($answer->getInfluences(), $game->getScores());
     }
 
     /**
      * @param Game $game
+     *
      * @return array
      */
     public function getAchievements(Game $game)
     {
         $result = [];
 
-        foreach ($this->achievementService->getAchievements() as $achievement){
-            /** @var $achievement Achievement */
+        foreach ($this->achievementService->getAchievements() as $achievement) {
+            /* @var $achievement Achievement */
             $result[] = array_merge(
                 ['done' => $game->getAchievements()->contains($achievement)],
                 $achievement->toArray()
@@ -129,8 +135,9 @@ class GameManager
     /**
      * Move game to Scene and return elements for JSON.
      *
-     * @param Game $game
+     * @param Game  $game
      * @param Scene $scene
+     *
      * @return array {Scene;Actions;Sentences}
      */
     public function gotoScene(Game $game, Scene $scene)
@@ -138,8 +145,8 @@ class GameManager
         $result['scene'] = $this->serialize($scene);
         $result['actions'] = $this->serialize($scene->getActions());
         $result['sentences'] = $this->serialize($scene->getSentences());
-        if ($achievement = $scene->getAchievement()){
-            if(!$game->getAchievements()->contains($achievement)){
+        if ($achievement = $scene->getAchievement()) {
+            if (!$game->getAchievements()->contains($achievement)) {
                 $game->addAchievement($achievement);
             }
             $result['achievement'] = [$this->serialize($achievement)];
@@ -153,17 +160,19 @@ class GameManager
 
     /**
      * @param $object
+     *
      * @return array
      */
     private function serialize($object)
     {
-        if ($object instanceof Achievement || $object instanceof Answer || $object instanceof Scene || $object instanceof Sentence){
+        if ($object instanceof Achievement || $object instanceof Answer || $object instanceof Scene || $object instanceof Sentence) {
             return $object->toArray();
         }
         $result = [];
-        foreach ($object as $value){
+        foreach ($object as $value) {
             $result[] = $this->serialize($value);
         }
+
         return $result;
     }
 

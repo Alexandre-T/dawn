@@ -12,7 +12,7 @@
  * @copyright 2015 Alexandre Tranchant
  * @license   GNU General Public License, version 3
  *
- * @link      http://opensource.org/licenses/GPL-3.0
+ * @see      http://opensource.org/licenses/GPL-3.0
  */
 
 namespace AppBundle\Tests\Entity;
@@ -28,7 +28,7 @@ use AppBundle\Entity\Scene;
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
  * @license  GNU General Public License, version 3
  *
- * @link     http://opensource.org/licenses/GPL-3.0
+ * @see     http://opensource.org/licenses/GPL-3.0
  */
 class ActionTest extends \PHPUnit_Framework_TestCase
 {
@@ -101,7 +101,7 @@ class ActionTest extends \PHPUnit_Framework_TestCase
         self::assertFalse($this->action->getScenes()->contains($scene1));
         self::assertFalse($this->action->getScenes()->contains($scene2));
     }
-    
+
     /**
      * Tests Action->setShape() Action->getShape().
      */
@@ -112,7 +112,7 @@ class ActionTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($result, $this->action);
         self::assertEquals($shape, $this->action->getShape());
     }
-    
+
     /**
      * Tests Action->setTooltip() Action->getTooltip().
      */

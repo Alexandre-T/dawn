@@ -149,7 +149,7 @@ abstract class AbstractLoadFixture extends AbstractFixture implements ContainerA
 
         return $answer;
     }
-    
+
     /**
      * Get referenced characteristic.
      *

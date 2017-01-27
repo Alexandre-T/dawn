@@ -12,7 +12,7 @@
  * @copyright 2016 Alexandre Tranchant
  * @license   GNU General Public License, version 3
  *
- * @link      http://opensource.org/licenses/GPL-3.0
+ * @see      http://opensource.org/licenses/GPL-3.0
  */
 
 namespace AppBundle\Service;
@@ -29,7 +29,7 @@ use Doctrine\ORM\EntityRepository;
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
  * @license  GNU General Public License, version 3
  *
- * @link     http://opensource.org/licenses/GPL-3.0
+ * @see     http://opensource.org/licenses/GPL-3.0
  */
 class AnswerService
 {
@@ -59,9 +59,11 @@ class AnswerService
      * Return Answer form id or null.
      *
      * @param int $id
+     *
      * @return null|Answer
      */
-    public function getAnswer(int $id){
+    public function getAnswer(int $id)
+    {
         /** @var Answer $answer */
         $answer = $this->repository->find($id);
 
