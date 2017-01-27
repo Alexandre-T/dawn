@@ -1,7 +1,6 @@
 /* Pour la navbar */
 body {
     padding-top: 55px;
-    padding-bottom: 55px;
 }
 html, body{
     min-height:100%;
@@ -14,7 +13,7 @@ html, body{
     width:100%;height:100%;
     z-index: 1000; /*1030 navbar*/
 }
-#container{
+#container,#achievements{
     min-height:100%;
     height:100%;
 }

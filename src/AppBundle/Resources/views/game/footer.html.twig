@@ -1,15 +1,22 @@
 {% block footer %}
-    <div class="navbar navbar-toggleable-sm navbar-light bg-faded fixed-bottom">
-        <div class="navbar-nav mx-auto">
-            {% for achievement in achievements %}
-                <a class="navbar-brand" href="#">
-                    {% if achievement.done %}
-                    <img class="achievement{{ achievement.id }}" src="{{ asset('images/achievements/color/' ~ achievement.image) }}" width="30" height="30" alt="">
-                    {% else %}
-                    <img class="achievement{{ achievement.id }}" src="{{ asset('images/achievements/bw/' ~ achievement.image) }}" width="30" height="30" alt="">
-                    {% endif %}
-                </a>
-            {% endfor %}
-        </div>
-    </div>
+    <ul class="list-inline hidden-sm-down">
+        {% for achievement in achievements %}
+            <li class="my-4">
+                {% if achievement.done %}
+                    <img class="img-thumbnail img-fluid achievement{{ achievement.id }}" src="{{ asset('images/achievements/color/' ~ achievement.image) }}" alt="">
+                {% else %}
+                    <img class="img-thumbnail img-fluid achievement{{ achievement.id }}" src="{{ asset('images/achievements/bw/' ~ achievement.image) }}" alt="">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <p class="text-center hidden-md-up mx-auto">
+        {% for achievement in achievements %}
+            {% if achievement.done %}
+                <img class="img-thumbnail img-fluid mx-4 achievement{{ achievement.id }}" src="{{ asset('images/achievements/color/' ~ achievement.image) }}" alt="">
+            {% else %}
+                <img class="img-thumbnail img-fluid mx-4 achievement{{ achievement.id }}" src="{{ asset('images/achievements/bw/' ~ achievement.image) }}" alt="">
+            {% endif %}
+        {% endfor %}
+    </p>
 {% endblock %}

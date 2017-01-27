@@ -3,14 +3,24 @@
 {% block loader %}{% include 'AppBundle::loader.html.twig' %}{% endblock %}
 {% block header %}{% include 'AppBundle:game:header.html.twig' %}{% endblock %}
 {% block container %}
-    <div class="container d-flex align-items-center" id="container">
-        {% block body %}
-            {% block content %}{% endblock %}
-            {% include 'AppBundle:game:save.html.twig' %}
-        {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-11 col-xs-12">
+                <div class="container d-flex align-items-center" id="container">
+                    {% block body %}
+                        {% block content %}{% endblock %}
+                        {% include 'AppBundle:game:save.html.twig' %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="col-md-1 col-xs-12">
+                <aside id="achievements" class="d-flex align-items-center">
+                    {% include 'AppBundle:game:footer.html.twig' %}
+                </aside>
+            </div>
+        </div>
     </div>
 {% endblock %}
-{% block footer %}{% include 'AppBundle:game:footer.html.twig' %}{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
