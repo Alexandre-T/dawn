@@ -184,7 +184,7 @@ class GameController extends Controller
             $answer = $gameManager->getAnswer($id);
             $result['influences'] = $gameManager->verifyAnswer($game, $answer);
             $result = array_merge($result, $gameManager->gotoScene($game, $answer->getDestination()));
-            $result['base_dir'] = $request->getBasePath() . '/images/scenes/';
+            $result['base_dir'] = $request->getBasePath() . '/images/';
         } catch (GameException $exception) {
             return $this->report($exception, $result);
         }

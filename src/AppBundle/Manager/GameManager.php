@@ -138,6 +138,10 @@ class GameManager
         $result['scene'] = $this->serialize($scene);
         $result['actions'] = $this->serialize($scene->getActions());
         $result['sentences'] = $this->serialize($scene->getSentences());
+        if ($achievement = $scene->getAchievement()){
+            $game->addAchievement($achievement);
+            $result['achievement'] = [$this->serialize($achievement)];
+        }
 
         $game->setCurrentScene($scene);
         $this->gameService->save($game);
@@ -151,7 +155,7 @@ class GameManager
      */
     private function serialize($object)
     {
-        if ($object instanceof Answer || $object instanceof Scene || $object instanceof Sentence){
+        if ($object instanceof Achievement || $object instanceof Answer || $object instanceof Scene || $object instanceof Sentence){
             return $object->toArray();
         }
         $result = [];

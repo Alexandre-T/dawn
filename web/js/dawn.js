@@ -69,7 +69,7 @@ function provideAnswer(answerId) {
             }
             //change dialogue
             sceneDialogue.text(data['scene']['dialogue']);
-            sceneImage.attr('src', data['base_dir'] + data['scene']['image']);
+            sceneImage.attr('src', data['base_dir'] + 'scenes/' +data['scene']['image']);
             //create areas
             map.empty();
             $.each(data['actions'], function (key, val) {
@@ -87,6 +87,15 @@ function provideAnswer(answerId) {
                     .text(val)
                     .animateCss('flash');
 
+            });
+            //achievement
+            $.each( data['achievement'], function( key, val ) {
+                console.log('characteristics '+key+':'+val);
+                $(".achievementImage"+val['id'])
+                    .attr('src', data['base_dir'] + 'achievements/thumbnails/color/' +data['scene']['image'])
+                    .animateCss('flash');
+                $(".achievementLink"+val['id'])
+                    .attr('href', data['base_dir'] + 'achievements/color/' +data['scene']['image']);
             });
             loader.fadeOut(showDelay);
             console.log('end function getJSON(provideAnswer)')
