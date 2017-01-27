@@ -33,6 +33,21 @@ class Achievement
     private $alternat;
 
     /**
+     * Return an array of non-object properties.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'image' => $this->getImage(),
+            'alternat' => $this->getAlternat(),
+        ];
+    }
+
+    /**
      * Get id.
      *
      * @return int

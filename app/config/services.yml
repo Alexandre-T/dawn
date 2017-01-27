@@ -7,6 +7,11 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.achievement-service:
+        class:  AppBundle\Service\AchievementService
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+            repositoryName: "AppBundle:Achievement"
     app.answer-service:
         class:  AppBundle\Service\AnswerService
         arguments:
@@ -31,9 +36,9 @@ services:
     app.game-manager:
         class:  AppBundle\Manager\GameManager
         arguments:
+            achievementService: "@app.achievement-service"
             answerService: "@app.answer-service"
             gameService: "@app.game-service"
-            sceneService: "@app.scene-service"
     app.flash_messenger:
         class: AppBundle\Messenger\Flash
         arguments: ["@session"]

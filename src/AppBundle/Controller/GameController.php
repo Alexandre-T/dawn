@@ -53,6 +53,7 @@ class GameController extends Controller
     {
         //Call game service
         $launchManager = $this->get('app.launch-manager');
+        $gameManager = $this->get('app.game-manager');
 
         //Game regeneration
         try {
@@ -67,6 +68,7 @@ class GameController extends Controller
         //Return a template
         $response = $this->render('AppBundle:game:index.html.twig', [
             'game' => $game,
+            'achievements' => $gameManager->getAchievements($game),
         ]);
 
         $response->headers->setCookie(new Cookie('uuid', $game->getId()));
@@ -188,6 +190,7 @@ class GameController extends Controller
         }
 
         //Return the JSON response
+        dump($result);
         return $this->prepareResponse($result);
     }
 

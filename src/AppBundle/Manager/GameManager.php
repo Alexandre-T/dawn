@@ -18,15 +18,16 @@
 namespace AppBundle\Manager;
 
 use AppBundle\Controller\Exception\GameException;
+use AppBundle\Entity\Achievement;
 use AppBundle\Entity\Answer;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\Influence;
 use AppBundle\Entity\Scene;
 use AppBundle\Entity\Score;
 use AppBundle\Entity\Sentence;
+use AppBundle\Service\AchievementService;
 use AppBundle\Service\AnswerService;
 use AppBundle\Service\GameService;
-use AppBundle\Service\SceneService;
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -47,6 +48,11 @@ use Doctrine\Common\Collections\Collection;
 class GameManager
 {
     /**
+     * @var AchievementService
+     */
+    private $achievementService;
+
+    /**
      * @var AnswerService
      */
     private $answerService;
@@ -57,22 +63,17 @@ class GameManager
     private $gameService;
 
     /**
-     * @var SceneService
-     */
-    private $sceneService;
-
-    /**
      * GameManager constructor.
      *
+     * @param AchievementService $achievementService
      * @param AnswerService $answerService
      * @param GameService $gameService
-     * @param SceneService $sceneService
      */
-    public function __construct(AnswerService $answerService, GameService $gameService, SceneService $sceneService)
+    public function __construct(AchievementService $achievementService, AnswerService $answerService, GameService $gameService)
     {
+        $this->achievementService = $achievementService;
         $this->answerService = $answerService;
         $this->gameService = $gameService;
-        $this->sceneService = $sceneService;
     }
 
     /**
@@ -104,6 +105,25 @@ class GameManager
             throw new GameException('Answer unavailable from this scene');
         }
         return $this->alterScore($answer->getInfluences(), $game->getScores());
+    }
+
+    /**
+     * @param Game $game
+     * @return array
+     */
+    public function getAchievements(Game $game)
+    {
+        $result = [];
+
+        foreach ($this->achievementService->getAchievements() as $achievement){
+            /** @var $achievement Achievement */
+            $result[] = array_merge(
+                ['done' => $game->getAchievements()->contains($achievement)],
+                $achievement->toArray()
+            );
+        }
+
+        return $result;
     }
 
     /**
