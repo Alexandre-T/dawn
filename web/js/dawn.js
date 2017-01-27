@@ -16,14 +16,20 @@ $ = Object.assign(function (jQuery) {
  *
  * @type {number}
  */
-var hideDelay = 200;
+var hideDelay = 100;
 
 /**
  * Delay to show layer.
  *
  * @type {number}
  */
-var showDelay = 1000;
+var showDelay = 100;
+
+/**
+ * Selectors.
+ *
+ * @type {*}
+ */
 var answers = $('.answer');
 var $actions = $('.action');
 var loader = $("#loader");

@@ -139,7 +139,9 @@ class GameManager
         $result['actions'] = $this->serialize($scene->getActions());
         $result['sentences'] = $this->serialize($scene->getSentences());
         if ($achievement = $scene->getAchievement()){
-            $game->addAchievement($achievement);
+            if(!$game->getAchievements()->contains($achievement)){
+                $game->addAchievement($achievement);
+            }
             $result['achievement'] = [$this->serialize($achievement)];
         }
 

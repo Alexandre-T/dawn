@@ -190,7 +190,6 @@ class GameController extends Controller
         }
 
         //Return the JSON response
-        dump($result);
         return $this->prepareResponse($result);
     }
 
