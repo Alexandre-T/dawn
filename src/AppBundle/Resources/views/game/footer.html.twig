@@ -1,1 +1,15 @@
-{% block footer %}{% endblock %}
+{% block footer %}
+    <div class="navbar navbar-toggleable-sm navbar-light bg-faded fixed-bottom">
+        <div class="navbar-nav mx-auto">
+            {% for achievement in achievements %}
+                <a class="navbar-brand" href="#">
+                    {% if achievement.done %}
+                    <img class="achievement{{ achievement.id }}" src="{{ asset('images/achievements/color/' ~ achievement.image) }}" width="30" height="30" alt="">
+                    {% else %}
+                    <img class="achievement{{ achievement.id }}" src="{{ asset('images/achievements/bw/' ~ achievement.image) }}" width="30" height="30" alt="">
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

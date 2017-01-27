@@ -16,4 +16,10 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/images/achievements/bw/*
+!/web/images/achievements/bw/.gitkeep
+/web/images/achievements/color/*
+!/web/images/achievements/color/.gitkeep
+/web/images/scenes/*
+!/web/images/scenes/.gitkeep
 /*.phar
