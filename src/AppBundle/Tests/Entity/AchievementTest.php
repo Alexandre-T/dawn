@@ -2,7 +2,7 @@
 /**
  * This file is part of the Dawn Project.
  *
- * PHP version 7
+ * PHP version 5.6
  *
  * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
  *
