@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Simdate Application.
+ * This file is part of the Dawn project.
  *
  * PHP version 5.6
  *
