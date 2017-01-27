@@ -3,9 +3,19 @@
         {% for achievement in achievements %}
             <li class="my-4">
                 {% if achievement.done %}
-                    <img class="img-thumbnail img-fluid achievement{{ achievement.id }}" src="{{ asset('images/achievements/color/' ~ achievement.image) }}" alt="">
+                    <a href="{{ asset('images/achievements/color/' ~ achievement.image) }}"
+                         data-lightbox="{{ 'txt.achievement' | trans }}"
+                         data-title="{{ achievement.title }}">
+                        <img class="img-thumbnail img-fluid achievement{{ achievement.id }}"
+                               src="{{ asset('images/achievements/thumbnails/color/' ~ achievement.image) }}" alt="">
+                    </a>
                 {% else %}
-                    <img class="img-thumbnail img-fluid achievement{{ achievement.id }}" src="{{ asset('images/achievements/bw/' ~ achievement.image) }}" alt="">
+                    <a href="{{ asset('images/achievements/bw/' ~ achievement.image) }}"
+                       data-lightbox="{{ 'txt.achievement' | trans }}"
+                       data-title="{{ achievement.title }}">
+                        <img class="img-thumbnail img-fluid achievement{{ achievement.id }}"
+                             src="{{ asset('images/achievements/thumbnails/bw/' ~ achievement.image) }}" alt="">
+                    </a>
                 {% endif %}
             </li>
         {% endfor %}
@@ -13,9 +23,19 @@
     <p class="text-center hidden-md-up mx-auto">
         {% for achievement in achievements %}
             {% if achievement.done %}
-                <img class="img-thumbnail img-fluid mx-4 achievement{{ achievement.id }}" src="{{ asset('images/achievements/color/' ~ achievement.image) }}" alt="">
+                <a href="{{ asset('images/achievements/color/' ~ achievement.image) }}"
+                   data-lightbox="{{ 'txt.achievements' | trans }}"
+                   data-title="{{ achievement.title }}">
+                    <img class="img-thumbnail img-fluid mx-4 achievement{{ achievement.id }}"
+                           src="{{ asset('images/achievements/thumbnails/color/' ~ achievement.image) }}" alt="">
+                </a>
             {% else %}
-                <img class="img-thumbnail img-fluid mx-4 achievement{{ achievement.id }}" src="{{ asset('images/achievements/bw/' ~ achievement.image) }}" alt="">
+                <a href="{{ asset('images/achievements/bw/' ~ achievement.image) }}"
+                   data-lightbox="{{ 'txt.achievements' | trans }}"
+                   data-title="{{ achievement.title }}">
+                    <img class="img-thumbnail img-fluid mx-4 achievement{{ achievement.id }}"
+                         src="{{ asset('images/achievements/thumbnails/bw/' ~ achievement.image) }}" alt="">
+                </a>
             {% endif %}
         {% endfor %}
     </p>

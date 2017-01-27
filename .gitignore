@@ -20,6 +20,10 @@
 !/web/images/achievements/bw/.gitkeep
 /web/images/achievements/color/*
 !/web/images/achievements/color/.gitkeep
+/web/images/achievements/thumbnails/bw/*
+!/web/images/achievements/thumbnails/bw/.gitkeep
+/web/images/achievements/thumbnails/color/*
+!/web/images/achievements/thumbnails/color/.gitkeep
 /web/images/scenes/*
 !/web/images/scenes/.gitkeep
 /*.phar
