@@ -44,3 +44,10 @@ services:
         arguments: ["@session"]
         tags:
             - { name: kernel.event_listener, event: kernel.response}
+
+
+    admin.achievements:
+        class: AppBundle\Admin\AchievementAdmin
+        arguments: [~, AppBundle\Entity\Achievement, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Achievement}
