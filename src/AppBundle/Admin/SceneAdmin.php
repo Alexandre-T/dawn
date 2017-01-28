@@ -45,9 +45,11 @@ class SceneAdmin extends AbstractAdmin
         $formMapper
             ->add('image', 'text')
             ->add('dialogue', 'textarea')
-            ->add('achievement', 'sonata_type_model', array(
+            ->add('achievement', 'sonata_type_model', [
                 'class' => Achievement::class,
-                'property' => 'title'));
+                'property' => 'title',
+                'required' => false
+            ]);
     }
 
     /**
