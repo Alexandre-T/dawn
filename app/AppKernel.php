@@ -40,6 +40,20 @@ class AppKernel extends Kernel
             // And finally, the storage and SonataAdminBundle
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\ClassificationBundle\SonataClassificationBundle(),
+
+            //Sonata Media Bundle
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+
+            // You need to add this dependency to make media functional
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
+            //My Bundle
+            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
