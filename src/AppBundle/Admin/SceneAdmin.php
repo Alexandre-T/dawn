@@ -16,6 +16,7 @@
  */
 namespace AppBundle\Admin;
 
+use AppBundle\Entity\Achievement;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -23,7 +24,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * Achievement Admin Interface.
+ * Scene Admin Interface.
  *
  * @category AdminInterface
  *
@@ -32,7 +33,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
  *
  * @link http://opensource.org/licenses/GPL-3.0
  */
-class AchievementAdmin extends AbstractAdmin
+class SceneAdmin extends AbstractAdmin
 {
     /**
      * Setup Form Fields.
@@ -42,9 +43,11 @@ class AchievementAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text')
             ->add('image', 'text')
-            ->add('alternat', 'text');
+            ->add('dialogue', 'textarea')
+            ->add('achievement', 'sonata_type_model', array(
+                'class' => Achievement::class,
+                'property' => 'title'));
     }
 
     /**
@@ -56,9 +59,11 @@ class AchievementAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('title')
             ->add('image')
-            ->add('alternat');
+            ->add('achievement', null, array(), 'entity', array(
+                    'class'         => Achievement::class,
+                    'choice_label'  => 'title',
+            ));
     }
 
     /**
@@ -69,9 +74,8 @@ class AchievementAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('title')
             ->add('image')
-            ->add('alternate')
+            ->add('initial')
         ;
     }
 
@@ -84,8 +88,7 @@ class AchievementAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('title')
             ->add('image')
-            ->add('alternat');
+            ->add('achievement.title');
     }
 }
