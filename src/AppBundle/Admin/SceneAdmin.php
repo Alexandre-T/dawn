@@ -43,12 +43,15 @@ class SceneAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('image', 'text')
             ->add('dialogue', 'textarea')
             ->add('achievement', 'sonata_type_model', [
                 'class' => Achievement::class,
                 'property' => 'title',
                 'required' => false
+            ])
+            ->add('media', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default'
             ]);
     }
 
@@ -61,7 +64,6 @@ class SceneAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('image')
             ->add('achievement', null, array(), 'entity', array(
                     'class'         => Achievement::class,
                     'choice_label'  => 'title',
@@ -76,7 +78,6 @@ class SceneAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('image')
             ->add('initial')
         ;
     }
@@ -90,7 +91,12 @@ class SceneAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('image')
-            ->add('achievement.title');
+            ->add('dialogue')
+            ->add('media.id')
+            ->add('media', 'sonata_media_type', [
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default'])
+            ->add('achievement.title')
+        ;
     }
 }

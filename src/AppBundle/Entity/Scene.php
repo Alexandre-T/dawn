@@ -40,7 +40,7 @@ class Scene
     private $dialogue;
 
     /**
-     * @ORM\Column(type="string", length=16, nullable=false)
+     * 
      */
     private $image;
 
@@ -54,6 +54,12 @@ class Scene
      * @ORM\JoinColumn(name="achievement_id", referencedColumnName="id")
      */
     private $achievement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=false)
+     */
+    private $media;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Answer", inversedBy="scenes")
@@ -303,5 +309,29 @@ class Scene
             'dialogue' => $this->getDialogue(),
             'image' => $this->getImage(),
         ];
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $media
+     *
+     * @return Scene
+     */
+    public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

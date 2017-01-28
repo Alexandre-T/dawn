@@ -43,8 +43,11 @@ class AchievementAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('title', 'text')
-            ->add('image', 'text')
-            ->add('alternat', 'text');
+            ->add('alternat', 'text')
+            ->add('media', 'sonata_media_type', [
+               'provider' => 'sonata.media.provider.image',
+                'context'  => 'default'
+            ]);
     }
 
     /**
@@ -57,7 +60,6 @@ class AchievementAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('title')
-            ->add('image')
             ->add('alternat');
     }
 
@@ -70,7 +72,6 @@ class AchievementAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('title')
-            ->add('image')
             ->add('alternate')
         ;
     }
@@ -85,7 +86,6 @@ class AchievementAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->add('title')
-            ->add('image')
             ->add('alternat');
     }
 }

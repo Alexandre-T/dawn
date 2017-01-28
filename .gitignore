@@ -27,4 +27,6 @@
 !/web/images/achievements/thumbnails/color/.gitkeep
 /web/images/scenes/*
 !/web/images/scenes/.gitkeep
+/web/uploads/media/*
+!/web/uploads/media/.gitkeep
 /*.phar

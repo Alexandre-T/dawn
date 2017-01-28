@@ -17,6 +17,7 @@
 
 namespace AppBundle\Entity;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,7 +39,7 @@ class Achievement
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=16, nullable=false)
+     * 
      */
     private $image;
 
@@ -46,6 +47,12 @@ class Achievement
      * @ORM\Column(type="string", length=128, nullable=false)
      */
     private $alternat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=false)
+     */
+    private $media;
 
     /**
      * Return an array of non-object properties.
@@ -142,5 +149,29 @@ class Achievement
     public function getAlternat()
     {
         return $this->alternat;
+    }
+
+    /**
+     * Set media
+     *
+     * @param Media $media
+     *
+     * @return Achievement
+     */
+    public function setMedia(Media $media)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

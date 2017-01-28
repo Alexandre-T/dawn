@@ -8,7 +8,8 @@
             </div>
         </div>
         <div class="row">
-            <img width="1920" height="1080" class="img-fluid" src="{{ asset('images/scenes/' ~ game.currentScene.image) }}" alt="" usemap="#map" id="sceneImage">
+            <img width="{{ game.currentScene.media.width }}" height="{{ game.currentScene.media.height }}" class="img-fluid"
+                   src="{% path game.currentScene.media, 'reference' %}" alt="" usemap="#map" id="sceneImage">
             <map name="map">
                 {% for action in game.currentScene.actions %}
                     <area class="action answer" coords="{{ action.coords }}" shape="{{ action.shape }}" alt="{{ action.tooltip }}" href="#" data-answer="{{ action.id }}">
