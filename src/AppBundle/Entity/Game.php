@@ -17,6 +17,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Controller\Exception\GameException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -78,6 +79,28 @@ class Game
         $this->setVersion(self::VERSION);
         $this->scores = new ArrayCollection();
         $this->achievements = new ArrayCollection();
+    }
+
+    /**
+     * Get score from existing Characteristic.
+     *
+     * @throws GameException
+     *
+     * @param Characteristic $characteristic
+     *
+     * @return Score
+     */
+    public function getScore(Characteristic $characteristic)
+    {
+        foreach ($this->getScores() as $score) {
+            /** @var Score $score */
+            if ($score->getCharacteristic() == $characteristic) {
+                return $score;
+            }
+        }
+        throw new GameException(
+            'Critical Error. Characteristic is not in your score. Please restart a game !',
+            GameException::CRITICAL);
     }
 
     /**

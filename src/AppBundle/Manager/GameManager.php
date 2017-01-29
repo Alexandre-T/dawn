@@ -22,6 +22,7 @@ use AppBundle\Entity\Achievement;
 use AppBundle\Entity\Answer;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\Influence;
+use AppBundle\Entity\Needed;
 use AppBundle\Entity\Scene;
 use AppBundle\Entity\Score;
 use AppBundle\Entity\Sentence;
@@ -110,6 +111,27 @@ class GameManager
         }
 
         return $this->alterScore($answer->getInfluences(), $game->getScores());
+    }
+
+    /**
+     * Verify that player has enough Score to go to this scene.
+     *
+     * @param Game  $game
+     * @param Scene $scene
+     *
+     * @return Scene|false
+     */
+    public function verifyScene(Game $game, Scene $scene)
+    {
+        foreach ($scene->getNeeded() as $needed) {
+            /** @var $needed Needed */
+            if ($needed->getValue() > $game->getScore($needed->getCharacteristic())->getValue()) {
+                //redirection
+                return $needed->getRedirectScene();
+            }
+        }
+
+        return false;
     }
 
     /**

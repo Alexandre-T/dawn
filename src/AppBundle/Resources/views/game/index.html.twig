@@ -15,6 +15,15 @@
                 {% endfor %}
             </map>
         </div>
+        <div id="game_over" class="row" {% if not game.currentScene.gameOver %}style="display: none"{% endif %}>
+            <div class="col">
+                <p class="game-over">
+                    <a href="#" data-toggle="modal" data-target="#gameOverModal" title="{{ 'txt.game-over' | trans }}">
+                        {{ 'txt.game-over' | trans }}
+                    </a>
+                </p>
+            </div>
+        </div>
         <div id="answers" class="row">
             {% for sentence in game.currentScene.sentences %}
                 <div class="col-sm-12 col-md-6">

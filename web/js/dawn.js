@@ -31,7 +31,7 @@ var showDelay = 100;
  * @type {*}
  */
 var answers = $('.answer');
-var $actions = $('.action');
+var gameOver = $('#game_over');
 var loader = $("#loader");
 var map = $('map');
 var sceneDialogue = $('#sceneDialogue');
@@ -45,7 +45,6 @@ $(document).ready(function() {
 
     //action responsive
     $('img[usemap]').rwdImageMaps();
-
     /**
      * When player click on a location button,
      * AJAX GOTO is called and analyze.
@@ -76,6 +75,11 @@ function provideAnswer(answerId) {
             //change dialogue
             sceneDialogue.text(data['scene']['dialogue']);
             sceneImage.attr('src', data['base_dir'] + 'scenes/' +data['scene']['image']);
+            if (data['scene']['game-over']){
+                gameOver.show();
+            }else{
+                gameOver.hide();
+            }
             //create areas
             map.empty();
             $.each(data['actions'], function (key, val) {

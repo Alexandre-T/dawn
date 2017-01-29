@@ -85,6 +85,21 @@ class Scene
     }
 
     /**
+     * Return array of non-object properties.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'dialogue' => $this->getDialogue(),
+            'image' => $this->getImage(),
+            'game-over' => $this->isGameOver(),
+        ];
+    }
+
+    /**
      * Add action.
      *
      * @param Action $action
@@ -300,20 +315,6 @@ class Scene
     public function getInitial()
     {
         return $this->initial;
-    }
-
-    /**
-     * Return array of non-object properties.
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'dialogue' => $this->getDialogue(),
-            'image' => $this->getImage(),
-        ];
     }
 
     /**
