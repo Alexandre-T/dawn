@@ -118,6 +118,12 @@
       <field name="dialogue" description="Texte de la sc&#xE8;ne" type="text" uuid="72fb0636-4eda-4c6d-a7b4-a1fc5fe0bd47"/>
       <field name="image" description="Image de la sc&#xE8;ne" type="string" size="16" required="true" uuid="371211c4-5a75-4788-aba8-18cad359f748"/>
       <field name="initial" description="Sc&#xE8;ne initial du jeu" type="boolean" unsigned="true" uuid="b3441b44-3869-495e-b9c5-7b9d41c8425e"/>
+      <field name="gameOver" description="Is game over ?" type="boolean" default="false" required="true" uuid="3311048d-bb9e-4bcc-8a55-9db12b6004a8">
+        <orm-attributes>
+          <attribute name="column">game_over</attribute>
+        </orm-attributes>
+      </field>
+      <field name="media_id" type="integer" required="true" uuid="001d032b-b2de-46b0-88d2-7798dfecf0de"/>
       <orm-attributes>
         <attribute name="table">te_scene</attribute>
         <attribute name="repository-class">AppBundle\Entity\Repository\SceneRepository</attribute>
@@ -125,6 +131,9 @@
     </entity>
     <association from="\AppBundle\Entity\Scene" to="\AppBundle\Entity\Achievement" caption="Achievement Scene" inverse-alias="achievement" many-owner="true" many-inverse="false" uuid="fca54e58-654c-4e7e-ae9f-ceae80c9d012">
       <association-field from="achievement_id" to="id"/>
+    </association>
+    <association from="\AppBundle\Entity\Scene" to="\Application\Sonata\MediaBundle\Entity\Media" caption="Media Scene" inverse-alias="media" many-owner="true" many-inverse="false" parent-required="true" uuid="93d0730c-59a1-4a7a-b1e9-9f25f4667b51">
+      <association-field from="media_id" to="id"/>
     </association>
     <entity name="\AppBundle\Entity\Answer" local-name="Answer" namespace="\AppBundle\Entity" local-namespace="Entity" description="Answer to the scene" uuid="b1dd16c3-168f-4f5a-8d91-11500972e232">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="b4f7f4e6-4636-4b38-bbed-325458623d4a"/>
@@ -203,10 +212,14 @@
       <field name="title" description="Title" type="string" size="32" required="true" uuid="8cc5dd2b-1a44-4fd3-a9d3-8330f68fe0a1"/>
       <field name="image" description="Image src" type="string" size="16" required="true" uuid="b322735a-58ed-4f75-81a8-ecfe4fa87920"/>
       <field name="alternat" description="Alternat" type="string" size="128" required="true" uuid="b0c04782-06e5-44c9-a0a5-e4c4fb8a96dc"/>
+      <field name="media_id" type="integer" required="true" uuid="072d2128-a326-4ed4-af3a-47f166014ebf"/>
       <orm-attributes>
         <attribute name="table">te_achievement</attribute>
       </orm-attributes>
     </entity>
+    <association from="\AppBundle\Entity\Achievement" to="\Application\Sonata\MediaBundle\Entity\Media" caption="Media Achievement" inverse-alias="media" many-owner="true" many-inverse="false" parent-required="true" uuid="ae21cece-d5f9-47e9-a6e6-06aea0faa7d5">
+      <association-field from="media_id" to="id"/>
+    </association>
     <entity name="\AppBundle\Entity\Achievements" local-name="Achievements" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="97419482-848e-405f-882c-62a102f89636">
       <field name="achievement_id" type="integer" required="true" primary="true" uuid="fbf03552-55ac-4359-b0d1-b003d61a3391"/>
       <field name="game_id" type="guid" size="32" required="true" primary="true" uuid="fdef5bbd-9c25-43df-bcbb-1c2df6ff9f49"/>
@@ -222,37 +235,174 @@
         <many-to-many-field from="achievement_id" to="id"/>
       </many-to-many-entity>
     </many-to-many>
+    <entity name="\AppBundle\Entity\Needed" local-name="Needed" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="fe137355-e677-48a2-b6dd-7ee3cc443d51">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="07d6e1db-f10b-41fa-8c16-0ee9515432a9"/>
+      <field name="value" description="Value needed to continue" type="integer" default="1" required="true" uuid="94170f83-6f22-4bd2-bab7-8532399f8514"/>
+      <field name="scene_id" type="integer" required="true" uuid="c604192b-039d-4b3d-b216-ac3910a0cd61"/>
+      <field name="characteristic_id" type="integer" required="true" uuid="7c7c353a-8d1b-4d49-b958-10d4569ae92a"/>
+      <field name="redirect_id" type="integer" required="true" uuid="c7509163-13bb-4848-a988-7b15c7e0c706"/>
+    </entity>
+    <association from="\AppBundle\Entity\Needed" to="\AppBundle\Entity\Scene" caption="Scene Needed" owner-alias="needed" inverse-alias="scene" many-owner="true" many-inverse="false" parent-required="true" uuid="95156be2-ee65-41cb-97c2-a082d4cec884">
+      <association-field from="scene_id" to="id"/>
+    </association>
+    <association from="\AppBundle\Entity\Needed" to="\AppBundle\Entity\Characteristic" caption="Characteristic Needed" inverse-alias="characteristic" many-owner="true" many-inverse="false" parent-required="true" uuid="3d1a38b7-7f63-4f7f-8ec2-c5250afe4554">
+      <association-field from="characteristic_id" to="id"/>
+    </association>
+    <association from="\AppBundle\Entity\Needed" to="\AppBundle\Entity\Scene" caption="Scene Needed" inverse-alias="redirectScene" many-owner="true" many-inverse="false" parent-required="true" uuid="594222ff-7924-41fb-be35-91e1e140cb4a">
+      <association-field from="redirect_id" to="id"/>
+    </association>
     <orm-attributes>
       <attribute name="file-suffix">without-suffix</attribute>
       <attribute name="filename-format">entity-name-only</attribute>
     </orm-attributes>
   </module>
+  <module name="\../src/Application/Sonata/MediaBundle/Resources/config/doctrine" local-name="../src/Application/Sonata/MediaBundle/Resources/config/doctrine" namespace="\Application\Sonata\MediaBundle\Entity" local-namespace="\Application\Sonata\MediaBundle\Entity" export-format="Doctrine2Xml" export-path="../src/Application/Sonata/MediaBundle/Resources/config/doctrine" uuid="29ebc306-2b12-4422-b7e5-defafa65b7d0">
+    <entity name="\Application\Sonata\MediaBundle\Entity\Gallery" local-name="Gallery" namespace="\Application\Sonata\MediaBundle\Entity" uuid="beedf5b0-e8e2-4b00-9c69-95c0fe796f3c">
+      <field name="id" type="integer" required="true" primary="true" uuid="55b77805-55e3-4366-b8a3-66e96c11266d">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">media__gallery</attribute>
+        <attribute name="export-file-name">Gallery.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Sonata\MediaBundle\Entity\GalleryHasMedia" local-name="GalleryHasMedia" namespace="\Application\Sonata\MediaBundle\Entity" uuid="f0bbed30-59c6-4512-8904-0410ffb07e57">
+      <field name="id" type="integer" required="true" primary="true" uuid="36a9a58b-74f9-4634-adaa-b6b2b45b9e54">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">media__gallery_media</attribute>
+        <attribute name="export-file-name">GalleryHasMedia.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Sonata\MediaBundle\Entity\Media" local-name="Media" namespace="\Application\Sonata\MediaBundle\Entity" uuid="c9610199-6022-41f2-99b3-8544f54ef8ea">
+      <field name="id" type="integer" required="true" primary="true" uuid="6189c3cc-0358-45ed-9a88-e91138dace11">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">media__media</attribute>
+        <attribute name="export-file-name">Media.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+  </module>
+  <module name="\../src/Application/Sonata/ClassificationBundle/Resources/config/doctrine" local-name="../src/Application/Sonata/ClassificationBundle/Resources/config/doctrine" namespace="\Application\Sonata\ClassificationBundle\Entity" local-namespace="\Application\Sonata\ClassificationBundle\Entity" export-format="Doctrine2Xml" export-path="../src/Application/Sonata/ClassificationBundle/Resources/config/doctrine" uuid="bdd42c42-a6c0-4b60-870b-0b73b2c0cf0a">
+    <entity name="\Application\Sonata\ClassificationBundle\Entity\Category" local-name="Category" namespace="\Application\Sonata\ClassificationBundle\Entity" uuid="555e5ffd-7620-4993-805f-e158b4ba26c8">
+      <field name="id" type="integer" required="true" primary="true" uuid="a759c88a-5473-451e-a0fc-8056a3fb5455">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">classification__category</attribute>
+        <attribute name="repository-class">Doctrine\ORM\EntityRepository</attribute>
+        <attribute name="export-file-name">Category.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Sonata\ClassificationBundle\Entity\Collection" local-name="Collection" namespace="\Application\Sonata\ClassificationBundle\Entity" uuid="c5f92d15-2796-4c6e-adf6-34fc821d5a25">
+      <field name="id" type="integer" required="true" primary="true" uuid="482773fd-424d-4187-8da7-f43feb3df423">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">classification__collection</attribute>
+        <attribute name="repository-class">Doctrine\ORM\EntityRepository</attribute>
+        <attribute name="export-file-name">Collection.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Sonata\ClassificationBundle\Entity\Context" local-name="Context" namespace="\Application\Sonata\ClassificationBundle\Entity" uuid="f4cb2a36-09a3-4ae7-a4d7-698d99370238">
+      <field name="id" type="string" required="true" primary="true" uuid="5a05da52-071b-4d2a-9e93-10a60ace5438">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">NONE</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">classification__context</attribute>
+        <attribute name="repository-class">Doctrine\ORM\EntityRepository</attribute>
+        <attribute name="export-file-name">Context.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Sonata\ClassificationBundle\Entity\Tag" local-name="Tag" namespace="\Application\Sonata\ClassificationBundle\Entity" uuid="8c5a1bad-2c72-4bbc-8b47-446de939d2e2">
+      <field name="id" type="integer" required="true" primary="true" uuid="618ea5d0-e262-46ff-8d49-f62574fe17d9">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">classification__tag</attribute>
+        <attribute name="repository-class">Doctrine\ORM\EntityRepository</attribute>
+        <attribute name="export-file-name">Tag.orm.xml</attribute>
+      </orm-attributes>
+    </entity>
+  </module>
   <visual-data>
+    <association uuid="3d1a38b7-7f63-4f7f-8ec2-c5250afe4554" color="#969696"/>
     <association uuid="4f76eeb5-a3b6-4a98-b766-c2a5e8945d60" color="#969696"/>
+    <association uuid="594222ff-7924-41fb-be35-91e1e140cb4a" caption1-position-x="21" caption1-position-y="24" center-position-x="0" center-position-y="0" color="#969696"/>
     <association uuid="5e3e44ce-2ebd-433e-85ee-d84a28bb740f" caption1-position-x="-20" caption1-position-y="17" center-position-x="0" center-position-y="0" color="#969696"/>
     <association uuid="65da9ad6-68d1-42c0-bfbb-788400f42d17" color="#969696"/>
-    <association uuid="a9a14e7a-85d5-4c2d-a63d-c0730f9c5d85" color="#969696"/>
+    <association uuid="93d0730c-59a1-4a7a-b1e9-9f25f4667b51" color="#969696"/>
+    <association uuid="95156be2-ee65-41cb-97c2-a082d4cec884" caption1-position-x="18" caption1-position-y="17" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="a9a14e7a-85d5-4c2d-a63d-c0730f9c5d85" caption1-position-x="-10" caption1-position-y="-36" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="ae21cece-d5f9-47e9-a6e6-06aea0faa7d5" color="#969696"/>
     <association uuid="c8bdb3f9-e46b-4634-b92d-9a1d7ac79eb6" color="#969696"/>
     <association uuid="dbae2a05-573a-4b78-9c18-b94926f3fe5f" caption1-position-x="1" caption1-position-y="23" center-position-x="0" center-position-y="0" color="#969696"/>
     <association uuid="fca54e58-654c-4e7e-ae9f-ceae80c9d012" color="#969696"/>
-    <entity uuid="1b886237-9feb-4cd2-81fd-d439ac64cc80" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="268" position-y="23" size-x="0" size-x2="130" size-y="0" size-y2="59"/>
-    <entity uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b" bg-color="#FFFFFF" hdr-color="#8787FF" position-x="23" position-y="20" size-x="0" size-x2="99" size-y="0" size-y2="73"/>
-    <entity uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="95" position-y="207" size-x="0" size-x2="98" size-y="0" size-y2="59"/>
-    <entity uuid="53d3d638-9799-401b-8a4f-8435db80f28a" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="388" position-y="123" size-x="0" size-x2="130" size-y="0" size-y2="73"/>
+    <entity uuid="1b886237-9feb-4cd2-81fd-d439ac64cc80" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="306" position-y="-185" size-x="0" size-x2="130" size-y="0" size-y2="59"/>
+    <entity uuid="2306c36e-3886-4f5b-9f4e-e9e77698fd5b" bg-color="#FFFFFF" hdr-color="#8787FF" position-x="42" position-y="-170" size-x="0" size-x2="99" size-y="0" size-y2="73"/>
+    <entity uuid="48c5338a-2df1-4238-ada4-2e0bfe408c17" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="92" position-y="109" size-x="0" size-x2="128" size-y="0" size-y2="87"/>
+    <entity uuid="53d3d638-9799-401b-8a4f-8435db80f28a" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="465" position-y="126" size-x="0" size-x2="130" size-y="0" size-y2="73"/>
+    <entity uuid="555e5ffd-7620-4993-805f-e158b4ba26c8" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="20" position-y="40" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
     <entity uuid="5e7440b9-a1d8-437a-b83d-5d3e0c405bc2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-176" position-y="204" size-x="0" size-x2="109" size-y="0" size-y2="73"/>
-    <entity uuid="97419482-848e-405f-882c-62a102f89636" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-188" position-y="28" size-x="0" size-x2="128" size-y="0" size-y2="60"/>
+    <entity uuid="8c5a1bad-2c72-4bbc-8b47-446de939d2e2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="129" position-y="111" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
+    <entity uuid="97419482-848e-405f-882c-62a102f89636" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-178" position-y="-79" size-x="0" size-x2="128" size-y="0" size-y2="60"/>
     <entity uuid="a0f5ea29-566d-4fc5-9660-e981f4defc93" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="173" position-y="373" size-x="0" size-x2="103" size-y="0" size-y2="60"/>
     <entity uuid="b1dd16c3-168f-4f5a-8d91-11500972e232" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="325" position-y="301" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
-    <entity uuid="c3aee586-3577-4e34-bb4e-dc8a5426dbfb" bg-color="#FFFFFF" hdr-color="#8FC7F1" position-x="680" position-y="18" size-x="0" size-x2="103" size-y="0" size-y2="171"/>
+    <entity uuid="beedf5b0-e8e2-4b00-9c69-95c0fe796f3c" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="35" position-y="110" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
+    <entity uuid="c3aee586-3577-4e34-bb4e-dc8a5426dbfb" bg-color="#FFFFFF" hdr-color="#8FC7F1" position-x="731" position-y="-1" size-x="0" size-x2="103" size-y="0" size-y2="171"/>
+    <entity uuid="c5f92d15-2796-4c6e-adf6-34fc821d5a25" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="129" position-y="40" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
+    <entity uuid="c9610199-6022-41f2-99b3-8544f54ef8ea" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="32" position-y="39" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
     <entity uuid="ca3be5e6-12a6-4400-9ff0-ae32efafbd1b" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="590" position-y="230" size-x="0" size-x2="85" size-y="0" size-y2="73"/>
     <entity uuid="ce2041ac-5b5b-4f39-81c6-7ee7a47b1e1d" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="590" position-y="381" size-x="0" size-x2="88" size-y="0" size-y2="45"/>
+    <entity uuid="f0bbed30-59c6-4512-8904-0410ffb07e57" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="143" position-y="40" size-x="0" size-x2="83" size-y="0" size-y2="31"/>
+    <entity uuid="f4cb2a36-09a3-4ae7-a4d7-698d99370238" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="22" position-y="111" size-x="0" size-x2="64" size-y="0" size-y2="31"/>
+    <entity uuid="fe137355-e677-48a2-b6dd-7ee3cc443d51" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="352" position-y="-23" size-x="0" size-x2="130" size-y="0" size-y2="87"/>
     <inheritance-child uuid="2141b289-0531-42b8-989e-2ed9b6ac99d0" color="#969696"/>
     <inheritance-child uuid="f916d2bd-4c14-4f94-accb-fad7c6050ace" caption1-position-x="0" caption1-position-y="27" center-position-x="0" center-position-y="0" color="#969696"/>
     <many-to-many-association uuid="40ffe283-683c-463e-8589-6f72e3df6f15" color="#969696"/>
     <many-to-many-association uuid="d0dfcd9d-cfc1-48f8-954b-6da92b9b3873" color="#969696"/>
     <many-to-many-association-entity uuid="02ce15bf-dc5c-41d9-963f-3b0a88d22569" caption1-position-x="31" caption1-position-y="27" center-position-x="0" center-position-y="0"/>
     <many-to-many-association-entity uuid="350359c5-ddd6-44a0-aa3e-b63136f31b44" caption1-position-x="-19" caption1-position-y="14" center-position-x="0" center-position-y="0"/>
-    <module uuid="80337ae5-8e09-48af-999a-3d1793828413" bg-color="#E7F5FD" position-x="61" position-y="72" size-x="208" size-x2="806" size-y="22" size-y2="450"/>
-    <project uuid="93c5287a-4172-4ac2-a91a-42e2a231362f" size-x="197" size-x2="1082" size-y="0" size-y2="572"/>
+    <module uuid="29ebc306-2b12-4422-b7e5-defafa65b7d0" bg-color="#E7F5FD" position-x="118" position-y="560" size-x="0" size-x2="246" size-y="0" size-y2="162"/>
+    <module uuid="80337ae5-8e09-48af-999a-3d1793828413" bg-color="#E7F5FD" position-x="61" position-y="72" size-x="208" size-x2="854" size-y="193" size-y2="450"/>
+    <module uuid="bdd42c42-a6c0-4b60-870b-0b73b2c0cf0a" bg-color="#E7F3E7" position-x="-145" position-y="556" size-x="0" size-x2="218" size-y="0" size-y2="162"/>
+    <project uuid="93c5287a-4172-4ac2-a91a-42e2a231362f" size-x="197" size-x2="1086" size-y="171" size-y2="776"/>
   </visual-data>
 </skipper>

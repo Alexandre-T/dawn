@@ -192,13 +192,36 @@ class GameControllerTest extends AbstractControllerTest
 
         self::assertNotEquals($uuid1, $uuid2);
 
-        $client->request('GET', '/goto/casino');
+        $client->request('GET', '/answer/1');
 
         $client->request('GET', '/game');
         $content = $client->getResponse()->getContent();
         self::assertEquals(1, self::findUuid($content, $uuid3));
 
         self::assertEquals($uuid3, $uuid2);
+    }
+
+    /**
+     * This test verify that #game_over is displayed only when game is really over.
+     */
+    public function testGameOver()
+    {
+        //Creation de la requête
+        $client = static::createClient();
+
+        $client->request('GET', '/newGame');
+        $client->request('GET', '/game');
+        $crawler = $client->request('GET', '/game');
+        $node = $crawler->filter('#game_over');
+        self::assertNotEmpty($node, 'Node #game_over does not exists');
+        self::assertNotNull($node->attr('style'));
+        self::assertContains('display: none', $node->attr('style'));
+
+        $client->request('GET', '/answer/6');
+        $crawler = $client->request('GET', '/game');
+        $node = $crawler->filter('#game_over');
+        self::assertNotEmpty($node, 'Node #game_over does not exists');
+        self::assertNull($node->attr('style'));
     }
 
     /**
@@ -258,17 +281,34 @@ class GameControllerTest extends AbstractControllerTest
     }
 
     /**
-     * Functional test : I'm trying to provide a non-existant answer.
-     * Application must throw a GameException handled and returned as a json message.
+     * Functional test : I'm trying to provide an existant answer.
      */
     public function testAnswer()
     {
-        $expected = '{"influences":{"moral":"11","day":"2","time":"6:00","money":"100\u00a0$"},"scene":{"id":2,"dialogue":"DIALOGUE2","image":"image2.png"},"actions":[{"id":4,"coords":"90,58,3","shape":"circle","tooltip":"TOOLTIP4"}],"sentences":[{"id":7,"sentence":"Sentence 3 (Goto 1) A2"}],"achievement":[{"id":2,"title":"TITLE2","image":"image2.png","alternat":"ALTERNAT2"}],"base_dir":"\/images\/"}';
+        $expected = '{"influences":{"moral":"11","day":"2","time":"6:00","money":"100\u00a0$"},"scene":{"id":2,"dialogue":"DIALOGUE2","image":"image2.png","game-over":false},"actions":[{"id":4,"coords":"90,58,3","shape":"circle","tooltip":"TOOLTIP4"}],"sentences":[{"id":7,"sentence":"Sentence 3 (Goto 1) A2"}],"achievement":[{"id":2,"title":"TITLE2","image":"image2.png","alternat":"ALTERNAT2"}],"base_dir":"\/images\/"}';
 
         $client = static::createClient();
         $client->request('GET', '/newGame');
         $client->request('GET', '/game');
         $client->request('GET', '/answer/1');
+        $response = $client->getResponse();
+
+        //self::assertIsJsonResponse($response);
+        self::assertEquals($expected, $response->getContent());
+    }
+
+    /**
+     * Functional test : I'm trying to provide an answer moving player to game-over.
+     */
+    public function testAnswerToGameOver()
+    {
+        //SCENE ID is 5 not 4! SO it is good!
+        $expected = '{"influences":[],"scene":{"id":5,"dialogue":"GAMEOVER MESSAGE","image":"image5.png","game-over":true},"actions":[],"sentences":[],"base_dir":"\/images\/"}';
+
+        $client = static::createClient();
+        $client->request('GET', '/newGame');
+        $client->request('GET', '/game');
+        $client->request('GET', '/answer/6');
         $response = $client->getResponse();
 
         //self::assertIsJsonResponse($response);

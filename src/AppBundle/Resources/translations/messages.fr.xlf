@@ -275,6 +275,33 @@
             <trans-unit id="992cb6746614fc2f16106d5650b9dff0" resname="txt.zoom">
                 <source>txt.zoom</source>
                 <target>Zoom</target>
-            </trans-unit>        </body>
+            </trans-unit>
+            <trans-unit id="3e42099407918a93ece3935a1ece333d" resname="app.description">
+                <source>app.description</source>
+                <target>
+                    Dawn est un mini jeu de rôle que vous pouvez personnaliser.
+                </target>
+            </trans-unit>
+            <trans-unit id="bb802fd4932f50519a1011c9a7f1667d" resname="txt.achievement">
+                <source>txt.achievement</source>
+                <target>Succès</target>
+            </trans-unit>
+            <trans-unit id="9d63ff6de3348a46e7933d4c32b96bda" resname="txt.achievements">
+                <source>txt.achievements</source>
+                <target>Les succès</target>
+            </trans-unit>
+            <trans-unit id="057dd69e5570dd1df12a52524b2c2839" resname="txt.game-over">
+                <source>txt.game-over</source>
+                <target>Partie terminée</target>
+            </trans-unit>
+            <trans-unit id="d80c0d6fb68e2a061d18de6f9df90587" resname="txt.game-over.explanation">
+                <source>txt.game-over.explanation</source>
+                <target>Votre partie est terminée, vos scores ne sont pas assez élevés pour poursuivre.</target>
+            </trans-unit>
+            <trans-unit id="dc7920828f67acd0aab1867b502818fc" resname="nav.home">
+                <source>nav.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+        </body>
     </file>
 </xliff>

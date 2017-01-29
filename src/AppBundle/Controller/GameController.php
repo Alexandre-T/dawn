@@ -18,6 +18,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Controller\Exception\GameException;
+use AppBundle\Entity\Scene;
 use AppBundle\Form\Type\LoadType;
 use AppBundle\Form\Type\NewType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -182,7 +183,13 @@ class GameController extends Controller
             //Get Location
             $answer = $gameManager->getAnswer($id);
             $result['influences'] = $gameManager->verifyAnswer($game, $answer);
-            $result = array_merge($result, $gameManager->gotoScene($game, $answer->getDestination()));
+            $scene = $gameManager->verifyScene($game, $answer->getDestination());
+            if ($scene instanceof Scene) {
+                $destination = $scene;
+            } else {
+                $destination = $answer->getDestination();
+            }
+            $result = array_merge($result, $gameManager->gotoScene($game, $destination));
             $result['base_dir'] = $request->getBasePath().'/images/';
         } catch (GameException $exception) {
             return $this->report($exception, $result);

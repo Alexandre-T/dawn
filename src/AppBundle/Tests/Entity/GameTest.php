@@ -17,6 +17,8 @@
 
 namespace AppBundle\Tests\Entity;
 
+use AppBundle\Controller\Exception\GameException;
+use AppBundle\Entity\Characteristic;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\Score;
 
@@ -101,5 +103,56 @@ class GameTest extends \PHPUnit_Framework_TestCase
         self::assertCount(0, $this->game->getScores());
         self::assertFalse($this->game->getScores()->contains($score1));
         self::assertFalse($this->game->getScores()->contains($score2));
+    }
+
+    /**
+     * Test Game->getScore() when there is no Score.
+     */
+    public function testGetScoreNull()
+    {
+        self::expectException(GameException::class);
+        self::expectExceptionCode(GameException::CRITICAL);
+
+        $characteristic1 = new Characteristic();
+        self::assertNull($this->game->getScore($characteristic1));
+    }
+
+    /**
+     * Test Game->getScore() when Characteristic is not in Score.
+     */
+    public function testGetScoreUnknown()
+    {
+        self::expectException(GameException::class);
+        self::expectExceptionCode(GameException::CRITICAL);
+
+        $characteristic1 = new Characteristic();
+        $characteristic2 = new Characteristic();
+
+        $score1 = new Score();
+        $score1->setCharacteristic($characteristic1);
+
+        //Characteristic2 is not in Scores
+        self::assertNull($this->game->getScore($characteristic2));
+    }
+
+    /**
+     * Test Game->getScore() in standard mode.
+     */
+    public function testGetScore()
+    {
+        $characteristic1 = new Characteristic();
+        $characteristic2 = new Characteristic();
+
+        $score1 = new Score();
+        $score1->setCharacteristic($characteristic1);
+
+        $score2 = new Score();
+        $score2->setCharacteristic($characteristic2);
+
+        $this->game->addScore($score1);
+        $this->game->addScore($score2);
+
+        self::assertEquals($score1, $this->game->getScore($characteristic1));
+        self::assertEquals($score2, $this->game->getScore($characteristic2));
     }
 }

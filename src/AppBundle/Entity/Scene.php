@@ -50,6 +50,16 @@ class Scene
     private $initial;
 
     /**
+     * @ORM\Column(type="boolean", nullable=false, name="game_over", options={"default":false})
+     */
+    private $gameOver = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Needed", mappedBy="scene")
+     */
+    private $needed;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Achievement")
      * @ORM\JoinColumn(name="achievement_id", referencedColumnName="id")
      */
@@ -77,6 +87,22 @@ class Scene
     public function __construct()
     {
         $this->answers = new ArrayCollection();
+        $this->needed = new ArrayCollection();
+    }
+
+    /**
+     * Return array of non-object properties.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'dialogue' => $this->getDialogue(),
+            'image' => $this->getImage(),
+            'game-over' => $this->isGameOver(),
+        ];
     }
 
     /**
@@ -298,17 +324,71 @@ class Scene
     }
 
     /**
-     * Return array of non-object properties.
+     * Set gameOver.
      *
-     * @return array
+     * @param bool $gameOver
+     *
+     * @return Scene
      */
-    public function toArray()
+    public function setGameOver($gameOver)
     {
-        return [
-            'id' => $this->getId(),
-            'dialogue' => $this->getDialogue(),
-            'image' => $this->getImage(),
-        ];
+        $this->gameOver = $gameOver;
+
+        return $this;
+    }
+
+    /**
+     * Get gameOver.
+     *
+     * @return bool
+     */
+    public function isGameOver()
+    {
+        return $this->getGameOver();
+    }
+
+    /**
+     * Get gameOver.
+     *
+     * @return bool
+     */
+    public function getGameOver()
+    {
+        return $this->gameOver;
+    }
+
+    /**
+     * Add needed.
+     *
+     * @param Needed $needed
+     *
+     * @return Scene
+     */
+    public function addNeeded(Needed $needed)
+    {
+        $this->needed[] = $needed;
+
+        return $this;
+    }
+
+    /**
+     * Remove needed.
+     *
+     * @param Needed $needed
+     */
+    public function removeNeeded(Needed $needed)
+    {
+        $this->needed->removeElement($needed);
+    }
+
+    /**
+     * Get needed.
+     *
+     * @return Collection
+     */
+    public function getNeeded()
+    {
+        return $this->needed;
     }
 
     /**
