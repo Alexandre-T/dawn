@@ -50,9 +50,14 @@ services:
         class: AppBundle\Admin\AchievementAdmin
         arguments: [~, AppBundle\Entity\Achievement, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Achievement}
+            - { name: sonata.admin, manager_type: orm, label: Achievements}
+    admin.characteristics:
+        class: AppBundle\Admin\CharacteristicAdmin
+        arguments: [~, AppBundle\Entity\Characteristic, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Characteristics}
     admin.scenes:
         class: AppBundle\Admin\SceneAdmin
         arguments: [~, AppBundle\Entity\Scene, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Scene}
+            - { name: sonata.admin, manager_type: orm, label: Scenes}
