@@ -317,9 +317,9 @@ class Scene
     }
 
     /**
-     * Set gameOver
+     * Set gameOver.
      *
-     * @param boolean $gameOver
+     * @param bool $gameOver
      *
      * @return Scene
      */
@@ -331,19 +331,19 @@ class Scene
     }
 
     /**
-     * Get gameOver
+     * Get gameOver.
      *
-     * @return boolean
+     * @return bool
      */
     public function isGameOver()
     {
         return $this->getGameOver();
     }
-    
+
     /**
-     * Get gameOver
+     * Get gameOver.
      *
-     * @return boolean
+     * @return bool
      */
     public function getGameOver()
     {
@@ -351,7 +351,7 @@ class Scene
     }
 
     /**
-     * Add needed
+     * Add needed.
      *
      * @param Needed $needed
      *
@@ -365,7 +365,7 @@ class Scene
     }
 
     /**
-     * Remove needed
+     * Remove needed.
      *
      * @param Needed $needed
      */
@@ -375,7 +375,7 @@ class Scene
     }
 
     /**
-     * Get needed
+     * Get needed.
      *
      * @return Collection
      */

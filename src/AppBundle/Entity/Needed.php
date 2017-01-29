@@ -1,5 +1,7 @@
 <?php
+
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,9 +40,9 @@ class Needed
     private $redirectScene;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -48,9 +50,9 @@ class Needed
     }
 
     /**
-     * Set value
+     * Set value.
      *
-     * @param integer $value
+     * @param int $value
      *
      * @return Needed
      */
@@ -62,9 +64,9 @@ class Needed
     }
 
     /**
-     * Get value
+     * Get value.
      *
-     * @return integer
+     * @return int
      */
     public function getValue()
     {
@@ -72,7 +74,7 @@ class Needed
     }
 
     /**
-     * Set scene
+     * Set scene.
      *
      * @param Scene $scene
      *
@@ -86,7 +88,7 @@ class Needed
     }
 
     /**
-     * Get scene
+     * Get scene.
      *
      * @return Scene
      */
@@ -96,7 +98,7 @@ class Needed
     }
 
     /**
-     * Set characteristic
+     * Set characteristic.
      *
      * @param Characteristic $characteristic
      *
@@ -110,7 +112,7 @@ class Needed
     }
 
     /**
-     * Get characteristic
+     * Get characteristic.
      *
      * @return Characteristic
      */
@@ -120,7 +122,7 @@ class Needed
     }
 
     /**
-     * Set redirectScene
+     * Set redirectScene.
      *
      * @param Scene $redirectScene
      *
@@ -134,7 +136,7 @@ class Needed
     }
 
     /**
-     * Get redirectScene
+     * Get redirectScene.
      *
      * @return Scene
      */
