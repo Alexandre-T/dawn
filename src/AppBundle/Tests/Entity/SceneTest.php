@@ -20,6 +20,7 @@ namespace AppBundle\Tests\Entity;
 use AppBundle\Entity\Achievement;
 use AppBundle\Entity\Action;
 use AppBundle\Entity\Answer;
+use AppBundle\Entity\Needed;
 use AppBundle\Entity\Scene;
 use AppBundle\Entity\Sentence;
 
@@ -66,8 +67,11 @@ class SceneTest extends \PHPUnit_Framework_TestCase
         self::assertNull($this->scene->getId());
         self::assertNull($this->scene->getAchievement());
         self::assertNotNull($this->scene->getAnswers());
+        self::assertNotNull($this->scene->getNeeded());
         self::assertEmpty($this->scene->getAnswers());
         self::assertNull($this->scene->getDialogue());
+        self::assertFalse($this->scene->getGameOver());
+        self::assertFalse($this->scene->isGameOver());
         self::assertNull($this->scene->getImage());
         self::assertNull($this->scene->getInitial());
     }
@@ -106,6 +110,31 @@ class SceneTest extends \PHPUnit_Framework_TestCase
         self::assertCount(0, $this->scene->getAnswers());
         self::assertFalse($this->scene->getAnswers()->contains($answer1));
         self::assertFalse($this->scene->getAnswers()->contains($answer2));
+    }
+
+    /**
+     * Tests Scene get add removeAnswer ().
+     */
+    public function testNeeded()
+    {
+        $needed1 = new Needed();
+        $needed2 = new Needed();
+        $this->scene->addNeeded($needed1);
+        self::assertCount(1, $this->scene->getNeeded());
+        self::assertTrue($this->scene->getNeeded()->contains($needed1));
+        self::assertFalse($this->scene->getNeeded()->contains($needed2));
+        $this->scene->addNeeded($needed2);
+        self::assertCount(2, $this->scene->getNeeded());
+        self::assertTrue($this->scene->getNeeded()->contains($needed1));
+        self::assertTrue($this->scene->getNeeded()->contains($needed2));
+        $this->scene->removeNeeded($needed1);
+        self::assertCount(1, $this->scene->getNeeded());
+        self::assertFalse($this->scene->getNeeded()->contains($needed1));
+        self::assertTrue($this->scene->getNeeded()->contains($needed2));
+        $this->scene->removeNeeded($needed2);
+        self::assertCount(0, $this->scene->getNeeded());
+        self::assertFalse($this->scene->getNeeded()->contains($needed1));
+        self::assertFalse($this->scene->getNeeded()->contains($needed2));
     }
 
     /**
@@ -185,6 +214,18 @@ class SceneTest extends \PHPUnit_Framework_TestCase
         $result = $this->scene->setDialogue($dialogue);
         self::assertEquals($result, $this->scene);
         self::assertEquals($dialogue, $this->scene->getDialogue());
+    }
+
+    /**
+     * Tests Scene->setGameOver() Scene->getGameOver() Scene->isGameOver().
+     */
+    public function testSetGameOver()
+    {
+        $gameOver = true;
+        $result = $this->scene->setGameOver($gameOver);
+        self::assertEquals($result, $this->scene);
+        self::assertTrue($this->scene->getGameOver());
+        self::assertTrue($this->scene->isGameOver());
     }
 
     /**

@@ -41,7 +41,8 @@ class LoadSceneData extends AbstractLoadFixture implements FixtureInterface, Ord
     const IMAGE = 2;
     const INITIAL = 3;
     const DIALOGUE = 4;
-    const COLUMNS = 5;
+    const GAME_OVER = 5;
+    const COLUMNS = 6;
 
     /**
      * Load Scenes.
@@ -75,6 +76,7 @@ class LoadSceneData extends AbstractLoadFixture implements FixtureInterface, Ord
             if (!empty($line[self::INITIAL])) {
                 $scene->setInitial(true);
             }
+            $scene->setGameOver(!empty($line[self::GAME_OVER]));
 
             $this->addReference("scene-{$line[self::ID]}", $scene);
             $manager->persist($scene);
