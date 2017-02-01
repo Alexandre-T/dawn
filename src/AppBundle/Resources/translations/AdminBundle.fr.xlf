@@ -35,7 +35,7 @@
             </trans-unit>
             <trans-unit id="170ff5be33437d162f596fb92d27139f" resname="Scene List">
                 <source>Scene List</source>
-                <target>Lie des scènes</target>
+                <target>Liste des scènes</target>
             </trans-unit>
         </body>
     </file>

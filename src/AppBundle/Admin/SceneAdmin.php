@@ -59,9 +59,9 @@ class SceneAdmin extends AbstractAdmin
                 'label'    => 'txt.image'
             ])
             //Translation
-            ->setHelps(array(
+            ->setHelps([
                 'achievement' => 'help.scene.achievement'
-            ));;
+            ]);
     }
 
     /**
