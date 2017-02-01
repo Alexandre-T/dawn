@@ -72,8 +72,8 @@ class SceneAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('achievement', null, array(), 'entity', array(
+            ->add('id', null, ['label' => 'txt.id'])
+            ->add('achievement', null, ['label' => 'txt.achievement'], 'entity', array(
                     'class'         => Achievement::class,
                     'choice_label'  => 'title',
             ));
@@ -99,24 +99,29 @@ class SceneAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('dialogue')
-            ->add('media.id')
+            ->addIdentifier('id', null, ['label' => 'txt.id'])
+            ->addIdentifier('dialogue',null, ['label' => 'txt.dialogue'])
+            ->add('media.id', null, ['label' => 'txt.media.id'])
             ->add('media', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'default'])
-            ->add('achievement.title')
-            ->add('_action', null, array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                    'initial' => array(
+                'context'  => 'default',
+                'label'  => 'txt.image',
+            ])
+            ->add('achievement.title',null,[
+                'label' => 'txt.achievements'
+            ])
+            ->add('_action', null, [
+                'label' => 'txt.action',
+                'actions' => [
+                    'show' => [],
+                    'edit' => [],
+                    'delete' => [],
+                    'initial' => [
                         'template' => 'AppBundle:CRUD:list__action_initial.html.twig',
-                        'label' => 'action_scene_initial',
-                        'route' => 'initial')
-                )
-            ));
+                        'route' => 'initial'
+                    ]
+                ]
+            ]);
         ;
     }
 

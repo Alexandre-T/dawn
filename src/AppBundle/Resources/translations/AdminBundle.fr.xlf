@@ -37,6 +37,22 @@
                 <source>Scene List</source>
                 <target>Liste des scènes</target>
             </trans-unit>
+            <trans-unit id="2b3700a90605933b1368f0f438e06668" resname="txt.id">
+                <source>txt.id</source>
+                <target>Idendifiant</target>
+            </trans-unit>
+            <trans-unit id="189a3a6b08d3d0d0203ce0e3141d535a" resname="txt.media.id">
+                <source>txt.media.id</source>
+                <target>Identifiant du Media</target>
+            </trans-unit>
+            <trans-unit id="3ac234280b9ce1f40b97d5ee0fb5af87" resname="txt.action">
+                <source>txt.action</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="0e969c3f0f36ca750a76a0f50c6ac962" resname="txt.set-initial">
+                <source>txt.set-initial</source>
+                <target>Scène initiale</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
