@@ -44,16 +44,24 @@ class SceneAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('dialogue', 'textarea')
+            ->add('dialogue', 'textarea',[
+                'label' => 'txt.dialogue'
+            ])
             ->add('achievement', 'sonata_type_model', [
                 'class' => Achievement::class,
                 'property' => 'title',
-                'required' => false
+                'required' => false,
+                'label' => 'txt.achievement'
             ])
             ->add('media', 'sonata_media_type', [
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'default'
-            ]);
+                'context'  => 'default',
+                'label'    => 'txt.image'
+            ])
+            //Translation
+            ->setHelps(array(
+                'achievement' => 'help.scene.achievement'
+            ));;
     }
 
     /**

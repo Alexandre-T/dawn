@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <header>
+            <tool tool-id="symfony" tool-name="Symfony"/>
+        </header>
+        <body>
+            <trans-unit id="02c37db6162ba092414a4f1a5e28a061" resname="txt.achievements">
+                <source>txt.achievements</source>
+                <target>Succès</target>
+            </trans-unit>
+            <trans-unit id="66379d4fd19a6c8c6b8bbf5e3e950720" resname="txt.characteristics">
+                <source>txt.characteristics</source>
+                <target>Caractéristiques</target>
+            </trans-unit>
+            <trans-unit id="78be51f7966293941e7eaa0d74011848" resname="txt.scenes">
+                <source>txt.scenes</source>
+                <target>Scènes</target>
+            </trans-unit>
+            <trans-unit id="1aa504361602c5fa11f600383972f3fc" resname="txt.dialogue">
+                <source>txt.dialogue</source>
+                <target>Dialogue</target>
+            </trans-unit>
+            <trans-unit id="2f9097312a45c11233d89971314c1f8c" resname="txt.achievement">
+                <source>txt.achievement</source>
+                <target>Succès</target>
+            </trans-unit>
+            <trans-unit id="379099a238338efb2114cff81f7db2c6" resname="help.scene.achievement">
+                <source>help.scene.achievement</source>
+                <target>Si cette scène débloque un succès, sélectionnez-le dans la liste.</target>
+            </trans-unit>
+            <trans-unit id="241cc6bf15ad58dd25f737592c529925" resname="txt.image">
+                <source>txt.image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="170ff5be33437d162f596fb92d27139f" resname="Scene List">
+                <source>Scene List</source>
+                <target>Lie des scènes</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

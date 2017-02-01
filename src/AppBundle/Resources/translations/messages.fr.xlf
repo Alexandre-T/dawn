@@ -302,15 +302,11 @@
                 <source>nav.home</source>
                 <target>Accueil</target>
             </trans-unit>
-            <trans-unit id="50975902738664001004158104278452" resname="txt.admin.achievements">
-                <source>txt.admin.achievements</source>
-                <target>Succès</target>
-            </trans-unit>
-            <trans-unit id="49278006665094932581830526147671" resname="txt.admin.characteristics">
-                <source>txt.admin.characteristics</source>
+            <trans-unit id="49278006665094932581830526147671" resname="txt.characteristics">
+                <source>txt.characteristics</source>
                 <target>Caractéristiques</target>
             </trans-unit>
-            <trans-unit id="78259579509879501042268904256924" resname="txt.admin.scenes">
+            <trans-unit id="78259579509879501042268904256924" resname="txt.scenes">
                 <source>txt.admin.scenes</source>
                 <target>Scènes</target>
             </trans-unit>
