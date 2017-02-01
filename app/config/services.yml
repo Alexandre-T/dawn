@@ -64,3 +64,5 @@ services:
             - AppBundle:Admin
         tags:
             - { name: sonata.admin, manager_type: orm, label: txt.admin.scenes}
+        calls:
+            - [setTranslationDomain, ['AdminBundle']]

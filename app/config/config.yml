@@ -112,3 +112,24 @@ sonata_media:
         local:
             directory:  "%kernel.root_dir%/../web/uploads/media"
             create:     false
+
+#translation
+sonata_translation:
+    locales: [en, fr]
+    default_locale: fr
+    # here enable the types you need
+#    gedmo:
+#        enabled: true
+#    knplabs:
+#        enabled: true
+#because of translation too
+sonata_admin:
+    templates:
+        layout: admin/layout.html.twig
+#because of translation too
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    filters:
+        cssrewrite: ~
