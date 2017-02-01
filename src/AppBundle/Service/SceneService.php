@@ -63,7 +63,7 @@ class SceneService
      */
     public function setInitial(Scene $scene)
     {
-        $oldInitial = $this->repository->findOneBy(['Initial', true]);
+        $oldInitial = $this->repository->findOneByInitial(true);
 
         if ($oldInitial instanceof Scene) {
             $oldInitial->setInitial(null);

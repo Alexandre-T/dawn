@@ -21,6 +21,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
@@ -97,6 +98,23 @@ class SceneAdmin extends AbstractAdmin
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'default'])
             ->add('achievement.title')
+            ->add('_action', null, array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                    'initial' => array(
+                        'template' => 'AppBundle:CRUD:list__action_initial.html.twig',
+                        'label' => 'action_scene_initial',
+                        'route' => 'initial')
+                )
+            ));
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->add('initial', $this->getRouterIdParameter().'/initial');
     }
 }
