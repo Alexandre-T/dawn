@@ -1,0 +1,4 @@
+<tr class="sonata-ba-view-container">
+    <th{% if(is_diff|default(false)) %} class="diff"{% endif %}>{% block name %}{{ field_description.label|trans({}, field_description.translationDomain ?: admin.translationDomain) }}{% endblock %}</th>
+    <td>{% media object.media, 'small' %}</td>
+</tr>

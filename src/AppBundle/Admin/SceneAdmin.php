@@ -87,7 +87,15 @@ class SceneAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('initial')
+            ->add('dialogue', null, ['label' => 'txt.dialogue'])
+            ->add('initial', null, ['label' => 'txt.scene.initial'])
+            ->add('media', null, [
+                'template' => 'AppBundle:CRUD:image_small.html.twig',
+                'label' => 'txt.image'
+            ])
+            ->add('answers', null, [
+                'label' => 'txt.answers'
+            ])
         ;
     }
 
