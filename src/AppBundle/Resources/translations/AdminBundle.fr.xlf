@@ -73,6 +73,62 @@
                 <source>Achievement Delete</source>
                 <target>Suppression d'un succès</target>
             </trans-unit>
+            <trans-unit id="31d072863553a3a92e1c405a09861471" resname="txt.code">
+                <source>txt.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="30032ec013131d5225c9052f341f1470" resname="txt.name">
+                <source>txt.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="0f627e40194ee12d0a3cc9b80a8c8c0c" resname="txt.initial">
+                <source>txt.initial</source>
+                <target>Initial</target>
+            </trans-unit>
+            <trans-unit id="0ce1ea4f1ff4063f381c11201ffe7a75" resname="txt.minimum">
+                <source>txt.minimum</source>
+                <target>Minimum</target>
+            </trans-unit>
+            <trans-unit id="1b704fb03072692b1d41e09415d59515" resname="txt.maximum">
+                <source>txt.maximum</source>
+                <target>Maximum</target>
+            </trans-unit>
+            <trans-unit id="0d4216791ddbecdc100c65530a0f45e9" resname="txt.prefix">
+                <source>txt.prefix</source>
+                <target>Préfixe</target>
+            </trans-unit>
+            <trans-unit id="10de95711f7be1551ec9929a27ce56fe" resname="txt.suffix">
+                <source>txt.suffix</source>
+                <target>Suffixe</target>
+            </trans-unit>
+            <trans-unit id="33e0d1690c2f94e42caa0ca00ccedd3c" resname="txt.multiply">
+                <source>txt.multiply</source>
+                <target>Multiplicateur</target>
+            </trans-unit>
+            <trans-unit id="37ed2f6b273faad61aa33ced105217e0" resname="txt.add">
+                <source>txt.add</source>
+                <target>Ajout</target>
+            </trans-unit>
+            <trans-unit id="08c751e410595abe158ce30b0a54442e" resname="Characteristic List">
+                <source>Characteristic List</source>
+                <target>Liste des caractéristiques</target>
+            </trans-unit>
+            <trans-unit id="1c4f397339ea469227d54f5c0fa04dd8" resname="Characteristic Create">
+                <source>Characteristic Create</source>
+                <target>Nouvelle caractéristique</target>
+            </trans-unit>
+            <trans-unit id="29e2ea023a8bc93820fb6f3830895f4a" resname="Characteristic Delete">
+                <source>Characeristic Delete</source>
+                <target>Suppression d'une caractéristique</target>
+            </trans-unit>
+            <trans-unit id="336b2fd310f519ae35f3b6012c8aa313" resname="Internal data">
+                <source>Internal data</source>
+                <target>Données internes</target>
+            </trans-unit>
+            <trans-unit id="27267c660dbdf11d108bd43d2885b137" resname="Display">
+                <source>Display</source>
+                <target>Affichage</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

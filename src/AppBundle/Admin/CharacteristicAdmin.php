@@ -42,22 +42,24 @@ class CharacteristicAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Données internes', array('class' => 'col-md-6'))
-                ->add('code')
-                ->add('name')
-                ->add('initial')
-                ->add('minimum')
-                ->add('maximum')
+            ->with('Internal data', array('class' => 'col-md-6'))
+                ->add('code', null, ['label' => 'txt.code'])
+                ->add('name', null, ['label' => 'txt.name'])
+                ->add('initial', null, ['label' => 'txt.initial'])
+                ->add('minimum', null, ['label' => 'txt.minimum'])
+                ->add('maximum', null, ['label' => 'txt.maximum'])
             ->end()
-            ->with('Affichage', array('class' => 'col-md-6'))
+            ->with('Display', array('class' => 'col-md-6'))
                 ->add('prefix', null,[
-                    'required' => false
+                    'required' => false,
+                    'label' => 'txt.prefix'
                 ])
                 ->add('suffix', null,[
-                    'required' => false
+                    'required' => false,
+                    'label' => 'txt.suffix',
                 ])
-                ->add('multiply')
-                ->add('add')
+                ->add('multiply', null, ['label' => 'txt.multiply'])
+                ->add('add', null, ['label' => 'txt.add'])
             ->end()
         ;
     }
@@ -86,8 +88,8 @@ class CharacteristicAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('code');
+            ->add('id', null, ['label' => 'txt.id'])
+            ->add('code', null, ['label' => 'txt.code']);
     }
 
     /**
@@ -98,11 +100,22 @@ class CharacteristicAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('code')
-            ->add('name')
-            ->add('initial')
-            ->add('minimum')
-            ->add('maximum')
+            ->addIdentifier('code', null, ['label' => 'txt.code'])
+            ->add('name', null, ['label' => 'txt.name'])
+            ->add('initial', null, ['label' => 'txt.initial'])
+            ->add('minimum', null, ['label' => 'txt.minimum'])
+            ->add('maximum', null, ['label' => 'txt.maximum'])
         ;
+    }
+
+    /**
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof Characteristic
+            ? $object->getTitle()
+            : 'txt.characteristic'; // shown in the breadcrumb on the create view
     }
 }
