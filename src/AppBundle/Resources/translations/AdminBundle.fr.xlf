@@ -37,6 +37,14 @@
                 <source>Scene List</source>
                 <target>Liste des scènes</target>
             </trans-unit>
+            <trans-unit id="06acf04936ff69332a0fa005164a508c" resname="Scene Create">
+                <source>Scene Create</source>
+                <target>Nouvelle scène</target>
+            </trans-unit>
+            <trans-unit id="255e8a571c6bb26138ba76cb0f64f4bb" resname="Scene Delete">
+                <source>Scene Delete</source>
+                <target>Suppression d'une scène</target>
+            </trans-unit>
             <trans-unit id="2b3700a90605933b1368f0f438e06668" resname="txt.id">
                 <source>txt.id</source>
                 <target>Idendifiant</target>
@@ -51,6 +59,10 @@
             </trans-unit>
             <trans-unit id="0e969c3f0f36ca750a76a0f50c6ac962" resname="txt.set-initial">
                 <source>txt.set-initial</source>
+                <target>Scène initiale</target>
+            </trans-unit>
+            <trans-unit id="2f977f0d188f5e32208b254819b93be6" resname="txt.scene.initial">
+                <source>txt.scene.initial</source>
                 <target>Scène initiale</target>
             </trans-unit>
             <trans-unit id="20e51ca92481d0f113bb3223318f28c1" resname="txt.title">

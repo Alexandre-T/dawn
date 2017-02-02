@@ -97,6 +97,7 @@ class AchievementAdmin extends AbstractAdmin
     }
 
     /**
+     * ToString.
      * @param mixed $object
      * @return string
      */

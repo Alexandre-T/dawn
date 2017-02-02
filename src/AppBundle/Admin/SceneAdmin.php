@@ -17,6 +17,7 @@
 namespace AppBundle\Admin;
 
 use AppBundle\Entity\Achievement;
+use AppBundle\Entity\Scene;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -133,9 +134,27 @@ class SceneAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * New route to set a set as the initial Scene.
+     *
+     * @param RouteCollection $collection
+     */
     protected function configureRoutes(RouteCollection $collection)
     {
         parent::configureRoutes($collection);
         $collection->add('initial', $this->getRouterIdParameter().'/initial');
+    }
+
+    /**
+     * ToString.
+     *
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof Scene
+            ? $object->getDialogue()
+            : 'txt.scene'; // shown in the breadcrumb on the create view
     }
 }

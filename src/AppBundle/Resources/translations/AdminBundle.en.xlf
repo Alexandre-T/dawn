@@ -7,23 +7,23 @@
         <body>
             <trans-unit id="02c37db6162ba092414a4f1a5e28a061" resname="txt.achievements">
                 <source>txt.achievements</source>
-                <target>en__txt.achievements</target>
+                <target>Achievements</target>
             </trans-unit>
             <trans-unit id="66379d4fd19a6c8c6b8bbf5e3e950720" resname="txt.characteristics">
                 <source>txt.characteristics</source>
-                <target>en__txt.characteristics</target>
+                <target>eCharacteristics</target>
             </trans-unit>
             <trans-unit id="78be51f7966293941e7eaa0d74011848" resname="txt.scenes">
                 <source>txt.scenes</source>
-                <target>en__txt.scenes</target>
+                <target>Scenes</target>
             </trans-unit>
             <trans-unit id="1aa504361602c5fa11f600383972f3fc" resname="txt.dialogue ">
                 <source>txt.dialogue </source>
-                <target>en__txt.dialogue </target>
+                <target>Dialogue </target>
             </trans-unit>
             <trans-unit id="2f9097312a45c11233d89971314c1f8c" resname="txt.achievement">
                 <source>txt.achievement</source>
-                <target>en__txt.achievement</target>
+                <target>Achievement</target>
             </trans-unit>
             <trans-unit id="379099a238338efb2114cff81f7db2c6" resname="help.scene.achievement">
                 <source>help.scene.achievement</source>
@@ -31,11 +31,19 @@
             </trans-unit>
             <trans-unit id="241cc6bf15ad58dd25f737592c529925" resname="txt.image">
                 <source>txt.image</source>
-                <target>en__txt.image</target>
+                <target>Image</target>
             </trans-unit>
             <trans-unit id="170ff5be33437d162f596fb92d27139f" resname="Scene List">
                 <source>Scene List</source>
-                <target>en__Scene list</target>
+                <target>Scene list</target>
+            </trans-unit>
+            <trans-unit id="06acf04936ff69332a0fa005164a508c" resname="Scene Create">
+                <source>Scene Create</source>
+                <target>Scene Create</target>
+            </trans-unit>
+            <trans-unit id="255e8a571c6bb26138ba76cb0f64f4bb" resname="Scene Delete">
+                <source>Scene Delete</source>
+                <target>Scene Delete</target>
             </trans-unit>
             <trans-unit id="2b3700a90605933b1368f0f438e06668" resname="txt.id">
                 <source>txt.id</source>
@@ -52,6 +60,10 @@
             <trans-unit id="0e969c3f0f36ca750a76a0f50c6ac962" resname="txt.set-initial">
                 <source>txt.set-initial</source>
                 <target>Set initial</target>
+            </trans-unit>
+            <trans-unit id="2f977f0d188f5e32208b254819b93be6" resname="txt.scene.initial">
+                <source>txt.scene.initial</source>
+                <target>Initial scene</target>
             </trans-unit>
             <trans-unit id="20e51ca92481d0f113bb3223318f28c1" resname="txt.title">
                 <source>txt.title</source>
