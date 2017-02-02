@@ -51,11 +51,15 @@ services:
         arguments: [~, AppBundle\Entity\Achievement, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: txt.achievements}
+        calls:
+            - [setTranslationDomain, ['AdminBundle']]
     admin.characteristics:
         class: AppBundle\Admin\CharacteristicAdmin
         arguments: [~, AppBundle\Entity\Characteristic, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: txt.characteristics}
+        calls:
+            - [setTranslationDomain, ['AdminBundle']]
     admin.scenes:
         class: AppBundle\Admin\SceneAdmin
         arguments:

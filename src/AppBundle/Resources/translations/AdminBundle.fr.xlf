@@ -53,6 +53,26 @@
                 <source>txt.set-initial</source>
                 <target>Scène initiale</target>
             </trans-unit>
+            <trans-unit id="20e51ca92481d0f113bb3223318f28c1" resname="txt.title">
+                <source>txt.title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="250007c4343476f9085ccf0c2e153f9a" resname="txt.alternate">
+                <source>txt.alternate</source>
+                <target>Text de substitution</target>
+            </trans-unit>
+            <trans-unit id="2c65b72021de51a307ef34431aa7ac66" resname="Achievement List">
+                <source>Achievement List</source>
+                <target>Liste des succès</target>
+            </trans-unit>
+            <trans-unit id="314350311941703a1fc2cb6913f851da" resname="Achievement Create">
+                <source>Achievement Create</source>
+                <target>Nouveau succès</target>
+            </trans-unit>
+            <trans-unit id="240370ee1b1774c1256ae8780feea81b" resname="Achievement Delete">
+                <source>Achievement Delete</source>
+                <target>Suppression d'un succès</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
