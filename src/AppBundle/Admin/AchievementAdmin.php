@@ -16,6 +16,7 @@
  */
 namespace AppBundle\Admin;
 
+use AppBundle\Entity\Achievement;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -42,11 +43,12 @@ class AchievementAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text')
-            ->add('alternat', 'text')
+            ->add('title', 'text', ['label' => 'txt.title'])
+            ->add('alternat', 'text', ['label' => 'txt.alternate'])
             ->add('media', 'sonata_media_type', [
-               'provider' => 'sonata.media.provider.image',
-                'context'  => 'default'
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default',
+                'label'     => 'txt.image',
             ]);
     }
 
@@ -58,9 +60,9 @@ class AchievementAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('title')
-            ->add('alternat');
+            ->add('id', null, ['label' => 'txt.id'])
+            ->add('title', null, ['label' => 'txt.title'])
+            ->add('alternat', null, ['label' => 'txt.alternate']);
     }
 
     /**
@@ -71,8 +73,9 @@ class AchievementAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('title')
-            ->add('alternate')
+            ->add('id', null, ['label' => 'txt.id'])
+            ->add('title', null, ['label' => 'txt.title'])
+            ->add('alternat', null, ['label' => 'txt.alternate'])
         ;
     }
 
@@ -84,8 +87,23 @@ class AchievementAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('title')
-            ->add('alternat');
+            ->addIdentifier('title', null, ['label' => 'txt.title'])
+            ->add('alternat', null, ['label' => 'txt.alternate'])
+            ->add('media', null, [
+                'label'     => 'txt.image',
+                'template'  => 'SonataMediaBundle:MediaAdmin:list_image.html.twig',
+            ])
+        ;
+    }
+
+    /**
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof Achievement
+            ? $object->getTitle()
+            : 'Achievement'; // shown in the breadcrumb on the create view
     }
 }
