@@ -17,6 +17,7 @@
 
 namespace AppBundle\Entity;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -394,11 +395,11 @@ class Scene
     /**
      * Set media
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $media
+     * @param Media $media
      *
      * @return Scene
      */
-    public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media)
+    public function setMedia(Media $media)
     {
         $this->media = $media;
 
@@ -408,10 +409,19 @@ class Scene
     /**
      * Get media
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return Media
      */
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * To String method for Sonata Admin
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Scene ' . $this-> getId() . ' — ' . $this->getDialogue();
     }
 }

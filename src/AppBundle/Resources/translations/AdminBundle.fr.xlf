@@ -141,6 +141,38 @@
                 <source>Display</source>
                 <target>Affichage</target>
             </trans-unit>
+            <trans-unit id="2b0805ac18549d8d2d1531d217e1a84e" resname="Sentence List">
+                <source>Sentence List</source>
+                <target>Liste des réponses (phrases)</target>
+            </trans-unit>
+            <trans-unit id="28ddf059319a55d22281d6ff28ce1204" resname="Sentence Create">
+                <source>Sentence Create</source>
+                <target>Nouvelle réponse (phrase)</target>
+            </trans-unit>
+            <trans-unit id="10c099102f03069f2c31f76d10237e1e" resname="Sentence Delete">
+                <source>Sentence Delete</source>
+                <target>Suppression d'une réponse (phrase)</target>
+            </trans-unit>
+            <trans-unit id="2b235d05061d5dd30c0cdec11c8b5617" resname="txt.sentences">
+                <source>txt.sentences</source>
+                <target>Réponses (phrases)</target>
+            </trans-unit>
+            <trans-unit id="1a9eb1f70c9298b32167a63c06379def" resname="txt.answers">
+                <source>txt.answers</source>
+                <target>Réponses</target>
+            </trans-unit>
+            <trans-unit id="35eb6a5709c3baee06310aa008fc1001" resname="txt.answer">
+                <source>txt.answer</source>
+                <target>Réponse</target>
+            </trans-unit>
+            <trans-unit id="1ca72ec33217b4840c2e5866316fa06a" resname="txt.destination">
+                <source>txt.destination</source>
+                <target>Destination</target>
+            </trans-unit>
+            <trans-unit id="29e07d5d28ddfb2816ec30783182ecc6" resname="help.sentence.destination">
+                <source>help.sentence.destination</source>
+                <target>Indiquez ici la scène où la réponse conduit le joueur.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

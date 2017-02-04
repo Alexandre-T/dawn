@@ -70,3 +70,13 @@ services:
             - { name: sonata.admin, manager_type: orm, label: txt.scenes}
         calls:
             - [setTranslationDomain, ['AdminBundle']]
+    admin.sentences:
+        class: AppBundle\Admin\SentenceAdmin
+        arguments:
+            - null
+            - AppBundle\Entity\Sentence
+            - AppBundle:Admin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: txt.sentences}
+        calls:
+            - [setTranslationDomain, ['AdminBundle']]
