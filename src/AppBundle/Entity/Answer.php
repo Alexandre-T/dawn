@@ -137,7 +137,10 @@ class Answer
      */
     public function addScene(scene $scene)
     {
-        $this->scenes[] = $scene;
+        if (!$this->scenes->contains($scene)) {
+            $this->scenes[] = $scene;
+            $scene->addAnswer($this);
+        }
 
         return $this;
     }
@@ -149,7 +152,10 @@ class Answer
      */
     public function removeScene(scene $scene)
     {
-        $this->scenes->removeElement($scene);
+        if ($this->scenes->contains($scene)) {
+            $this->scenes->removeElement($scene);
+            $scene->removeAnswer($this);
+        }
     }
 
     /**

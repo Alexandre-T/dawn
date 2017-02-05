@@ -74,8 +74,8 @@ class ActionAdmin extends AbstractAdmin
                     'label' => 'txt.scenes',
                     'expanded' => false,
                     'by_reference' => false,
-                    'multiple' => true]
-                );
+                    'multiple' => true,
+                ]);
             //->end()
             //Translation
     }

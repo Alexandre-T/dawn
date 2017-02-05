@@ -246,12 +246,10 @@ class Scene
      */
     public function addAnswer(Answer $answer)
     {
-        //doctrine bug : M2M bidirectional
-        if (!$this->answers->contains($answer)) {
-            //$answer->addScene($this);
+        if (!$this->answers->contains($answer)){
+            $answer->addScene($this);
+            $this->answers[] = $answer;
         }
-
-        $this->answers[] = $answer;
 
         return $this;
     }
@@ -263,12 +261,10 @@ class Scene
      */
     public function removeAnswer(Answer $answer)
     {
-        //doctrine bug : M2M bidirectional
         if ($this->answers->contains($answer)) {
-            //$answer->removeScene($this);
+            $this->answers->removeElement($answer);
+            $answer->removeScene($this);
         }
-
-        $this->answers->removeElement($answer);
     }
 
     /**
