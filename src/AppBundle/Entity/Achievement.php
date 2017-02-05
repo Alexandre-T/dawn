@@ -39,17 +39,12 @@ class Achievement
     private $title;
 
     /**
-     * 
-     */
-    private $image;
-
-    /**
      * @ORM\Column(type="string", length=128, nullable=false)
      */
     private $alternat;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=false)
      */
     private $media;
@@ -64,7 +59,7 @@ class Achievement
         return [
             'id' => $this->getId(),
             'title' => $this->getTitle(),
-            'image' => $this->getImage(),
+            'image' => $this->getMedia()->getProviderMetadata(),
             'alternat' => $this->getAlternat(),
         ];
     }
@@ -101,30 +96,6 @@ class Achievement
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set image.
-     *
-     * @param string $image
-     *
-     * @return Achievement
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image.
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**

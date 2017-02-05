@@ -41,11 +41,6 @@ class Scene
     private $dialogue;
 
     /**
-     * 
-     */
-    private $image;
-
-    /**
      * @ORM\Column(type="boolean", nullable=true, options={"unsigned":true})
      */
     private $initial;
@@ -67,7 +62,7 @@ class Scene
     private $achievement;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=false)
      */
     private $media;
@@ -101,7 +96,7 @@ class Scene
         return [
             'id' => $this->getId(),
             'dialogue' => $this->getDialogue(),
-            'image' => $this->getImage(),
+            'image' => $this->getMedia()->getProviderMetadata(),
             'game-over' => $this->isGameOver(),
         ];
     }
@@ -219,30 +214,6 @@ class Scene
     }
 
     /**
-     * Set image.
-     *
-     * @param string $image
-     *
-     * @return Scene
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image.
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set achievement.
      *
      * @param Achievement $achievement
@@ -275,6 +246,11 @@ class Scene
      */
     public function addAnswer(Answer $answer)
     {
+        //doctrine bug : M2M bidirectional
+        if (!$this->answers->contains($answer)) {
+            //$answer->addScene($this);
+        }
+
         $this->answers[] = $answer;
 
         return $this;
@@ -287,6 +263,11 @@ class Scene
      */
     public function removeAnswer(Answer $answer)
     {
+        //doctrine bug : M2M bidirectional
+        if ($this->answers->contains($answer)) {
+            //$answer->removeScene($this);
+        }
+
         $this->answers->removeElement($answer);
     }
 

@@ -116,7 +116,6 @@
       <field name="id" description="Identifiant de la sc&#xE8;ne" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="dd61781a-ee0f-429a-abae-a2e29baa7e74"/>
       <field name="achievement_id" type="integer" uuid="db261b23-7f92-4e11-9109-ec9b72d0738e"/>
       <field name="dialogue" description="Texte de la sc&#xE8;ne" type="text" uuid="72fb0636-4eda-4c6d-a7b4-a1fc5fe0bd47"/>
-      <field name="image" description="Image de la sc&#xE8;ne" type="string" size="16" required="true" uuid="371211c4-5a75-4788-aba8-18cad359f748"/>
       <field name="initial" description="Sc&#xE8;ne initial du jeu" type="boolean" unsigned="true" uuid="b3441b44-3869-495e-b9c5-7b9d41c8425e"/>
       <field name="gameOver" description="Is game over ?" type="boolean" default="false" required="true" uuid="3311048d-bb9e-4bcc-8a55-9db12b6004a8">
         <orm-attributes>
@@ -177,6 +176,11 @@
       </many-to-many-entity>
       <many-to-many-entity name="\AppBundle\Entity\Answer" owning-side="false" alias="answers" uuid="02ce15bf-dc5c-41d9-963f-3b0a88d22569">
         <many-to-many-field from="answer_id" to="id"/>
+        <orm-attributes>
+          <attribute name="cascade">
+            <attribute name="cascade-all">true</attribute>
+          </attribute>
+        </orm-attributes>
       </many-to-many-entity>
       <orm-attributes>
         <attribute name="join-table-schema">tj_answers</attribute>
@@ -210,7 +214,6 @@
     <entity name="\AppBundle\Entity\Achievement" local-name="Achievement" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="5e7440b9-a1d8-437a-b83d-5d3e0c405bc2">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="bfbc0e30-0116-4311-80b9-6813e22bec3d"/>
       <field name="title" description="Title" type="string" size="32" required="true" uuid="8cc5dd2b-1a44-4fd3-a9d3-8330f68fe0a1"/>
-      <field name="image" description="Image src" type="string" size="16" required="true" uuid="b322735a-58ed-4f75-81a8-ecfe4fa87920"/>
       <field name="alternat" description="Alternat" type="string" size="128" required="true" uuid="b0c04782-06e5-44c9-a0a5-e4c4fb8a96dc"/>
       <field name="media_id" type="integer" required="true" uuid="072d2128-a326-4ed4-af3a-47f166014ebf"/>
       <orm-attributes>

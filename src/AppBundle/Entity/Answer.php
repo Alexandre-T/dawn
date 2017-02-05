@@ -47,7 +47,7 @@ class Answer
     private $destination;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Scene", mappedBy="answers")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Scene", mappedBy="answers", cascade={"all"})
      */
     private $scenes;
 
