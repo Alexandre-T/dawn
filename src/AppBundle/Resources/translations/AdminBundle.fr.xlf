@@ -173,6 +173,34 @@
                 <source>help.sentence.destination</source>
                 <target>Indiquez ici la scène où la réponse conduit le joueur.</target>
             </trans-unit>
+            <trans-unit id="17e283b316783a921a8cf94d0dcb4a22" resname="txt.shape">
+                <source>txt.shape</source>
+                <target>Forme</target>
+            </trans-unit>
+            <trans-unit id="31eac11b11f9ddc42fa28de30e18b6f1" resname="Action List">
+                <source>Action List</source>
+                <target>Liste des réponses (actions)</target>
+            </trans-unit>
+            <trans-unit id="1da3cd6b0967c7882ddc6c7c21d3d5b7" resname="Action Create">
+                <source>Action Create</source>
+                <target>Création d'une nouvelle action</target>
+            </trans-unit>
+            <trans-unit id="36fad7a90d4e906434a066573b9213f1" resname="Action Delete">
+                <source>Action Delete</source>
+                <target>Suppression d'une action</target>
+            </trans-unit>
+            <trans-unit id="3b1fc24727c75c2a30ba1d5914615c3e" resname="txt.actions">
+                <source>txt.actions</source>
+                <target>Réponses (actions)</target>
+            </trans-unit>
+            <trans-unit id="3a822eaa18c29f0206a499ea1a928627" resname="txt.coords">
+                <source>txt.coords</source>
+                <target>Coordonnées</target>
+            </trans-unit>
+            <trans-unit id="2e8f567721db74751ad29e882586ff6e" resname="help.action.destination">
+                <source>help.action.destination</source>
+                <target>Saisissez ici la scène où le personnage arrivera en choisissant cette réponse.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

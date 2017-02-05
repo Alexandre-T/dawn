@@ -173,6 +173,34 @@
                 <source>help.sentence.destination</source>
                 <target>help.sentence.destination</target>
             </trans-unit>
+            <trans-unit id="17e283b316783a921a8cf94d0dcb4a22" resname="txt.shape">
+                <source>txt.shape</source>
+                <target>Shape</target>
+            </trans-unit>
+            <trans-unit id="31eac11b11f9ddc42fa28de30e18b6f1" resname="Action List">
+                <source>Action List</source>
+                <target>Action List</target>
+            </trans-unit>
+            <trans-unit id="1da3cd6b0967c7882ddc6c7c21d3d5b7" resname="Action Create">
+                <source>Action Create</source>
+                <target>Action Create</target>
+            </trans-unit>
+            <trans-unit id="36fad7a90d4e906434a066573b9213f1" resname="Action Delete">
+                <source>Action Delete</source>
+                <target>Action Delete</target>
+            </trans-unit>
+            <trans-unit id="3b1fc24727c75c2a30ba1d5914615c3e" resname="txt.actions">
+                <source>txt.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="3a822eaa18c29f0206a499ea1a928627" resname="txt.coords">
+                <source>txt.coords</source>
+                <target>Coords</target>
+            </trans-unit>
+            <trans-unit id="2e8f567721db74751ad29e882586ff6e" resname="help.action.destination">
+                <source>help.action.destination</source>
+                <target>help.action.destination</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

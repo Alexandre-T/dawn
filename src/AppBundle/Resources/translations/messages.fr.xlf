@@ -310,6 +310,18 @@
                 <source>txt.admin.scenes</source>
                 <target>Scènes</target>
             </trans-unit>
+            <trans-unit id="0c93e8c43994201d2b2564c911c72531" resname="txt.circle">
+                <source>txt.circle</source>
+                <target>Cercle</target>
+            </trans-unit>
+            <trans-unit id="351ba5a23a024304370af0201a5d14ce" resname="txt.rect">
+                <source>txt.rect</source>
+                <target>Rectangle</target>
+            </trans-unit>
+            <trans-unit id="2dabc9ea265f8ab9300a46f31d0fd389" resname="txt.poly">
+                <source>txt.poly</source>
+                <target>Polygone</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

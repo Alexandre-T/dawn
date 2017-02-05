@@ -80,3 +80,13 @@ services:
             - { name: sonata.admin, manager_type: orm, label: txt.sentences}
         calls:
             - [setTranslationDomain, ['AdminBundle']]
+    admin.actions:
+        class: AppBundle\Admin\ActionAdmin
+        arguments:
+            - null
+            - AppBundle\Entity\Action
+            - AppBundle:Admin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: txt.actions}
+        calls:
+            - [setTranslationDomain, ['AdminBundle']]
