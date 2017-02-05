@@ -44,6 +44,17 @@ class SceneAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $link_parameters = array();
+        if ($this->hasParentFieldDescription()) {
+            $link_parameters = $this->getParentFieldDescription()->getOption('link_parameters', array());
+        }
+        if ($this->hasRequest()) {
+            $context = $this->getRequest()->get('context', null);
+            if (null !== $context) {
+                $link_parameters['context'] = $context;
+            }
+        }
+
         $formMapper
             ->add('dialogue', 'textarea',[
                 'label' => 'txt.dialogue'
@@ -54,11 +65,7 @@ class SceneAdmin extends AbstractAdmin
                 'required' => false,
                 'label' => 'txt.achievement'
             ])
-            ->add('media', 'sonata_media_type', [
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'default',
-                'label'    => 'txt.image'
-            ])
+            ->add('media', 'sonata_type_model_list', ['required' => true], ['link_parameters' => $link_parameters])
             //Translation
             ->setHelps([
                 'achievement' => 'help.scene.achievement'
@@ -95,7 +102,8 @@ class SceneAdmin extends AbstractAdmin
                 'label' => 'txt.image'
             ])
             ->add('answers', null, [
-                'label' => 'txt.answers'
+                'label' => 'txt.answers',
+                'associated_property' => 'code',
             ])
         ;
     }

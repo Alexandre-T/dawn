@@ -26,7 +26,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="te_answer")
  * @ORM\InheritanceType("SINGLE_TABLE")
  */
-class Answer
+abstract class Answer
 {
     /**
      * @ORM\Id
@@ -59,6 +59,8 @@ class Answer
         $this->influences = new ArrayCollection();
         $this->scenes = new ArrayCollection();
     }
+
+    abstract public function getCode();
 
     /**
      * Get id.

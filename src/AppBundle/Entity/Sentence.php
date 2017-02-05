@@ -31,6 +31,13 @@ class Sentence extends Answer
     private $sentence;
 
     /**
+     * @return string
+     */
+    public function getCode(){
+        return "Action {$this->getId()} - {$this->getSentence()}";
+    }
+
+    /**
      * Set sentence.
      *
      * @param string $sentence

@@ -41,6 +41,13 @@ class Action extends Answer
     private $coords;
 
     /**
+     * @return string
+     */
+    public function getCode(){
+        return "Action {$this->getId()} - {$this->getTooltip()}";
+    }
+
+    /**
      * Set tooltip.
      *
      * @param string $tooltip
