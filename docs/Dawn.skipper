@@ -133,6 +133,18 @@
     </association>
     <association from="\AppBundle\Entity\Scene" to="\Application\Sonata\MediaBundle\Entity\Media" caption="Media Scene" inverse-alias="media" many-owner="true" many-inverse="false" parent-required="true" uuid="93d0730c-59a1-4a7a-b1e9-9f25f4667b51">
       <association-field from="media_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-inverse">
+          <attribute name="cascade">
+            <attribute name="cascade-persist">true</attribute>
+          </attribute>
+        </attribute>
+        <attribute name="side-owning">
+          <attribute name="cascade">
+            <attribute name="cascade-persist">true</attribute>
+          </attribute>
+        </attribute>
+      </orm-attributes>
     </association>
     <entity name="\AppBundle\Entity\Answer" local-name="Answer" namespace="\AppBundle\Entity" local-namespace="Entity" description="Answer to the scene" uuid="b1dd16c3-168f-4f5a-8d91-11500972e232">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="b4f7f4e6-4636-4b38-bbed-325458623d4a"/>
@@ -222,6 +234,13 @@
     </entity>
     <association from="\AppBundle\Entity\Achievement" to="\Application\Sonata\MediaBundle\Entity\Media" caption="Media Achievement" inverse-alias="media" many-owner="true" many-inverse="false" parent-required="true" uuid="ae21cece-d5f9-47e9-a6e6-06aea0faa7d5">
       <association-field from="media_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning">
+          <attribute name="cascade">
+            <attribute name="cascade-persist">true</attribute>
+          </attribute>
+        </attribute>
+      </orm-attributes>
     </association>
     <entity name="\AppBundle\Entity\Achievements" local-name="Achievements" namespace="\AppBundle\Entity" local-namespace="Entity" uuid="97419482-848e-405f-882c-62a102f89636">
       <field name="achievement_id" type="integer" required="true" primary="true" uuid="fbf03552-55ac-4359-b0d1-b003d61a3391"/>
