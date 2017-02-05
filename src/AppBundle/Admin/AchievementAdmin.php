@@ -42,14 +42,21 @@ class AchievementAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $link_parameters = array();
+        if ($this->hasParentFieldDescription()) {
+            $link_parameters = $this->getParentFieldDescription()->getOption('link_parameters', array());
+        }
+        if ($this->hasRequest()) {
+            $context = $this->getRequest()->get('context', null);
+            if (null !== $context) {
+                $link_parameters['context'] = $context;
+            }
+        }
+
         $formMapper
             ->add('title', 'text', ['label' => 'txt.title'])
             ->add('alternat', 'text', ['label' => 'txt.alternate'])
-            ->add('media', 'sonata_media_type', [
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'default',
-                'label'     => 'txt.image',
-            ]);
+            ->add('media', 'sonata_type_model_list', ['required' => true], ['link_parameters' => $link_parameters]);
     }
 
     /**
