@@ -30,6 +30,10 @@ html, body{
     bottom: 50px;
     z-index: 1000;
 }
+/*achievement*/
+a.bw img, img.bw{
+    filter: grayscale(100%);
+}
 
 #flash-messages .alert {
     width: 400px;

@@ -59,7 +59,7 @@ class Achievement
         return [
             'id' => $this->getId(),
             'title' => $this->getTitle(),
-            'image' => $this->getMedia()->getProviderMetadata(),
+            'media' => $this->getMedia(),
             'alternat' => $this->getAlternat(),
         ];
     }

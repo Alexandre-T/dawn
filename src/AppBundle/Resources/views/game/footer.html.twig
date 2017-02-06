@@ -2,41 +2,31 @@
     <ul class="list-inline hidden-sm-down">
         {% for achievement in achievements %}
             <li class="my-4">
-                {% if achievement.done %}
-                    <a href="{{ asset('images/achievements/color/' ~ achievement.image) }}"
-                         data-lightbox="{{ 'txt.achievement' | trans }}"  data-title="{{ achievement.title }}"
-                         class="achievementLink{{ achievement.id }}">
-                        <img class="img-thumbnail img-fluid achievementImage{{ achievement.id }}"
-                               src="{{ asset('images/achievements/thumbnails/color/' ~ achievement.image) }}" alt="">
-                    </a>
-                {% else %}
-                    <a href="{{ asset('images/achievements/bw/' ~ achievement.image) }}"
-                       data-lightbox="{{ 'txt.achievement' | trans }}" data-title="{{ achievement.title }}"
-                       class="achievementLink{{ achievement.id }}">
-                        <img class="img-thumbnail img-fluid achievementImage{{ achievement.id }}"
-                             src="{{ asset('images/achievements/thumbnails/bw/' ~ achievement.image) }}" alt="">
-                    </a>
-                {% endif %}
+                <a href="{% path achievement.media, 'reference' %}"
+                     data-lightbox="big"  data-title="{{ achievement.title }}"
+                     class="achievementLink{{ achievement.id }}">
+                    {% if achievement.done %}
+                        {% set classImg = 'img-thumbnail img-fluid achievementImage' ~ achievement.id %}
+                    {% else %}
+                        {% set classImg = 'bw img-thumbnail img-fluid achievementImage' ~ achievement.id %}
+                    {% endif %}
+                    {% media achievement.media, 'small' with {'class': classImg } %}
+                </a>
             </li>
         {% endfor %}
     </ul>
     <p class="text-center hidden-md-up mx-auto">
         {% for achievement in achievements %}
-            {% if achievement.done %}
-                <a href="{{ asset('images/achievements/color/' ~ achievement.image) }}"
-                   data-lightbox="{{ 'txt.achievements' | trans }}"  data-title="{{ achievement.title }}"
-                   class="achievementLink{{ achievement.id }}">
-                    <img class="img-thumbnail img-fluid mx-4 achievementImage{{ achievement.id }}"
-                           src="{{ asset('images/achievements/thumbnails/color/' ~ achievement.image) }}" alt="">
-                </a>
-            {% else %}
-                <a href="{{ asset('images/achievements/bw/' ~ achievement.image) }}"
-                   data-lightbox="{{ 'txt.achievements' | trans }}" data-title="{{ achievement.title }}"
-                   class="achievementLink{{ achievement.id }}">
-                    <img class="img-thumbnail img-fluid mx-4 achievementImage{{ achievement.id }}"
-                         src="{{ asset('images/achievements/thumbnails/bw/' ~ achievement.image) }}" alt="">
-                </a>
-            {% endif %}
+            <a href="{% path achievement.media, 'reference' %}"
+               data-lightbox="small"  data-title="{{ achievement.title }}"
+               class="achievementLink{{ achievement.id }}">
+                {% if achievement.done %}
+                    {% set classImg = 'img-thumbnail img-fluid achievementImage' ~ achievement.id %}
+                {% else %}
+                    {% set classImg = 'bw img-thumbnail img-fluid achievementImage' ~ achievement.id %}
+                {% endif %}
+               {% media achievement.media, 'small' with {'class': classImg } %}
+            </a>
         {% endfor %}
     </p>
 {% endblock %}
