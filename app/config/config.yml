@@ -124,6 +124,8 @@ sonata_translation:
 #        enabled: true
 #because of translation too
 sonata_admin:
+    title: Dawn project
+    title_logo: /images/dawn-logo.png
     templates:
         layout: admin/layout.html.twig
 #because of translation too
