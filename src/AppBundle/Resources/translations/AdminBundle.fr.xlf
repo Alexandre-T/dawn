@@ -229,6 +229,30 @@
                 <source>txt.influence</source>
                 <target>Influence</target>
             </trans-unit>
+            <trans-unit id="39ea41041bf49d452f71a27628cd0ab8" resname="txt.scene">
+                <source>txt.scene</source>
+                <target>Scène</target>
+            </trans-unit>
+            <trans-unit id="379aa34f1e3ddec5235667503441fea7" resname="txt.redirectScene">
+                <source>txt.redirectScene</source>
+                <target>Scène de redirection</target>
+            </trans-unit>
+            <trans-unit id="219663da2746460220afe3a407e1d7bf" resname="txt.value">
+                <source>txt.value</source>
+                <target>Valeur nécessaire</target>
+            </trans-unit>
+            <trans-unit id="27881eca2d7f743e1c96157232b65241" resname="txt.neededs">
+                <source>txt.neededs</source>
+                <target>Besoins</target>
+            </trans-unit>
+            <trans-unit id="0e34a901228ed2552bb1bd3938bd381e" resname="Needed List">
+                <source>Needed List</source>
+                <target>Liste des besoins</target>
+            </trans-unit>
+            <trans-unit id="382d19bb16c3c63e07259f96267f06dc" resname="Needed Create">
+                <source>Needed Create</source>
+                <target>Créer un nouveau besoin</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

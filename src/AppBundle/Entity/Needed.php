@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity
@@ -38,6 +40,19 @@ class Needed
      * @ORM\JoinColumn(name="redirect_id", referencedColumnName="id", nullable=false)
      */
     private $redirectScene;
+
+    /**
+     * Needed Validation.
+     * @param Needed $needed
+     * @param ExecutionContextInterface $context
+     * @param null $payload
+     */
+    public static function validateNeeded(Needed $needed, ExecutionContextInterface $context, $payload = null)
+    {
+        if ($needed->getScene() == $needed->getRedirectScene()){
+            $context->addViolation('error.scene.redirect');
+        }
+    }
 
     /**
      * Get id.

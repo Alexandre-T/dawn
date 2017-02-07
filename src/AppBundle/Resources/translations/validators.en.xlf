@@ -9,6 +9,10 @@
         <source>message.key.not_valid</source>
         <target>en__message.key.not_valid</target>
       </trans-unit>
+      <trans-unit id="35b0c145142945d02b4b1bbd27a0b870" resname="error.scene.redirect">
+        <source>error.scene.redirect</source>
+        <target>To avoid infinite loops, scene and redirect scene must be different.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

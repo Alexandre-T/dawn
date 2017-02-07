@@ -9,6 +9,10 @@
         <source>message.key.not_valid</source>
         <target>Le format de cette clef n'est pas valide… </target>
       </trans-unit>
+      <trans-unit id="35b0c145142945d02b4b1bbd27a0b870" resname="error.scene.redirect">
+        <source>error.scene.redirect</source>
+        <target>Pour éviter une boucle infinie, la scène de redirection doit être différente de la scène que le joueur aurait dû atteindre.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
