@@ -90,3 +90,10 @@ services:
             - { name: sonata.admin, manager_type: orm, label: txt.actions}
         calls:
             - [setTranslationDomain, ['AdminBundle']]
+    admin.influences:
+        class: AppBundle\Admin\InfluenceAdmin
+        arguments: [~, AppBundle\Entity\Influence, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: txt.influences}
+        calls:
+            - [setTranslationDomain, ['AdminBundle']]

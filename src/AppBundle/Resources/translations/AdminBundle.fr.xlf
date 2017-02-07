@@ -201,6 +201,34 @@
                 <source>help.action.destination</source>
                 <target>Saisissez ici la scène où le personnage arrivera en choisissant cette réponse.</target>
             </trans-unit>
+            <trans-unit id="0dac9ecd0637c527317f01c51cea1057" resname="txt.characteristic">
+                <source>txt.characteristic</source>
+                <target>Caractéristique</target>
+            </trans-unit>
+            <trans-unit id="25b4bf781026b7943041b9f913b1f5dc" resname="txt.bonus">
+                <source>txt.bonus</source>
+                <target>Bonus</target>
+            </trans-unit>
+            <trans-unit id="30bbd9561ce0e8b1358a8b31345d79ff" resname="Influence List">
+                <source>Influence List</source>
+                <target>Liste des influences</target>
+            </trans-unit>
+            <trans-unit id="3274e87b16fdf38809e0a34f36492db1" resname="Influence Create">
+                <source>Influence Create</source>
+                <target>Création d'une nouvelle influence</target>
+            </trans-unit>
+            <trans-unit id="05fa62f717287c251d2ee41b2442f844" resname="Influence Delete">
+                <source>Influence Delete</source>
+                <target>Suppression d'une influence</target>
+            </trans-unit>
+            <trans-unit id="284930dc08257fc21ab1dab90890d4e1" resname="txt.influences">
+                <source>txt.influences</source>
+                <target>Influences</target>
+            </trans-unit>
+            <trans-unit id="37c6e08032a6bed6388e66d837b7fa94" resname="txt.influence">
+                <source>txt.influence</source>
+                <target>Influence</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

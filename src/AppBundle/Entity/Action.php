@@ -133,4 +133,12 @@ class Action extends Answer
             'tooltip' => $this->getTooltip(),
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getCode();
+    }
 }

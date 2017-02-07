@@ -331,4 +331,12 @@ class Characteristic
     {
         return $this->add;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }
