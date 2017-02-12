@@ -44,7 +44,9 @@ class AnswerTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->answer = new Answer();
+        $this->answer = $this
+            ->getMockBuilder(Answer::class)
+            ->getMockForAbstractClass();
     }
 
     /**
