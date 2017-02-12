@@ -18,6 +18,7 @@
 namespace AppBundle\Tests\Entity;
 
 use AppBundle\Entity\Achievement;
+use Application\Sonata\MediaBundle\Entity\Media;
 
 /**
  * Achievement Entity test case.
@@ -61,7 +62,7 @@ class AchievementTest extends \PHPUnit_Framework_TestCase
     {
         self::assertNull($this->achievement->getId());
         self::assertNull($this->achievement->getAlternat());
-        self::assertNull($this->achievement->getImage());
+        self::assertNull($this->achievement->getMedia());
         self::assertNull($this->achievement->getTitle());
     }
 
@@ -77,14 +78,14 @@ class AchievementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests Achievement->setImage() Achievement->getImage().
+     * Tests Achievement->setMedia() Achievement->getMedia().
      */
-    public function testSetImage()
+    public function testSetMedia()
     {
-        $image = 'foo';
-        $result = $this->achievement->setImage($image);
+        $media = new Media();
+        $result = $this->achievement->setMedia($media);
         self::assertEquals($result, $this->achievement);
-        self::assertEquals($image, $this->achievement->getImage());
+        self::assertEquals($media, $this->achievement->getMedia());
     }
 
     /**
