@@ -247,8 +247,8 @@ class Scene
     public function addAnswer(Answer $answer)
     {
         if (!$this->answers->contains($answer)){
-            $answer->addScene($this);
             $this->answers[] = $answer;
+            $answer->addScene($this);
         }
 
         return $this;

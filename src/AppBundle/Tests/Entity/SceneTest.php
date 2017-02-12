@@ -19,10 +19,10 @@ namespace AppBundle\Tests\Entity;
 
 use AppBundle\Entity\Achievement;
 use AppBundle\Entity\Action;
-use AppBundle\Entity\Answer;
 use AppBundle\Entity\Needed;
 use AppBundle\Entity\Scene;
 use AppBundle\Entity\Sentence;
+use Application\Sonata\MediaBundle\Entity\Media;
 
 /**
  * Scene Entity test case.
@@ -72,7 +72,7 @@ class SceneTest extends \PHPUnit_Framework_TestCase
         self::assertNull($this->scene->getDialogue());
         self::assertFalse($this->scene->getGameOver());
         self::assertFalse($this->scene->isGameOver());
-        self::assertNull($this->scene->getImage());
+        self::assertNull($this->scene->getMedia());
         self::assertNull($this->scene->getInitial());
     }
 
@@ -92,8 +92,8 @@ class SceneTest extends \PHPUnit_Framework_TestCase
      */
     public function testAnswers()
     {
-        $answer1 = new Answer();
-        $answer2 = new Answer();
+        $answer1 = new Action();
+        $answer2 = new Sentence();
         $this->scene->addAnswer($answer1);
         self::assertCount(1, $this->scene->getAnswers());
         self::assertTrue($this->scene->getAnswers()->contains($answer1));
@@ -229,14 +229,14 @@ class SceneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests Scene->setImage() Scene->getImage().
+     * Tests Scene->setMedia() Scene->getMedia().
      */
-    public function testSetImage()
+    public function testSetMedia()
     {
-        $image = 'foo';
-        $result = $this->scene->setImage($image);
+        $media = new Media();
+        $result = $this->scene->setMedia($media);
         self::assertEquals($result, $this->scene);
-        self::assertEquals($image, $this->scene->getImage());
+        self::assertEquals($media, $this->scene->getMedia());
     }
 
     /**
